@@ -58,6 +58,7 @@ riotjs/lib/riotjs_web/endpoint.ex
 # Config for RiotJS in-browser compile
 
 Add RiotJS .js file:
+
 riotjs/assets/vendor/riot_compiler.js
 
 riotjs/assets/js/app.js
@@ -69,9 +70,10 @@ window.riot = riot
 
 riotjs/lib/riotjs_web/templates/layout/root.html.heex
 ```
--     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
-
-+     <script phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
+  <head>
+    ...
+-   <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
++   <script       phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
 
     <script data-src="/riot/todo.riot" type="riot"></script>
     <script>
@@ -84,7 +86,8 @@ riotjs/lib/riotjs_web/templates/layout/root.html.heex
 
 # Config for RiotJS external CLI compile
 
-Add RiotJS .js files:
+Add RiotJS .js file:
+
 riotjs/assets/vendor/riot.js
 
 riotjs/assets/js/app.js
@@ -94,7 +97,10 @@ import * as riot from "../vendor/riot"
 window.riot = riot
 ```
 
+riotjs/lib/riotjs_web/templates/layout/root.html.heex
 ```
+  <head>
+    ...
     <script data-src="/riot/todo.js" type="riot"></script>
     <script type="module">
       import TodoTag from './riot/todo.js'
