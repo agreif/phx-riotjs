@@ -8,6 +8,26 @@
     <%= live_title_tag assigns[:page_title] || "Riotjs", suffix: " · Phoenix Framework" %>
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
+
+    <!-- <script src="/riot.js"></script> -->
+    <!-- <script data-src="/riot/todo.riot" type="riot"></script> -->
+
+    <!-- <script> -->
+    <!--   (async function main() { -->
+    <!-- 	  await riot.compile() -->
+    <!-- 	  riot.mount('todo') -->
+    <!--   }()) -->
+    <!-- </script> -->
+
+
+
+    <script data-src="/riot/todo.js" type="riot"></script>
+    <script type="module">
+      import TodoTag from './riot/todo.js'
+      riot.register('todo', TodoTag)
+      riot.mount('todo')
+    </script>
+
   </head>
   <body>
     <header>

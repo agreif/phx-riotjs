@@ -43,3 +43,6 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
+import * as riot from "../vendor/riot"
+// expose riot
+window.riot = riot
