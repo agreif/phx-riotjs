@@ -1,23 +1,27 @@
 <body_tag>
-  <page1_tag state="{state}" if="{state.data.pages.page1}"></page1_tag>
-  <page2_tag state="{state}" if="{state.data.pages.page2}"></page2_tag>
-  <error_tag state="{state}" if="{state.data.pages.error}"></error_tag>
+  <page1_tag context="{this}" if="{data.pages.page1}"></page1_tag>
+  <page2_tag context="{this}" if="{data.pages.page2}"></page2_tag>
+  <error_tag context="{this}" if="{data.pages.error}"></error_tag>
   <hr>
-  <a href="#" onclick={ load_p1 }>page 1</a><br>
-  <a href="#" onclick={ load_p2 }>page 2</a><br>
-  <a href="#" onclick={ load_error }>error page</a><br>
+  <a href="#" onclick={ load_p1 }>ajax page 1</a><br>
+  <a href="#" onclick={ load_p2 }>ajax page 2</a><br>
+  <a href="#" onclick={ load_error }>ajax error page</a><br>
+  <hr>
+  <a href="/page1">page 1</a><br>
+  <a href="/page2">page 2</a><br>
+  <a href="/error">error page</a><br>
 
   <script>
     export default {
       onBeforeMount(props) {
-        this.state = {data: { pages: {} } }
+        this.data = { pages: {} }
       },
       log(o) {console.log(o)},
       refresh_data(url) {
         fetch(url)
 	  .then(res => res.json())
       	  .then((new_data) => {
-	       this.state.data = new_data
+	       this.data = new_data
 	       this.update()
 	  }
 	).catch(err => console.error(err));

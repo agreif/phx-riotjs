@@ -2,10 +2,8 @@ var body_tag = {
   css: null,
   exports: {
     onBeforeMount(props) {
-      this.state = {
-        data: {
-          pages: {}
-        }
+      this.data = {
+        pages: {}
       };
     },
 
@@ -15,7 +13,7 @@ var body_tag = {
 
     refresh_data(url) {
       fetch(url).then(res => res.json()).then(new_data => {
-        this.state.data = new_data;
+        this.data = new_data;
         this.update();
       }).catch(err => console.error(err));
     },
@@ -33,11 +31,11 @@ var body_tag = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<page1_tag expr46="expr46"></page1_tag><page2_tag expr47="expr47"></page2_tag><error_tag expr48="expr48"></error_tag><hr/><a expr49="expr49" href="#">page 1</a><br/><a expr50="expr50" href="#">page 2</a><br/><a expr51="expr51" href="#">error page</a><br/>', [{
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<page1_tag expr165="expr165"></page1_tag><page2_tag expr166="expr166"></page2_tag><error_tag expr167="expr167"></error_tag><hr/><a expr168="expr168" href="#">ajax page 1</a><br/><a expr169="expr169" href="#">ajax page 2</a><br/><a expr170="expr170" href="#">ajax error page</a><br/><hr/><a href="/page1">page 1</a><br/><a href="/page2">page 2</a><br/><a href="/error">error page</a><br/>', [{
     type: bindingTypes.IF,
-    evaluate: _scope => _scope.state.data.pages.page1,
-    redundantAttribute: 'expr46',
-    selector: '[expr46]',
+    evaluate: _scope => _scope.data.pages.page1,
+    redundantAttribute: 'expr165',
+    selector: '[expr165]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -45,15 +43,15 @@ var body_tag = {
       slots: [],
       attributes: [{
         type: expressionTypes.ATTRIBUTE,
-        name: 'state',
-        evaluate: _scope => _scope.state
+        name: 'context',
+        evaluate: _scope => _scope
       }]
     }])
   }, {
     type: bindingTypes.IF,
-    evaluate: _scope => _scope.state.data.pages.page2,
-    redundantAttribute: 'expr47',
-    selector: '[expr47]',
+    evaluate: _scope => _scope.data.pages.page2,
+    redundantAttribute: 'expr166',
+    selector: '[expr166]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -61,15 +59,15 @@ var body_tag = {
       slots: [],
       attributes: [{
         type: expressionTypes.ATTRIBUTE,
-        name: 'state',
-        evaluate: _scope => _scope.state
+        name: 'context',
+        evaluate: _scope => _scope
       }]
     }])
   }, {
     type: bindingTypes.IF,
-    evaluate: _scope => _scope.state.data.pages.error,
-    redundantAttribute: 'expr48',
-    selector: '[expr48]',
+    evaluate: _scope => _scope.data.pages.error,
+    redundantAttribute: 'expr167',
+    selector: '[expr167]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -77,29 +75,29 @@ var body_tag = {
       slots: [],
       attributes: [{
         type: expressionTypes.ATTRIBUTE,
-        name: 'state',
-        evaluate: _scope => _scope.state
+        name: 'context',
+        evaluate: _scope => _scope
       }]
     }])
   }, {
-    redundantAttribute: 'expr49',
-    selector: '[expr49]',
+    redundantAttribute: 'expr168',
+    selector: '[expr168]',
     expressions: [{
       type: expressionTypes.EVENT,
       name: 'onclick',
       evaluate: _scope => _scope.load_p1
     }]
   }, {
-    redundantAttribute: 'expr50',
-    selector: '[expr50]',
+    redundantAttribute: 'expr169',
+    selector: '[expr169]',
     expressions: [{
       type: expressionTypes.EVENT,
       name: 'onclick',
       evaluate: _scope => _scope.load_p2
     }]
   }, {
-    redundantAttribute: 'expr51',
-    selector: '[expr51]',
+    redundantAttribute: 'expr170',
+    selector: '[expr170]',
     expressions: [{
       type: expressionTypes.EVENT,
       name: 'onclick',

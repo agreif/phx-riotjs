@@ -1,9 +1,9 @@
 <page1_tag>
-  <h1>{state.data.pages.page1.title}</h1>
+  <h1>{context.data.pages.page1.title}</h1>
 
   <script>
     export default {
-      onBeforeMount(props) { this.state = props.state },
+      onBeforeMount(props) { this.context = props.context },
     }
   </script>
 </page1_tag>

@@ -1,9 +1,10 @@
 <page2_tag>
-  <h1>{state.data.pages.page2.title}</h1>
+  <h1>{context.data.pages.page2.title}</h1>
+  <a href="#" onclick={ context.load_p1 }>ajax page 1</a><br>
 
   <script>
     export default {
-      onBeforeMount(props) { this.state = props.state },
+      onBeforeMount(props) { this.context = props.context },
     }
   </script>
 </page2_tag>
