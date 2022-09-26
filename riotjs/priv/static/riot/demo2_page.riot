@@ -1,0 +1,10 @@
+<demo2_page>
+  <h1>{context.data.pages.demo2.title}</h1>
+  <a href="#" onclick={ context.load_d1 }>ajax demo 1</a><br>
+
+  <script>
+    export default {
+      onBeforeMount(props) { this.context = props.context },
+    }
+  </script>
+</demo2_page>

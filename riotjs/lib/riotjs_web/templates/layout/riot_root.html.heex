@@ -9,15 +9,20 @@
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
     <script type="module">
-      <%= for tag <- [:error, :body, :page1, :page2] do %>
+      <%= for tag <- [:body] do %>
         <% tag_str = Atom.to_string tag %>
         import <%= tag_str %>Tag from "/riot/<%= tag %>_tag.js"
         riot.register("<%= tag %>_tag", <%= tag_str %>Tag)
+      <% end %>
+      <%= for page <- [:error, :demo1, :demo2] do %>
+        <% page_str = Atom.to_string page %>
+        import <%= page_str %>Page from "/riot/<%= page %>_page.js"
+        riot.register("<%= page %>_page", <%= page_str %>Page)
       <% end %>
       riot.mount('body_tag')[0].refresh_data("<%= @data_path %>")
     </script>
   </head>
   <body>
-    <%= @inner_content %><br>
+    <%= @inner_content %>
   </body>
 </html>

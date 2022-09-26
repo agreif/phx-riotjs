@@ -14,13 +14,13 @@ defmodule RiotjsWeb.RiotController do
   end
 
 
-  def page1_data(conn, _params) do
-    pages = %Pages{page1: %SimplePage{title: "Page1"}}
+  def demo1_data(conn, _params) do
+    pages = %Pages{demo1: %SimplePage{title: "Demo1"}}
     json(conn, %Data{pages: pages})
   end
 
-  def page2_data(conn, _params) do
-    pages = %Pages{page2: %SimplePage{title: "Page2"}}
+  def demo2_data(conn, _params) do
+    pages = %Pages{demo2: %SimplePage{title: "Demo2"}}
     json(conn, %Data{pages: pages})
   end
 

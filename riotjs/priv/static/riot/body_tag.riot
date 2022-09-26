@@ -1,15 +1,15 @@
 <body_tag>
-  <page1_tag context="{this}" if="{data.pages.page1}"></page1_tag>
-  <page2_tag context="{this}" if="{data.pages.page2}"></page2_tag>
-  <error_tag context="{this}" if="{data.pages.error}"></error_tag>
+  <error_page context="{this}" if="{data.pages.error}"></error_page>
+  <demo1_page context="{this}" if="{data.pages.demo1}"></demo1_page>
+  <demo2_page context="{this}" if="{data.pages.demo2}"></demo2_page>
   <hr>
-  <a href="#" onclick={ load_p1 }>ajax page 1</a><br>
-  <a href="#" onclick={ load_p2 }>ajax page 2</a><br>
-  <a href="#" onclick={ load_error }>ajax error page</a><br>
+  <a href="#" onclick={ load_d1 }>ajax demo 1</a><br>
+  <a href="#" onclick={ load_d2 }>ajax demo 2</a><br>
+  <a href="#" onclick={ load_error }>ajax error</a><br>
   <hr>
-  <a href="/page1">page 1</a><br>
-  <a href="/page2">page 2</a><br>
-  <a href="/error">error page</a><br>
+  <a href="/demo1">demo 1</a><br>
+  <a href="/demo2">demo 2</a><br>
+  <a href="/error">error</a><br>
 
   <script>
     export default {
@@ -26,8 +26,8 @@
 	  }
 	).catch(err => console.error(err));
       },
-      load_p1() { this.refresh_data('/data/page1') },
-      load_p2() { this.refresh_data('/data/page2') },
+      load_d1() { this.refresh_data('/data/demo1') },
+      load_d2() { this.refresh_data('/data/demo2') },
       load_error() { this.refresh_data('/data/error') },
     }
   </script>

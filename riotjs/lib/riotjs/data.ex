@@ -6,8 +6,8 @@ end
 defmodule Riotjs.Pages do
   @derive Jason.Encoder
   defstruct error: nil,
-    page1: nil,
-    page2: nil
+    demo1: nil,
+    demo2: nil
 end
 
 defmodule Riotjs.ErrorPage do
