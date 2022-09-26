@@ -8,19 +8,16 @@
     <%= live_title_tag assigns[:page_title] || "Riotjs", suffix: " · Phoenix Framework" %>
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
-
     <script type="module">
-      <%= for tag <- [:body, :page1, :page2] do %>
+      <%= for tag <- [:error, :body, :page1, :page2] do %>
         <% tag_str = Atom.to_string tag %>
         import <%= tag_str %>Tag from "/riot/<%= tag %>_tag.js"
         riot.register("<%= tag %>_tag", <%= tag_str %>Tag)
       <% end %>
       riot.mount('body_tag')[0].refresh_data("<%= @data_path %>")
     </script>
-
   </head>
   <body>
-    data-path: <%= @data_path %><br>
     <%= @inner_content %><br>
   </body>
 </html>

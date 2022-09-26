@@ -61,9 +61,6 @@ defmodule RiotjsWeb.Router do
     get "/:page", RiotController, :page_data
   end
 
-
-
-
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put

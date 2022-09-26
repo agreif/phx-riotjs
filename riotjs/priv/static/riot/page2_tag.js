@@ -6,9 +6,9 @@ var page2_tag = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('\n  page 2 visible\n  <h1 expr19="expr19"> </h1>', [{
-    redundantAttribute: 'expr19',
-    selector: '[expr19]',
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<h1 expr5="expr5"> </h1>', [{
+    redundantAttribute: 'expr5',
+    selector: '[expr5]',
     expressions: [{
       type: expressionTypes.TEXT,
       childNodeIndex: 0,

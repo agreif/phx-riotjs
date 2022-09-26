@@ -1,30 +1,30 @@
 <body_tag>
   <page1_tag state="{state}" if="{state.data.pages.page1}"></page1_tag>
   <page2_tag state="{state}" if="{state.data.pages.page2}"></page2_tag>
-
-  <button onclick={ load_p1 }>load p1</button>
-  <button onclick={ load_p2 }>load p2</button>
-
+  <error_tag state="{state}" if="{state.data.pages.error}"></error_tag>
+  <hr>
+  <a href="#" onclick={ load_p1 }>page 1</a><br>
+  <a href="#" onclick={ load_p2 }>page 2</a><br>
+  <a href="#" onclick={ load_error }>error page</a><br>
 
   <script>
     export default {
       onBeforeMount(props) {
         this.state = {data: { pages: {} } }
       },
-      load_p1() { this.refresh_data('/data/page1') },
-      load_p2() { this.refresh_data('/data/page2') },
       log(o) {console.log(o)},
       refresh_data(url) {
         fetch(url)
 	  .then(res => res.json())
       	  .then((new_data) => {
-	    if (!new_data.error) {
-	      this.state.data = new_data
-	      this.update()
-	    }
+	       this.state.data = new_data
+	       this.update()
 	  }
 	).catch(err => console.error(err));
       },
+      load_p1() { this.refresh_data('/data/page1') },
+      load_p2() { this.refresh_data('/data/page2') },
+      load_error() { this.refresh_data('/data/error') },
     }
   </script>
 </body_tag>

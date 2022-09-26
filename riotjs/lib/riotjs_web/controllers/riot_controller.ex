@@ -1,8 +1,6 @@
 defmodule RiotjsWeb.RiotController do
   use RiotjsWeb, :controller
-  alias Riotjs.{Data, Page}
-
-
+  alias Riotjs.{Data, Pages, ErrorPage, SimplePage}
 
   def page(conn, %{"page" => page}) do
     render(conn,
@@ -11,22 +9,19 @@ defmodule RiotjsWeb.RiotController do
   end
 
   def page_data(conn, _params) do
-    conn |> json %{error: :not_found}
+    pages = %Pages{error: %ErrorPage{message: "Not Found"}}
+    json(conn, %Data{pages: pages})
   end
 
 
   def page1_data(conn, _params) do
-    page = %Page{title: "Pageeeeee1"}
-    json(conn, %Data{pages: %{page1: page}})
+    pages = %Pages{page1: %SimplePage{title: "Page1"}}
+    json(conn, %Data{pages: pages})
   end
 
   def page2_data(conn, _params) do
-    page = %Page{title: "Pageeeeee 2"}
-    json(conn, %Data{pages: %{page2: page}})
+    pages = %Pages{page2: %SimplePage{title: "Page2"}}
+    json(conn, %Data{pages: pages})
   end
-
-
-
-
 
 end
