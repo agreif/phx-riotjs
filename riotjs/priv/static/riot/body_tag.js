@@ -1,10 +1,12 @@
 var body_tag = {
   css: null,
   exports: {
-    state: {
-      data: {
-        pages: {}
-      }
+    onBeforeMount(props) {
+      this.state = {
+        data: {
+          pages: {}
+        }
+      };
     },
 
     load_p1() {
@@ -16,23 +18,24 @@ var body_tag = {
     },
 
     log(o) {
-      console.log("" + o);
+      console.log(o);
     },
 
     refresh_data(url) {
-      this.log(url);
       fetch(url).then(res => res.json()).then(new_data => {
-        this.state.data = new_data;
-        this.update();
+        if (!new_data.error) {
+          this.state.data = new_data;
+          this.update();
+        }
       }).catch(err => console.error(err));
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<page1_tag expr48="expr48"></page1_tag><page2_tag expr49="expr49"></page2_tag><button expr50="expr50">load p1</button><button expr51="expr51">load p2</button>', [{
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<page1_tag expr304="expr304"></page1_tag><page2_tag expr305="expr305"></page2_tag><button expr306="expr306">load p1</button><button expr307="expr307">load p2</button>', [{
     type: bindingTypes.IF,
     evaluate: _scope => _scope.state.data.pages.page1,
-    redundantAttribute: 'expr48',
-    selector: '[expr48]',
+    redundantAttribute: 'expr304',
+    selector: '[expr304]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -47,8 +50,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.state.data.pages.page2,
-    redundantAttribute: 'expr49',
-    selector: '[expr49]',
+    redundantAttribute: 'expr305',
+    selector: '[expr305]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -61,16 +64,16 @@ var body_tag = {
       }]
     }])
   }, {
-    redundantAttribute: 'expr50',
-    selector: '[expr50]',
+    redundantAttribute: 'expr306',
+    selector: '[expr306]',
     expressions: [{
       type: expressionTypes.EVENT,
       name: 'onclick',
       evaluate: _scope => _scope.load_p1
     }]
   }, {
-    redundantAttribute: 'expr51',
-    selector: '[expr51]',
+    redundantAttribute: 'expr307',
+    selector: '[expr307]',
     expressions: [{
       type: expressionTypes.EVENT,
       name: 'onclick',

@@ -10,10 +10,8 @@ defmodule RiotjsWeb.RiotController do
       data_path: Routes.riot_path(conn, :page_data, page))
   end
 
-  def page_data(conn, %{"page" => page}) do
-    json(conn,
-      %{page: page,
-	data_path: Routes.riot_path(conn, :page_data, page)})
+  def page_data(conn, _params) do
+    conn |> json %{error: :not_found}
   end
 
 

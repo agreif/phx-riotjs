@@ -12,10 +12,10 @@
     <script type="module">
       <%= for tag <- [:body, :page1, :page2] do %>
         <% tag_str = Atom.to_string tag %>
-        import <%= tag_str %>Tag from '/riot/<%= tag %>_tag.js'
-        riot.register('<%= tag %>_tag', <%= tag_str %>Tag)
+        import <%= tag_str %>Tag from "/riot/<%= tag %>_tag.js"
+        riot.register("<%= tag %>_tag", <%= tag_str %>Tag)
       <% end %>
-      riot.mount('body_tag')
+      riot.mount('body_tag')[0].refresh_data("<%= @data_path %>")
     </script>
 
   </head>
