@@ -57,6 +57,7 @@ defmodule RiotjsWeb.Router do
   scope "/data", RiotjsWeb do
     pipe_through :riot_data
     get "/page1", RiotController, :page1_data
+    get "/page2", RiotController, :page2_data
     get "/:page", RiotController, :page_data
   end
 

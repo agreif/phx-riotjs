@@ -1,35 +1,27 @@
 <body_tag>
-  <page1_tag data="{state.data}" if="{state.data.pages.page1}"></page1_tag>
-  <page2_tag data="{state.data}" if="{state.data.pages.page2}"></page2_tag>
+  <page1_tag state="{state}" if="{state.data.pages.page1}"></page1_tag>
+  <page2_tag state="{state}" if="{state.data.pages.page2}"></page2_tag>
 
-  <button onclick={ p0 }>p0</button>
-  <button onclick={ p1 }>p1</button>
-  <button onclick={ p2 }>p2</button>
-  <button onclick={ p12 }>p12</button>
+  <button onclick={ load_p1 }>load p1</button>
+  <button onclick={ load_p2 }>load p2</button>
 
 
   <script>
     export default {
-      onBeforeMount(props) {
-        this.state = { data: {pages: {page1: true, page2: false}} }
+      state: {data: { pages: {} } },
+      load_p1() { this.refresh_data('/data/page1') },
+      load_p2() { this.refresh_data('/data/page2') },
+      log(o) {console.log("" + o)},
+      refresh_data(url) {
+      	this.log(url)
+        fetch(url)
+	  .then(res => res.json())
+      	  .then((new_data) => {
+	    this.state.data = new_data
+	    this.update()
+	  }
+	).catch(err => console.error(err));
       },
-      p0() {
-        this.update({data: { pages: {page1: false, page2: false} } })
-      },
-      p1() {
-        this.update({data: { pages: {page1: true, page2: false} } })
-      },
-      p2() {
-        this.update({data: { pages: {page1: false, page2: true} } })
-      },
-      p12() {
-        this.update({data: { pages: {page1: true, page2: true} } })
-      },
-      refreshData() {
-        this.update({
-          data: {pages: {}}
-        })
-      }
     }
   </script>
 </body_tag>

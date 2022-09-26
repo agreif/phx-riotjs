@@ -1,9 +1,12 @@
 <page1_tag>
-  <h1>Page1</h1>
+  page 1 visible
+  <h1>{state.data.pages.page1.title}</h1>
 
   <script>
     export default {
-      onBeforeMount(props) { this.state = props },
+      onBeforeMount(props) {
+      	this.state = props.state
+      },
     }
   </script>
 </page1_tag>

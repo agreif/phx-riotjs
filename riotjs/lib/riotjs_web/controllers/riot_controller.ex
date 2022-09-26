@@ -1,6 +1,6 @@
 defmodule RiotjsWeb.RiotController do
   use RiotjsWeb, :controller
-  alias Riotjs.{Data}
+  alias Riotjs.{Data, Page}
 
 
 
@@ -18,7 +18,13 @@ defmodule RiotjsWeb.RiotController do
 
 
   def page1_data(conn, _params) do
-    json(conn, %Data{pages: [1,2,3]})
+    page = %Page{title: "Pageeeeee1"}
+    json(conn, %Data{pages: %{page1: page}})
+  end
+
+  def page2_data(conn, _params) do
+    page = %Page{title: "Pageeeeee 2"}
+    json(conn, %Data{pages: %{page2: page}})
   end
 
 

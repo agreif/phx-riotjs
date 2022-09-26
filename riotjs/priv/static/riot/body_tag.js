@@ -1,75 +1,38 @@
 var body_tag = {
   css: null,
   exports: {
-    onBeforeMount(props) {
-      this.state = {
-        data: {
-          pages: {
-            page1: true,
-            page2: false
-          }
-        }
-      };
+    state: {
+      data: {
+        pages: {}
+      }
     },
 
-    p0() {
-      this.update({
-        data: {
-          pages: {
-            page1: false,
-            page2: false
-          }
-        }
-      });
+    load_p1() {
+      this.refresh_data('/data/page1');
     },
 
-    p1() {
-      this.update({
-        data: {
-          pages: {
-            page1: true,
-            page2: false
-          }
-        }
-      });
+    load_p2() {
+      this.refresh_data('/data/page2');
     },
 
-    p2() {
-      this.update({
-        data: {
-          pages: {
-            page1: false,
-            page2: true
-          }
-        }
-      });
+    log(o) {
+      console.log("" + o);
     },
 
-    p12() {
-      this.update({
-        data: {
-          pages: {
-            page1: true,
-            page2: true
-          }
-        }
-      });
-    },
-
-    refreshData() {
-      this.update({
-        data: {
-          pages: {}
-        }
-      });
+    refresh_data(url) {
+      this.log(url);
+      fetch(url).then(res => res.json()).then(new_data => {
+        this.state.data = new_data;
+        this.update();
+      }).catch(err => console.error(err));
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<page1_tag expr104="expr104"></page1_tag><page2_tag expr105="expr105"></page2_tag><button expr106="expr106">p0</button><button expr107="expr107">p1</button><button expr108="expr108">p2</button><button expr109="expr109">p12</button>', [{
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<page1_tag expr48="expr48"></page1_tag><page2_tag expr49="expr49"></page2_tag><button expr50="expr50">load p1</button><button expr51="expr51">load p2</button>', [{
     type: bindingTypes.IF,
     evaluate: _scope => _scope.state.data.pages.page1,
-    redundantAttribute: 'expr104',
-    selector: '[expr104]',
+    redundantAttribute: 'expr48',
+    selector: '[expr48]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -77,15 +40,15 @@ var body_tag = {
       slots: [],
       attributes: [{
         type: expressionTypes.ATTRIBUTE,
-        name: 'data',
-        evaluate: _scope => _scope.state.data
+        name: 'state',
+        evaluate: _scope => _scope.state
       }]
     }])
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.state.data.pages.page2,
-    redundantAttribute: 'expr105',
-    selector: '[expr105]',
+    redundantAttribute: 'expr49',
+    selector: '[expr49]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -93,41 +56,25 @@ var body_tag = {
       slots: [],
       attributes: [{
         type: expressionTypes.ATTRIBUTE,
-        name: 'data',
-        evaluate: _scope => _scope.state.data
+        name: 'state',
+        evaluate: _scope => _scope.state
       }]
     }])
   }, {
-    redundantAttribute: 'expr106',
-    selector: '[expr106]',
+    redundantAttribute: 'expr50',
+    selector: '[expr50]',
     expressions: [{
       type: expressionTypes.EVENT,
       name: 'onclick',
-      evaluate: _scope => _scope.p0
+      evaluate: _scope => _scope.load_p1
     }]
   }, {
-    redundantAttribute: 'expr107',
-    selector: '[expr107]',
+    redundantAttribute: 'expr51',
+    selector: '[expr51]',
     expressions: [{
       type: expressionTypes.EVENT,
       name: 'onclick',
-      evaluate: _scope => _scope.p1
-    }]
-  }, {
-    redundantAttribute: 'expr108',
-    selector: '[expr108]',
-    expressions: [{
-      type: expressionTypes.EVENT,
-      name: 'onclick',
-      evaluate: _scope => _scope.p2
-    }]
-  }, {
-    redundantAttribute: 'expr109',
-    selector: '[expr109]',
-    expressions: [{
-      type: expressionTypes.EVENT,
-      name: 'onclick',
-      evaluate: _scope => _scope.p12
+      evaluate: _scope => _scope.load_p2
     }]
   }]),
   name: 'body_tag'
