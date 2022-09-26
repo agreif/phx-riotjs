@@ -1,0 +1,35 @@
+<body_tag>
+  <page1_tag data="{state.data}" if="{state.data.pages.page1}"></page1_tag>
+  <page2_tag data="{state.data}" if="{state.data.pages.page2}"></page2_tag>
+
+  <button onclick={ p0 }>p0</button>
+  <button onclick={ p1 }>p1</button>
+  <button onclick={ p2 }>p2</button>
+  <button onclick={ p12 }>p12</button>
+
+
+  <script>
+    export default {
+      onBeforeMount(props) {
+        this.state = { data: {pages: {page1: true, page2: false}} }
+      },
+      p0() {
+        this.update({data: { pages: {page1: false, page2: false} } })
+      },
+      p1() {
+        this.update({data: { pages: {page1: true, page2: false} } })
+      },
+      p2() {
+        this.update({data: { pages: {page1: false, page2: true} } })
+      },
+      p12() {
+        this.update({data: { pages: {page1: true, page2: true} } })
+      },
+      refreshData() {
+        this.update({
+          data: {pages: {}}
+        })
+      }
+    }
+  </script>
+</body_tag>
