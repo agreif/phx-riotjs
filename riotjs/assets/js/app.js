@@ -43,6 +43,9 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
+import uikit from "../vendor/uikit"
+import uikit_icons from "../vendor/uikit-icons"
+uikit.use(uikit_icons)
+
 import * as riot from "../vendor/riot"
-// expose riot
 window.riot = riot
