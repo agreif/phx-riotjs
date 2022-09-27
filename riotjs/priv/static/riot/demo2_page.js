@@ -6,17 +6,17 @@ var demo2_page = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<h1 expr23="expr23"> </h1><a expr24="expr24" href="#">ajax demo 1</a><br/>', [{
-    redundantAttribute: 'expr23',
-    selector: '[expr23]',
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<h1 expr8="expr8"> </h1><a expr9="expr9" href="#">ajax demo 1</a><br/>', [{
+    redundantAttribute: 'expr8',
+    selector: '[expr8]',
     expressions: [{
       type: expressionTypes.TEXT,
       childNodeIndex: 0,
       evaluate: _scope => _scope.context.data.pages.demo2.title
     }]
   }, {
-    redundantAttribute: 'expr24',
-    selector: '[expr24]',
+    redundantAttribute: 'expr9',
+    selector: '[expr9]',
     expressions: [{
       type: expressionTypes.EVENT,
       name: 'onclick',

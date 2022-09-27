@@ -31,11 +31,19 @@ var body_tag = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<error_page expr17="expr17"></error_page><demo1_page expr18="expr18"></demo1_page><demo2_page expr19="expr19"></demo2_page><hr/><a expr20="expr20" href="#">ajax demo 1</a><br/><a expr21="expr21" href="#">ajax demo 2</a><br/><a expr22="expr22" href="#">ajax error</a><br/><hr/><a href="/demo1">demo 1</a><br/><a href="/demo2">demo 2</a><br/><a href="/error">error</a><br/>', [{
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-container .uk-margin-left"><nav_tag expr18="expr18"></nav_tag><error_page expr19="expr19"></error_page><demo1_page expr20="expr20"></demo1_page><demo2_page expr21="expr21"></demo2_page><hr/><a expr22="expr22" href="#">ajax demo 1</a><br/><a expr23="expr23" href="#">ajax demo 2</a><br/><a expr24="expr24" href="#">ajax error</a><br/><hr/><a href="/demo1">demo 1</a><br/><a href="/demo2">demo 2</a><br/><a href="/error">error</a><br/></div>', [{
+    type: bindingTypes.TAG,
+    getComponent: getComponent,
+    evaluate: _scope => 'nav_tag',
+    slots: [],
+    attributes: [],
+    redundantAttribute: 'expr18',
+    selector: '[expr18]'
+  }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.error,
-    redundantAttribute: 'expr17',
-    selector: '[expr17]',
+    redundantAttribute: 'expr19',
+    selector: '[expr19]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -50,8 +58,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.demo1,
-    redundantAttribute: 'expr18',
-    selector: '[expr18]',
+    redundantAttribute: 'expr20',
+    selector: '[expr20]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -66,8 +74,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.demo2,
-    redundantAttribute: 'expr19',
-    selector: '[expr19]',
+    redundantAttribute: 'expr21',
+    selector: '[expr21]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -80,24 +88,24 @@ var body_tag = {
       }]
     }])
   }, {
-    redundantAttribute: 'expr20',
-    selector: '[expr20]',
+    redundantAttribute: 'expr22',
+    selector: '[expr22]',
     expressions: [{
       type: expressionTypes.EVENT,
       name: 'onclick',
       evaluate: _scope => _scope.load_d1
     }]
   }, {
-    redundantAttribute: 'expr21',
-    selector: '[expr21]',
+    redundantAttribute: 'expr23',
+    selector: '[expr23]',
     expressions: [{
       type: expressionTypes.EVENT,
       name: 'onclick',
       evaluate: _scope => _scope.load_d2
     }]
   }, {
-    redundantAttribute: 'expr22',
-    selector: '[expr22]',
+    redundantAttribute: 'expr24',
+    selector: '[expr24]',
     expressions: [{
       type: expressionTypes.EVENT,
       name: 'onclick',

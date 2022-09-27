@@ -1,15 +1,25 @@
 <body_tag>
-  <error_page context="{this}" if="{data.pages.error}"></error_page>
-  <demo1_page context="{this}" if="{data.pages.demo1}"></demo1_page>
-  <demo2_page context="{this}" if="{data.pages.demo2}"></demo2_page>
-  <hr>
-  <a href="#" onclick={ load_d1 }>ajax demo 1</a><br>
-  <a href="#" onclick={ load_d2 }>ajax demo 2</a><br>
-  <a href="#" onclick={ load_error }>ajax error</a><br>
-  <hr>
-  <a href="/demo1">demo 1</a><br>
-  <a href="/demo2">demo 2</a><br>
-  <a href="/error">error</a><br>
+  <div class="uk-container .uk-margin-left">
+    <nav_tag></nav_tag>
+    <error_page context="{this}" if="{data.pages.error}"></error_page>
+    <demo1_page context="{this}" if="{data.pages.demo1}"></demo1_page>
+    <demo2_page context="{this}" if="{data.pages.demo2}"></demo2_page>
+
+
+
+
+
+
+    <hr>
+    <a href="#" onclick={ load_d1 }>ajax demo 1</a><br>
+    <a href="#" onclick={ load_d2 }>ajax demo 2</a><br>
+    <a href="#" onclick={ load_error }>ajax error</a><br>
+    <hr>
+    <a href="/demo1">demo 1</a><br>
+    <a href="/demo2">demo 2</a><br>
+    <a href="/error">error</a><br>
+  </div>
+
 
   <script>
     export default {
