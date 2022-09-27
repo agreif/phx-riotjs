@@ -32,7 +32,7 @@ defmodule RiotjsWeb.Router do
 
   scope "/", RiotjsWeb do
     pipe_through :page
-    get "/", PageController, :demo1
+    get "/", PageController, :index
     get "/:page", PageController, :page
   end
 
