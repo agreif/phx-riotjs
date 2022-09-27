@@ -19,7 +19,7 @@
         import <%= page_str %>Page from "/riot/<%= page %>_page.js"
         riot.register("<%= page %>_page", <%= page_str %>Page)
       <% end %>
-      riot.mount('body_tag')[0].refresh_data("<%= @data_path %>")
+      riot.mount('body_tag')[0].refreshData("<%= @data_path %>")
     </script>
   </head>
   <body>

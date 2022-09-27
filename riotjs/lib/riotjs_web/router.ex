@@ -25,15 +25,6 @@ defmodule RiotjsWeb.Router do
   #   pipe_through :api
   # end
 
-
-
-
-
-
-
-
-
-
   pipeline :riot_html do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -55,9 +46,9 @@ defmodule RiotjsWeb.Router do
 
   scope "/data", RiotjsWeb do
     pipe_through :riot_data
-    get "/demo1", RiotController, :demo1_data
-    get "/demo2", RiotController, :demo2_data
-    get "/:page", RiotController, :page_data
+    get "/demo1", RiotDataController, :demo1_data
+    get "/demo2", RiotDataController, :demo2_data
+    get "/:page", RiotDataController, :page_data
   end
 
   # Enables LiveDashboard only for development
