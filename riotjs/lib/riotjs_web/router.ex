@@ -11,14 +11,14 @@ defmodule RiotjsWeb.Router do
     plug :put_secure_browser_headers
   end
 
-  # pipeline :api do
-  #   plug :accepts, ["json"]
-  # end
+  pipeline :api do
+    plug :accepts, ["json"]
+  end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", RiotjsWeb do
-  #   pipe_through :api
-  # end
+  scope "/user", RiotjsWeb do
+    pipe_through :api
+    post "/register", UserController, :register
+  end
 
   pipeline :page do
     plug :accepts, ["html"]

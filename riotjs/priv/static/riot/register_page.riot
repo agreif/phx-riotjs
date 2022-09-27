@@ -6,7 +6,7 @@
           <div class="uk-width-1-1@m">
             <div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
               <h3 class="uk-card-title uk-text-center">Register</h3>
-
+	      <form>
 		<div class="uk-margin">
                   <div class="uk-inline uk-width-1-1">
                     <span class="uk-form-icon" uk-icon="icon: user"></span>
@@ -20,14 +20,14 @@
                   </div>
 		</div>
 		<div class="uk-margin">
-                  <button class="uk-button uk-button-primary uk-button-large uk-width-1-1">Register</button>
+                  <button onclick="{register}" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Register</button>
 		</div>
 		<div class="uk-text-small uk-text-center uk-margin-top">
 		  <a href="#">Log in</a>
 		  |
 		  <a href="#">Forgot your password</a>
 		</div>
-
+	      </form>
             </div>
           </div>
 	</div>
@@ -37,7 +37,31 @@
 
   <script>
     export default {
-      onBeforeMount(props) { this.context = props.context },
+	onBeforeMount(props) { this.context = props.context },
+
+	register() {
+	    console.log("register")
+	    let url = "/user/register"
+	    let headers = {
+		'Accept': 'application/json',
+		'Content-Type': 'application/json'
+	    }
+	    const data = new FormData(this.$('form'))
+	    const jsonObj = Object.fromEntries(data.entries())
+	    console.log(jsonObj)
+	    async function makePostRequest(url, requestType, headers){
+		await fetch(url,
+			    { method: requestType,
+			      headers: headers,
+			      body: JSON.stringify(jsonObj)}
+		).then(async rawResponse => {
+		    var content = await rawResponse.json()
+		    console.log(content)
+		})
+	    }
+	    makePostRequest(url, "POST", headers)
+	},
+
     }
   </script>
 </register-page>
