@@ -1,5 +1,10 @@
 # phx-riotjs
-Template project that uses RiotJS features
+Template project that uses
+- RiotJS component-based UI library
+- UIKit
+- pure frontend HTML rendering with DOM-manipulation
+- JSON data transfer
+- browser history handling
 
 # Run Phoenix Server and RiotJS auto-compile
 ```
