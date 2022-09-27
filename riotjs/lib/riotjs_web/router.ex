@@ -6,26 +6,21 @@ defmodule RiotjsWeb.Router do
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout, {RiotjsWeb.LayoutView, :root}
+    plug :put_layout, false
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
 
-  scope "/", RiotjsWeb do
-    pipe_through :browser
-
-    get "/", PageController, :index
-  end
-
-  pipeline :api do
-    plug :accepts, ["json"]
-  end
+  # pipeline :api do
+  #   plug :accepts, ["json"]
+  # end
 
   # Other scopes may use custom stacks.
   # scope "/api", RiotjsWeb do
   #   pipe_through :api
   # end
 
-  pipeline :riot_html do
+  pipeline :page do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
@@ -36,19 +31,20 @@ defmodule RiotjsWeb.Router do
   end
 
   scope "/", RiotjsWeb do
-    pipe_through :riot_html
-    get "/:page", RiotController, :page
+    pipe_through :page
+    get "/", PageController, :demo1
+    get "/:page", PageController, :page
   end
 
-  pipeline :riot_data do
+  pipeline :page_data do
     plug :accepts, ["json"]
   end
 
   scope "/data", RiotjsWeb do
-    pipe_through :riot_data
-    get "/demo1", RiotDataController, :demo1_data
-    get "/demo2", RiotDataController, :demo2_data
-    get "/:page", RiotDataController, :page_data
+    pipe_through :page_data
+    get "/demo1", PageDataController, :demo1
+    get "/demo2", PageDataController, :demo2
+    get "/:page", PageDataController, :page
   end
 
   # Enables LiveDashboard only for development

@@ -6,12 +6,12 @@ defmodule Riotjs.Common do
     navitems = [
       %Navitem{label: "Demo 1",
 	       is_active: active_item == :demo1,
-	       url: Routes.riot_path(conn, :page, :demo1),
-	       data_url: Routes.riot_data_path(conn, :demo1_data) },
+	       url: Routes.page_path(conn, :page, :demo1),
+	       data_url: Routes.page_data_path(conn, :demo1) },
       %Navitem{label: "Demo 2",
 	       is_active: active_item == :demo2,
-	       url: Routes.riot_path(conn, :page, :demo2),
-	       data_url: Routes.riot_data_path(conn, :demo2_data) }
+	       url: Routes.page_path(conn, :page, :demo2),
+	       data_url: Routes.page_data_path(conn, :demo2) }
       ]
     %Navbar{navitems: navitems}
   end
