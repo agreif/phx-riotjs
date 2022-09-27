@@ -5,7 +5,10 @@ defmodule RiotjsWeb.RiotController do
   def page(conn, %{"page" => page}) do
     render(conn,
       :riot,
-      data_path: Routes.riot_path(conn, :page_data, page))
+      data_path: Routes.riot_path(conn, :page_data, page),
+      riot_tags: [:body, :nav],
+      riot_pages: [:error, :demo1, :demo2]
+    )
   end
 
   def page_data(conn, _params) do
