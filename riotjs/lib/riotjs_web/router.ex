@@ -44,6 +44,7 @@ defmodule RiotjsWeb.Router do
     pipe_through :page_data
     get "/demo1", PageDataController, :demo1
     get "/demo2", PageDataController, :demo2
+    get "/register", PageDataController, :register
     get "/:page", PageDataController, :page
   end
 

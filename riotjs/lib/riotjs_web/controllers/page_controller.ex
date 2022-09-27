@@ -10,7 +10,7 @@ defmodule RiotjsWeb.PageController do
       :page,
       data_path: Routes.page_data_path(conn, :page, page),
       riot_tags: [:body, :nav],
-      riot_pages: [:error, :demo1, :demo2]
+      riot_pages: [:error, :demo1, :demo2, :register]
     )
   end
 

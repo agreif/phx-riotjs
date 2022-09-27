@@ -28,7 +28,7 @@ end
 
 defmodule Riotjs.Pages do
   @derive Jason.Encoder
-  defstruct [:error, :demo1, :demo2]
+  defstruct [:error, :demo1, :demo2, :register]
 end
 
 defmodule Riotjs.ErrorPage do
@@ -41,5 +41,11 @@ defmodule Riotjs.SimplePage do
   @derive Jason.Encoder
   @enforce_keys [:title]
   defstruct [:title]
+end
+
+defmodule Riotjs.RegisterPage do
+  @derive Jason.Encoder
+  @enforce_keys [:email]
+  defstruct [:email]
 end
 

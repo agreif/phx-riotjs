@@ -7,6 +7,11 @@ Template project that uses
 - JSON data transfer
 - browser history handling
 
+# Technical Details
+- PageController - is the normal browser endpoint. It loads the mai HTML file and the whole RiotJS tags as JS modules. It then loads the data JSON that leads to the automagic DOM manipulation
+- PageDataController ist the JSON Endpoint. These actions deliver the right JSON for the requested Page
+- The returned JSON data always contains only the data for one specific page. This is a simulation of a multi page app.
+
 # Run Phoenix Server and RiotJS auto-compile
 ```
 cd riotjs

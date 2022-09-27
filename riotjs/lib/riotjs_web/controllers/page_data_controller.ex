@@ -18,4 +18,8 @@ defmodule RiotjsWeb.PageDataController do
     json(conn, Page.Demo2.data(conn))
   end
 
+  def register(conn, _params) do
+    json(conn, Page.Register.data(conn))
+  end
+
 end
