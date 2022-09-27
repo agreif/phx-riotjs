@@ -17,22 +17,22 @@
 
   <script>
     export default {
-      onBeforeMount(props) {
-        this.data = { pages: {} }
-      },
-      log(o) {console.log(o)},
-      refreshData(url) {
-        fetch(url)
-	  .then(res => res.json())
-      	  .then((new_data) => {
-	       this.data = new_data
-	       this.update()
-	  }
-	).catch(err => console.error(err));
-      },
-      load_d1() { this.refreshData('/data/demo1') },
-      load_d2() { this.refreshData('/data/demo2') },
-      load_error() { this.refreshData('/data/error') },
+	onBeforeMount(props) {
+            this.data = { pages: {} }
+	},
+	log(o) {console.log(o)},
+	refreshData(url) {
+            fetch(url)
+		.then(res => res.json())
+      		.then(new_data => {
+		    this.data = new_data
+		    this.update()
+		}
+		     ).catch(err => console.error(err));
+	},
+	load_d1() { this.refreshData('/data/demo1') },
+	load_d2() { this.refreshData('/data/demo2') },
+	load_error() { this.refreshData('/data/error') },
     }
   </script>
 </body_tag>

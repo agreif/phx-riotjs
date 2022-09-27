@@ -31,11 +31,11 @@ var body_tag = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-container .uk-margin-left"><nav_tag expr0="expr0"></nav_tag><error_page expr1="expr1"></error_page><demo1_page expr2="expr2"></demo1_page><demo2_page expr3="expr3"></demo2_page><hr/><a expr4="expr4" href="#">ajax demo 1</a><br/><a expr5="expr5" href="#">ajax demo 2</a><br/><a expr6="expr6" href="#">ajax error</a><br/><hr/><a href="/demo1">demo 1</a><br/><a href="/demo2">demo 2</a><br/><a href="/error">error</a><br/></div>', [{
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-container .uk-margin-left"><nav_tag expr30="expr30"></nav_tag><error_page expr31="expr31"></error_page><demo1_page expr32="expr32"></demo1_page><demo2_page expr33="expr33"></demo2_page><hr/><a expr34="expr34" href="#">ajax demo 1</a><br/><a expr35="expr35" href="#">ajax demo 2</a><br/><a expr36="expr36" href="#">ajax error</a><br/><hr/><a href="/demo1">demo 1</a><br/><a href="/demo2">demo 2</a><br/><a href="/error">error</a><br/></div>', [{
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.navbar,
-    redundantAttribute: 'expr0',
-    selector: '[expr0]',
+    redundantAttribute: 'expr30',
+    selector: '[expr30]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -50,8 +50,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.error,
-    redundantAttribute: 'expr1',
-    selector: '[expr1]',
+    redundantAttribute: 'expr31',
+    selector: '[expr31]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -66,8 +66,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.demo1,
-    redundantAttribute: 'expr2',
-    selector: '[expr2]',
+    redundantAttribute: 'expr32',
+    selector: '[expr32]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -82,8 +82,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.demo2,
-    redundantAttribute: 'expr3',
-    selector: '[expr3]',
+    redundantAttribute: 'expr33',
+    selector: '[expr33]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -96,24 +96,24 @@ var body_tag = {
       }]
     }])
   }, {
-    redundantAttribute: 'expr4',
-    selector: '[expr4]',
+    redundantAttribute: 'expr34',
+    selector: '[expr34]',
     expressions: [{
       type: expressionTypes.EVENT,
       name: 'onclick',
       evaluate: _scope => _scope.load_d1
     }]
   }, {
-    redundantAttribute: 'expr5',
-    selector: '[expr5]',
+    redundantAttribute: 'expr35',
+    selector: '[expr35]',
     expressions: [{
       type: expressionTypes.EVENT,
       name: 'onclick',
       evaluate: _scope => _scope.load_d2
     }]
   }, {
-    redundantAttribute: 'expr6',
-    selector: '[expr6]',
+    redundantAttribute: 'expr36',
+    selector: '[expr36]',
     expressions: [{
       type: expressionTypes.EVENT,
       name: 'onclick',

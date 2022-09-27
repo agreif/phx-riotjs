@@ -11,7 +11,7 @@ var nav_tag = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-navbar-left"><a class="uk-navbar-item uk-logo" href="#">Logo</a><ul class="uk-navbar-nav"><li expr10="expr10"></li></ul></div>', [{
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-navbar-left"><a class="uk-navbar-item uk-logo" href="#">Logo</a><ul class="uk-navbar-nav"><li expr21="expr21"></li></ul></div>', [{
     expressions: [{
       type: expressionTypes.ATTRIBUTE,
       name: 'class',
@@ -25,15 +25,15 @@ var nav_tag = {
     type: bindingTypes.EACH,
     getKey: null,
     condition: null,
-    template: template('<a expr11="expr11"> </a>', [{
+    template: template('<a expr22="expr22"> </a>', [{
       expressions: [{
         type: expressionTypes.ATTRIBUTE,
         name: 'class',
         evaluate: _scope => _scope.navitem.is_active ? 'uk-active' : null
       }]
     }, {
-      redundantAttribute: 'expr11',
-      selector: '[expr11]',
+      redundantAttribute: 'expr22',
+      selector: '[expr22]',
       expressions: [{
         type: expressionTypes.TEXT,
         childNodeIndex: 0,
@@ -48,8 +48,8 @@ var nav_tag = {
         evaluate: _scope => e => _scope.loadData(e, _scope.navitem.data_url)
       }]
     }]),
-    redundantAttribute: 'expr10',
-    selector: '[expr10]',
+    redundantAttribute: 'expr21',
+    selector: '[expr21]',
     itemName: 'navitem',
     indexName: null,
     evaluate: _scope => _scope.context.data.navbar.navitems
