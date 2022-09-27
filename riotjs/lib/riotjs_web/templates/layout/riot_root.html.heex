@@ -12,14 +12,14 @@
       <%= for tag <- @riot_tags do %>
         <% tag_str = Atom.to_string tag %>
         import <%= tag_str %>Tag from "/riot/<%= tag %>_tag.js"
-        riot.register("<%= tag %>_tag", <%= tag_str %>Tag)
+        riot.register("<%= tag %>-tag", <%= tag_str %>Tag)
       <% end %>
       <%= for page <- @riot_pages do %>
         <% page_str = Atom.to_string page %>
         import <%= page_str %>Page from "/riot/<%= page %>_page.js"
-        riot.register("<%= page %>_page", <%= page_str %>Page)
+        riot.register("<%= page %>-page", <%= page_str %>Page)
       <% end %>
-      riot.mount('body_tag')[0].refreshData("<%= @data_path %>")
+      riot.mount('body-tag')[0].refreshData("<%= @data_path %>")
     </script>
   </head>
   <body>

@@ -1,8 +1,16 @@
 defmodule Riotjs.Data do
   @derive Jason.Encoder
-  @enforce_keys [:pages, :navbar]
-  defstruct [:pages, :navbar]
+  @enforce_keys [:pages, :navbar, :history_state]
+  defstruct [:pages, :navbar, :history_state]
 end
+
+
+defmodule Riotjs.HistoryState do
+  @derive Jason.Encoder
+  @enforce_keys [:title, :url]
+  defstruct [:title, :url]
+end
+
 
 defmodule Riotjs.Navbar do
   @derive Jason.Encoder

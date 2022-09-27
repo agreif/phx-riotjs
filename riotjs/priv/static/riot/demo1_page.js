@@ -6,16 +6,16 @@ var demo1_page = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<h1 expr7="expr7"> </h1>', [{
-    redundantAttribute: 'expr7',
-    selector: '[expr7]',
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<h1 expr135="expr135"> </h1>', [{
+    redundantAttribute: 'expr135',
+    selector: '[expr135]',
     expressions: [{
       type: expressionTypes.TEXT,
       childNodeIndex: 0,
       evaluate: _scope => _scope.context.data.pages.demo1.title
     }]
   }]),
-  name: 'demo1_page'
+  name: 'demo1-page'
 };
 
 export { demo1_page as default };

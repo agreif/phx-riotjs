@@ -1,15 +1,14 @@
-<nav class="uk-navbar-container uk-margin" uk-navbar>
-  <div class="uk-navbar-left">
-
-    <a class="uk-navbar-item uk-logo" href="#">Logo</a>
-    <ul class="uk-navbar-nav">
-      <li class="{navitem.is_active ? 'uk-active' : null}" each="{navitem in context.data.navbar.navitems}">
-    <a href="{navitem.url}" onclick="{(e) => loadData(e, navitem.data_url)}">{navitem.label}</a>
-      </li>
-    </ul>
-
-  </div>
-
+<nav-tag>
+  <nav class="uk-navbar-container uk-margin" uk-navbar>
+    <div class="uk-navbar-left">
+      <a class="uk-navbar-item uk-logo" href="#">Logo</a>
+      <ul class="uk-navbar-nav">
+	<li class="{navitem.is_active ? 'uk-active' : null}" each="{navitem in context.data.navbar.navitems}">
+	  <a href="{navitem.url}" onclick="{(e) => loadData(e, navitem.data_url)}">{navitem.label}</a>
+	</li>
+      </ul>
+    </div>
+  </nav>
   <script>
     export default {
 	onBeforeMount(props) { this.context = props.context },
@@ -19,6 +18,4 @@
 	},
     }
   </script>
-
-
-</nav>
+</nav-tag>

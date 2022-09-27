@@ -1,9 +1,9 @@
-<body_tag>
+<body-tag>
   <div class="uk-container .uk-margin-left">
-    <nav_tag context="{this}" if="{data.navbar}"></nav_tag>
-    <error_page context="{this}" if="{data.pages.error}"></error_page>
-    <demo1_page context="{this}" if="{data.pages.demo1}"></demo1_page>
-    <demo2_page context="{this}" if="{data.pages.demo2}"></demo2_page>
+    <nav-tag context="{this}" if="{data.navbar}"></nav-tag>
+    <error-page context="{this}" if="{data.pages.error}"></error-page>
+    <demo1-page context="{this}" if="{data.pages.demo1}"></demo1-page>
+    <demo2-page context="{this}" if="{data.pages.demo2}"></demo2-page>
 
     <hr>
     <a href="#" onclick={ load_d1 }>ajax demo 1</a><br>
@@ -21,18 +21,27 @@
             this.data = { pages: {} }
 	},
 	log(o) {console.log(o)},
-	refreshData(url) {
-            fetch(url)
+	refreshData(dataUrl) {
+            fetch(dataUrl)
 		.then(res => res.json())
       		.then(new_data => {
 		    this.data = new_data
 		    this.update()
-		}
-		     ).catch(err => console.error(err));
+		    if (this.data.history_state
+			&& (!window.history.state
+			    || !window.history.state.data_url
+			    || (window.history.state.data_url
+				&& (window.history.state.data_url != dataUrl)))) {
+			window.history.pushState({data_url: dataUrl},
+						 this.data.history_state.title,
+						 this.data.history_state.url)
+		    }
+		})
+		.catch(err => console.error(err));
 	},
 	load_d1() { this.refreshData('/data/demo1') },
 	load_d2() { this.refreshData('/data/demo2') },
 	load_error() { this.refreshData('/data/error') },
     }
   </script>
-</body_tag>
+</body-tag>

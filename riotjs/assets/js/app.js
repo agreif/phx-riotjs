@@ -50,3 +50,19 @@ uikit.use(uikit_icons)
 
 import * as riot from "../vendor/riot"
 window.riot = riot
+
+window.addEventListener('popstate', function(event) {
+    if (!event.state) {
+        return
+    }
+    dataUrl = event.state['data_url']
+    fetch(dataUrl)
+	.then(res => res.json())
+      	.then(new_data => {
+            riot.unmount('body-tag', true)
+            bodyTag = riot.mount('body-tag')[0]
+            bodyTag.data = new_data
+            bodyTag.update()
+	})
+	.catch(err => console.error(err));
+});

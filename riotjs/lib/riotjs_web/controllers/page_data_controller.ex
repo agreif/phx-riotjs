@@ -5,9 +5,10 @@ defmodule RiotjsWeb.PageDataController do
 
   def page(conn, _params) do
     pages = %Pages{error: %ErrorPage{message: "Not Found"}}
-    json(conn, %Data{pages: pages, navbar: nil})
+    json(conn, %Data{pages: pages,
+		     navbar: nil,
+		     history_state: nil})
   end
-
 
   def demo1(conn, _params) do
     json(conn, Page.Demo1.data(conn))
