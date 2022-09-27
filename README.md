@@ -1,5 +1,6 @@
 # phx-riotjs
 Template project that uses
+- Elixir/Phoenix webserver
 - RiotJS component-based UI library
 - UIKit
 - pure frontend HTML rendering with DOM-manipulation
