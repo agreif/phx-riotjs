@@ -38,7 +38,6 @@ var body_tag = {
         body: JSON.stringify(json)
       }).then(async rawResponse => {
         var newData = await rawResponse.json();
-        console.log(newData);
         this.updateData(newData);
         this.updateHistory(newData);
       });
@@ -63,11 +62,11 @@ var body_tag = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-container .uk-margin-left"><nav-tag expr776="expr776"></nav-tag><error-page expr777="expr777"></error-page><demo1-page expr778="expr778"></demo1-page><demo2-page expr779="expr779"></demo2-page><register-page expr780="expr780"></register-page></div>', [{
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-container .uk-margin-left"><nav-tag expr781="expr781"></nav-tag><error-page expr782="expr782"></error-page><demo1-page expr783="expr783"></demo1-page><demo2-page expr784="expr784"></demo2-page><register-page expr785="expr785"></register-page></div>', [{
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.navbar,
-    redundantAttribute: 'expr776',
-    selector: '[expr776]',
+    redundantAttribute: 'expr781',
+    selector: '[expr781]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -82,8 +81,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.error,
-    redundantAttribute: 'expr777',
-    selector: '[expr777]',
+    redundantAttribute: 'expr782',
+    selector: '[expr782]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -98,8 +97,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.demo1,
-    redundantAttribute: 'expr778',
-    selector: '[expr778]',
+    redundantAttribute: 'expr783',
+    selector: '[expr783]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -114,8 +113,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.demo2,
-    redundantAttribute: 'expr779',
-    selector: '[expr779]',
+    redundantAttribute: 'expr784',
+    selector: '[expr784]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -130,8 +129,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.register,
-    redundantAttribute: 'expr780',
-    selector: '[expr780]',
+    redundantAttribute: 'expr785',
+    selector: '[expr785]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,

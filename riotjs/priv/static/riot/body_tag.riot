@@ -49,7 +49,6 @@
 		    body: JSON.stringify(json)}
 		 ).then(async rawResponse => {
 		     var newData = await rawResponse.json()
-		     console.log(newData)
 		     this.updateData(newData)
 		     this.updateHistory(newData)
 		 })

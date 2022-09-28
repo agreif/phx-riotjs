@@ -44,7 +44,9 @@
 
 	register(event) {
 	    event.preventDefault()
-	    this.context.postForm("/user/register", this.page.csrf_token, '#foobarrr')
+	    this.context.postForm(this.page.post_url,
+				  this.page.csrf_token,
+				  '#foobarrr')
 	},
 
     }
