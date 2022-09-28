@@ -43,9 +43,7 @@
 
   <script>
     export default {
-	onBeforeMount(props) {
-	    this.context = props.context
-	},
+	onBeforeMount(props) { this.context = props.context },
 
 	register(event) {
 	    event.preventDefault()
