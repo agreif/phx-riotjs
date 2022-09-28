@@ -6,7 +6,9 @@ defmodule RiotjsWeb.UserController do
     json(conn, Page.Register.data(conn))
   end
 
-  def post_register_data(conn, _params) do
+  def post_register_data(conn, json) do
+
+
     json(conn, Page.Demo1.data(conn))
   end
 

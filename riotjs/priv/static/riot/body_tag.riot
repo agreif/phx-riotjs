@@ -18,20 +18,24 @@
 	    this.update()
 	},
 
+	updateHistory(newData) {
+	    if (newData.history_state
+		&& (!window.history.state
+		    || !window.history.state.data_url
+		    || (window.history.state.data_url
+			&& (window.history.state.data_url != newData.data_url)))) {
+		window.history.pushState({data_url: newData.data_url},
+					 newData.history_state.title,
+					 newData.history_state.url)
+	    }
+	},
+
 	refreshData(dataUrl) {
             fetch(dataUrl)
 		.then(res => res.json())
       		.then(newData => {
 		    this.updateData(newData)
-		    if (this.data.history_state
-			&& (!window.history.state
-			    || !window.history.state.data_url
-			    || (window.history.state.data_url
-				&& (window.history.state.data_url != dataUrl)))) {
-			window.history.pushState({data_url: dataUrl},
-						 this.data.history_state.title,
-						 this.data.history_state.url)
-		    }
+		    this.updateHistory(newData)
 		})
 		.catch(err => console.error(err));
 	},
@@ -45,7 +49,8 @@
 		 ).then(async rawResponse => {
 		     var newData = await rawResponse.json()
 		     console.log(newData)
-		     this.updataData(newData)
+		     this.updateData(newData)
+		     this.updateHistory(newData)
 		 })
 	},
 

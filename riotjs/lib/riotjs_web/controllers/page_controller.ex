@@ -18,7 +18,8 @@ defmodule RiotjsWeb.PageController do
   # requests for data are always explicit actions
   def get_page_data(conn, _params) do
     pages = %Pages{error: %ErrorPage{message: "Not Found"}}
-    json(conn, %Data{pages: pages,
+    json(conn, %Data{data_url: nil,
+		     pages: pages,
 		     navbar: nil,
 		     history_state: nil})
   end

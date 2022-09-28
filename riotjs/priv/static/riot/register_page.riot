@@ -39,7 +39,8 @@
     export default {
 	onBeforeMount(props) { this.context = props.context },
 
-	register() {
+	register(event) {
+	    event.preventDefault()
 	    this.context.postForm("/user/register", '#foobarrr')
 	},
 
