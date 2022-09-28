@@ -3,18 +3,60 @@ var register_page = {
   exports: {
     onBeforeMount(props) {
       this.context = props.context;
-      this.page = this.context.data.pages.register;
     },
 
     register(event) {
       event.preventDefault();
-      this.context.postForm(this.page.post_url, this.page.csrf_token, '#foobarrr');
+      this.context.postForm(this.context.data.pages.register.form.post_url, this.context.data.pages.register.form.csrf_token, '#register');
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-section uk-flex uk-flex-middle uk-animation-fade"><div class="uk-width-1-1"><div class="uk-container"><div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid><div class="uk-width-1-1@m"><div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large"><h3 class="uk-card-title uk-text-center">Register</h3><form id="foobarrr"><div class="uk-margin"><div class="uk-inline uk-width-1-1"><span class="uk-form-icon" uk-icon="icon: user"></span><input name="email" required class="uk-input uk-form-large" type="text" placeholder="Email"/></div></div><div class="uk-margin"><div class="uk-inline uk-width-1-1"><span class="uk-form-icon" uk-icon="icon: lock"></span><input name="password" required class="uk-input uk-form-large" type="text"/></div></div><div class="uk-margin"><button expr42="expr42" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Register</button></div><div class="uk-text-small uk-text-center uk-margin-top"><a href="#">Log in</a>\n\t\t  |\n\t\t  <a href="#">Forgot your password</a></div></form></div></div></div></div></div></div>', [{
-    redundantAttribute: 'expr42',
-    selector: '[expr42]',
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-section uk-flex uk-flex-middle uk-animation-fade"><div class="uk-width-1-1"><div class="uk-container"><div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid><div class="uk-width-1-1@m"><div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large"><h3 class="uk-card-title uk-text-center">Register</h3><form id="register"><div class="uk-margin"><div class="uk-inline uk-width-1-1"><span class="uk-form-icon" uk-icon="icon: user"></span><input expr298="expr298" type="text" name="email" class="uk-input uk-form-large" placeholder="Email"/></div><ul class="uk-list uk-list-collapse uk-margin-remove-top"><li expr299="expr299"></li></ul></div><div class="uk-margin"><div class="uk-inline uk-width-1-1"><span class="uk-form-icon" uk-icon="icon: lock"></span><input type="password" name="password" class="uk-input uk-form-large"/></div><ul class="uk-list uk-list-collapse uk-margin-remove-top"><li expr301="expr301"></li></ul></div><div class="uk-margin"><button expr303="expr303" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Register</button></div><div class="uk-text-small uk-text-center uk-margin-top"><a href="#">Log in</a>\n\t\t  |\n\t\t  <a href="#">Forgot your password</a></div></form></div></div></div></div></div></div>', [{
+    redundantAttribute: 'expr298',
+    selector: '[expr298]',
+    expressions: [{
+      type: expressionTypes.VALUE,
+      evaluate: _scope => _scope.context.data.pages.register.form.params.email
+    }]
+  }, {
+    type: bindingTypes.EACH,
+    getKey: null,
+    condition: null,
+    template: template('<span expr300="expr300" class="uk-text-danger"> </span>', [{
+      redundantAttribute: 'expr300',
+      selector: '[expr300]',
+      expressions: [{
+        type: expressionTypes.TEXT,
+        childNodeIndex: 0,
+        evaluate: _scope => _scope.msg
+      }]
+    }]),
+    redundantAttribute: 'expr299',
+    selector: '[expr299]',
+    itemName: 'msg',
+    indexName: null,
+    evaluate: _scope => _scope.context.data.pages.register.form.errors.email
+  }, {
+    type: bindingTypes.EACH,
+    getKey: null,
+    condition: null,
+    template: template('<span expr302="expr302" class="uk-text-danger"> </span>', [{
+      redundantAttribute: 'expr302',
+      selector: '[expr302]',
+      expressions: [{
+        type: expressionTypes.TEXT,
+        childNodeIndex: 0,
+        evaluate: _scope => _scope.msg
+      }]
+    }]),
+    redundantAttribute: 'expr301',
+    selector: '[expr301]',
+    itemName: 'msg',
+    indexName: null,
+    evaluate: _scope => _scope.context.data.pages.register.form.errors.password
+  }, {
+    redundantAttribute: 'expr303',
+    selector: '[expr303]',
     expressions: [{
       type: expressionTypes.EVENT,
       name: 'onclick',

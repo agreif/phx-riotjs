@@ -25,6 +25,12 @@ defmodule Riotjs.Navitem do
 end
 
 
+defmodule Riotjs.Form do
+  @derive Jason.Encoder
+  @enforce_keys [:post_url, :csrf_token, :params, :errors]
+  defstruct [:post_url, :csrf_token, :params, :errors]
+end
+
 
 defmodule Riotjs.Pages do
   @derive Jason.Encoder
@@ -45,7 +51,7 @@ end
 
 defmodule Riotjs.RegisterPage do
   @derive Jason.Encoder
-  @enforce_keys [:post_url, :csrf_token, :email]
-  defstruct [:post_url, :csrf_token, :email]
+  @enforce_keys [:form]
+  defstruct [:form]
 end
 

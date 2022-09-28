@@ -2,6 +2,7 @@ defmodule Riotjs.Common do
   alias Riotjs.{Data, Navbar, Navitem, HistoryState,
 		Pages, ErrorPage, SimplePage}
   alias RiotjsWeb.Router.Helpers, as: Routes
+  alias Ecto.Changeset
 
   def gen_navbar(conn, active_item) do
     navitems = [
@@ -31,4 +32,11 @@ defmodule Riotjs.Common do
       url: Routes.page_url(conn, :get_page, page_id)}
   end
 
+  def human_errors(changeset) do
+    Changeset.traverse_errors(changeset, fn {msg, opts} ->
+      Regex.replace(~r"%{(\w+)}", msg, fn _, key ->
+	opts |> Keyword.get(String.to_existing_atom(key), key) |> to_string()
+      end)
+    end)
+  end
 end

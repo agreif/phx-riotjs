@@ -6,18 +6,24 @@
           <div class="uk-width-1-1@m">
             <div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
               <h3 class="uk-card-title uk-text-center">Register</h3>
-	      <form id="foobarrr">
+	      <form id="register">
 		<div class="uk-margin">
                   <div class="uk-inline uk-width-1-1">
                     <span class="uk-form-icon" uk-icon="icon: user"></span>
-		    <input name="email" required="true" class="uk-input uk-form-large" type="text" placeholder="Email">
+		    <input type="text" name="email" value="{context.data.pages.register.form.params.email}" class="uk-input uk-form-large" placeholder="Email">
                   </div>
+		  <ul class="uk-list uk-list-collapse uk-margin-remove-top">
+		    <li each="{msg in context.data.pages.register.form.errors.email}"><span class="uk-text-danger">{msg}</span></li>
+		  </ul>
 		</div>
 		<div class="uk-margin">
                   <div class="uk-inline uk-width-1-1">
                     <span class="uk-form-icon" uk-icon="icon: lock"></span>
-		    <input name="password" required="true" class="uk-input uk-form-large" type="text">
+		    <input type="password" name="password" class="uk-input uk-form-large">
                   </div>
+		  <ul class="uk-list uk-list-collapse uk-margin-remove-top">
+		    <li each="{msg in context.data.pages.register.form.errors.password}"><span class="uk-text-danger">{msg}</span></li>
+		  </ul>
 		</div>
 		<div class="uk-margin">
                   <button onclick="{register}" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Register</button>
@@ -39,14 +45,13 @@
     export default {
 	onBeforeMount(props) {
 	    this.context = props.context
-	    this.page = this.context.data.pages.register
 	},
 
 	register(event) {
 	    event.preventDefault()
-	    this.context.postForm(this.page.post_url,
-				  this.page.csrf_token,
-				  '#foobarrr')
+	    this.context.postForm(this.context.data.pages.register.form.post_url,
+				  this.context.data.pages.register.form.csrf_token,
+				  '#register')
 	},
 
     }
