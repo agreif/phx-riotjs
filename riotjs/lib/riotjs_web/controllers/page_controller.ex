@@ -3,6 +3,8 @@ defmodule RiotjsWeb.PageController do
   alias Riotjs.{Data, Pages, ErrorPage}
   alias Riotjs.Page
 
+  # generic page handling
+  # renders layout with full HTML and body-tag
   def get_page(conn, %{"page" => page}) do
     render(conn,
       :page,
@@ -12,6 +14,8 @@ defmodule RiotjsWeb.PageController do
     )
   end
 
+  # generic page data is not allowed
+  # requests for data are always explicit actions
   def get_page_data(conn, _params) do
     pages = %Pages{error: %ErrorPage{message: "Not Found"}}
     json(conn, %Data{pages: pages,
