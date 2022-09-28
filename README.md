@@ -7,6 +7,7 @@ Template project that uses
 - JSON data transfer
 - browser history handling
 - form submission happens with JSON data transfer and CSRF tags
+- form validation with Ecto Changesets (only the registration form)
 
 # Technical Details
 - Direct URL browser requests to pages return the full HTML code with all linkes RiotJS tags as .js files. The JSON data for the page is requested immediately
