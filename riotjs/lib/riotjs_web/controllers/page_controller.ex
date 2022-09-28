@@ -1,17 +1,34 @@
 defmodule RiotjsWeb.PageController do
   use RiotjsWeb, :controller
+  alias Riotjs.{Data, Pages, ErrorPage}
+  alias Riotjs.Page
 
-  def index(conn, _params) do
-    page(conn, %{"page" => "demo1"})
-  end
-
-  def page(conn, %{"page" => page}) do
+  def get_page(conn, %{"page" => page}) do
     render(conn,
       :page,
-      data_path: Routes.page_data_path(conn, :page, page),
+      data_path: Routes.page_path(conn, :get_page_data, page),
       riot_tags: [:body, :nav],
       riot_pages: [:error, :demo1, :demo2, :register]
     )
+  end
+
+  def get_page_data(conn, _params) do
+    pages = %Pages{error: %ErrorPage{message: "Not Found"}}
+    json(conn, %Data{pages: pages,
+		     navbar: nil,
+		     history_state: nil})
+  end
+
+  def get_index(conn, _params) do
+    get_page(conn, %{"page" => "demo1"})
+  end
+
+  def get_demo1_data(conn, _params) do
+    json(conn, Page.Demo1.data(conn))
+  end
+
+  def get_demo2_data(conn, _params) do
+    json(conn, Page.Demo2.data(conn))
   end
 
 end

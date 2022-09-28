@@ -1,8 +1,13 @@
 defmodule RiotjsWeb.UserController do
   use RiotjsWeb, :controller
+  alias Riotjs.Page
 
-  def register(conn, _params) do
-    json(conn, ["register data"])
+  def get_register_data(conn, _params) do
+    json(conn, Page.Register.data(conn))
+  end
+
+  def post_register_data(conn, _params) do
+    json(conn, Page.Demo1.data(conn))
   end
 
 end

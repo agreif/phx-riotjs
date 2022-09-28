@@ -17,7 +17,7 @@ defmodule RiotjsWeb.Router do
 
   scope "/user", RiotjsWeb do
     pipe_through :api
-    post "/register", UserController, :register
+    post "/register", UserController, :post_register_data
   end
 
   pipeline :page do
@@ -32,8 +32,8 @@ defmodule RiotjsWeb.Router do
 
   scope "/", RiotjsWeb do
     pipe_through :page
-    get "/", PageController, :index
-    get "/:page", PageController, :page
+    get "/", PageController, :get_index
+    get "/:page", PageController, :get_page
   end
 
   pipeline :page_data do
@@ -42,10 +42,10 @@ defmodule RiotjsWeb.Router do
 
   scope "/data", RiotjsWeb do
     pipe_through :page_data
-    get "/demo1", PageDataController, :demo1
-    get "/demo2", PageDataController, :demo2
-    get "/register", PageDataController, :register
-    get "/:page", PageDataController, :page
+    get "/demo1", PageController, :get_demo1_data
+    get "/demo2", PageController, :get_demo2_data
+    get "/register", UserController, :get_register_data
+    get "/:page", PageController, :get_page_data
   end
 
   # Enables LiveDashboard only for development

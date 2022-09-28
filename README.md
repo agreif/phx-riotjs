@@ -6,11 +6,11 @@ Template project that uses
 - pure frontend HTML rendering with DOM-manipulation
 - JSON data transfer
 - browser history handling
+- form submission happens with JSON data transfer
 
 # Technical Details
-- PageController - is the normal browser endpoint. It loads the mai HTML file and the whole RiotJS tags as JS modules. It then loads the data JSON that leads to the automagic DOM manipulation
-- PageDataController ist the JSON Endpoint. These actions deliver the right JSON for the requested Page
-- The returned JSON data always contains only the data for one specific page. This is a simulation of a multi page app.
+- Direct URL browser requests to pages return the full HTML code with all linkes RiotJS tags as .js files. The JSON data for the page is requested immediately
+- The returned JSON data always contains only the data for one specific page, leads to the automagic DOM manipulation. This is a simulation of a multi page app.
 
 # Run Phoenix Server and RiotJS auto-compile
 ```
