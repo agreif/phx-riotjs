@@ -6,7 +6,7 @@ Template project that uses
 - pure frontend HTML rendering with DOM-manipulation
 - JSON data transfer
 - browser history handling
-- form submission happens with JSON data transfer
+- form submission happens with JSON data transfer and CSRF tags
 
 # Technical Details
 - Direct URL browser requests to pages return the full HTML code with all linkes RiotJS tags as .js files. The JSON data for the page is requested immediately

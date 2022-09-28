@@ -4,10 +4,12 @@ defmodule Riotjs.Page.Register do
   alias Phoenix.HTML.Tag
 
   def data(conn) do
+    post_url = Routes.user_url(conn, :post_register_data)
     %Data{data_url: Routes.user_url(conn, :get_register_data),
 	  pages: %Pages{
 	    register: %RegisterPage{
-	      csrf_token: Tag.csrf_token_value(Routes.user_url(conn, :post_register_data)),
+	      post_url: post_url,
+	      csrf_token: Tag.csrf_token_value(post_url),
 	      email: nil
 	    }
 	  },
