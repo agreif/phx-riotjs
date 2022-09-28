@@ -7,10 +7,6 @@ var body_tag = {
       };
     },
 
-    log(o) {
-      console.log(o);
-    },
-
     refreshData(dataUrl) {
       fetch(dataUrl).then(res => res.json()).then(new_data => {
         this.data = new_data;
@@ -22,6 +18,26 @@ var body_tag = {
           }, this.data.history_state.title, this.data.history_state.url);
         }
       }).catch(err => console.error(err));
+    },
+
+    postRequest(url, json) {
+      fetch(url, {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(json)
+      }).then(async rawResponse => {
+        var content = await rawResponse.json();
+        console.log(content);
+      });
+    },
+
+    postForm(url, formSelector) {
+      const formData = new FormData(this.$(formSelector));
+      const formJson = Object.fromEntries(formData.entries());
+      this.postRequest(url, formJson);
     },
 
     load_d1() {
@@ -37,11 +53,11 @@ var body_tag = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-container .uk-margin-left"><nav-tag expr0="expr0"></nav-tag><error-page expr1="expr1"></error-page><demo1-page expr2="expr2"></demo1-page><demo2-page expr3="expr3"></demo2-page><register-page expr4="expr4"></register-page></div>', [{
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-container .uk-margin-left"><nav-tag expr54="expr54"></nav-tag><error-page expr55="expr55"></error-page><demo1-page expr56="expr56"></demo1-page><demo2-page expr57="expr57"></demo2-page><register-page expr58="expr58"></register-page></div>', [{
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.navbar,
-    redundantAttribute: 'expr0',
-    selector: '[expr0]',
+    redundantAttribute: 'expr54',
+    selector: '[expr54]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -56,8 +72,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.error,
-    redundantAttribute: 'expr1',
-    selector: '[expr1]',
+    redundantAttribute: 'expr55',
+    selector: '[expr55]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -72,8 +88,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.demo1,
-    redundantAttribute: 'expr2',
-    selector: '[expr2]',
+    redundantAttribute: 'expr56',
+    selector: '[expr56]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -88,8 +104,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.demo2,
-    redundantAttribute: 'expr3',
-    selector: '[expr3]',
+    redundantAttribute: 'expr57',
+    selector: '[expr57]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -104,8 +120,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.register,
-    redundantAttribute: 'expr4',
-    selector: '[expr4]',
+    redundantAttribute: 'expr58',
+    selector: '[expr58]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,

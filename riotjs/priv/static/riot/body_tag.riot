@@ -12,7 +12,7 @@
 	onBeforeMount(props) {
             this.data = { pages: {} }
 	},
-	log(o) {console.log(o)},
+
 	refreshData(dataUrl) {
             fetch(dataUrl)
 		.then(res => res.json())
@@ -31,6 +31,25 @@
 		})
 		.catch(err => console.error(err));
 	},
+
+	postRequest(url, json) {
+	    fetch(url,
+		  { method: "POST",
+		    headers: {'Accept': 'application/json',
+			      'Content-Type': 'application/json'},
+		    body: JSON.stringify(json)}
+		 ).then(async rawResponse => {
+		     var content = await rawResponse.json()
+		     console.log(content)
+		 })
+	},
+
+	postForm(url, formSelector) {
+	    const formData = new FormData(this.$(formSelector))
+	    const formJson = Object.fromEntries(formData.entries())
+	    this.postRequest(url, formJson)
+	},
+
 	load_d1() { this.refreshData('/data/demo1') },
 	load_d2() { this.refreshData('/data/demo2') },
 	load_error() { this.refreshData('/data/error') },

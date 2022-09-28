@@ -6,7 +6,7 @@
           <div class="uk-width-1-1@m">
             <div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
               <h3 class="uk-card-title uk-text-center">Register</h3>
-	      <form>
+	      <form id="foobarrr">
 		<div class="uk-margin">
                   <div class="uk-inline uk-width-1-1">
                     <span class="uk-form-icon" uk-icon="icon: user"></span>
@@ -40,26 +40,7 @@
 	onBeforeMount(props) { this.context = props.context },
 
 	register() {
-	    console.log("register")
-	    let url = "/user/register"
-	    let headers = {
-		'Accept': 'application/json',
-		'Content-Type': 'application/json'
-	    }
-	    const data = new FormData(this.$('form'))
-	    const jsonObj = Object.fromEntries(data.entries())
-	    console.log(jsonObj)
-	    async function makePostRequest(url, requestType, headers){
-		await fetch(url,
-			    { method: requestType,
-			      headers: headers,
-			      body: JSON.stringify(jsonObj)}
-		).then(async rawResponse => {
-		    var content = await rawResponse.json()
-		    console.log(content)
-		})
-	    }
-	    makePostRequest(url, "POST", headers)
+	    this.context.postForm("/user/register", '#foobarrr')
 	},
 
     }
