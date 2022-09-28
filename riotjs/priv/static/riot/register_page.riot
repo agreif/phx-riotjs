@@ -37,11 +37,14 @@
 
   <script>
     export default {
-	onBeforeMount(props) { this.context = props.context },
+	onBeforeMount(props) {
+	    this.context = props.context
+	    this.page = this.context.data.pages.register
+	},
 
 	register(event) {
 	    event.preventDefault()
-	    this.context.postForm("/user/register", '#foobarrr')
+	    this.context.postForm("/user/register", this.page.csrf_token, '#foobarrr')
 	},
 
     }

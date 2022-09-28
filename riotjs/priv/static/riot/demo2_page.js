@@ -3,16 +3,17 @@ var demo2_page = {
   exports: {
     onBeforeMount(props) {
       this.context = props.context;
+      this.page = this.context.data.pages.demo2;
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<h1 expr6="expr6"> </h1>', [{
-    redundantAttribute: 'expr6',
-    selector: '[expr6]',
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<h1 expr35="expr35"> </h1>', [{
+    redundantAttribute: 'expr35',
+    selector: '[expr35]',
     expressions: [{
       type: expressionTypes.TEXT,
       childNodeIndex: 0,
-      evaluate: _scope => _scope.context.data.pages.demo2.title
+      evaluate: _scope => _scope.page.title
     }]
   }]),
   name: 'demo2-page'

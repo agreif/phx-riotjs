@@ -7,8 +7,6 @@ defmodule RiotjsWeb.UserController do
   end
 
   def post_register_data(conn, json) do
-
-
     json(conn, Page.Demo1.data(conn))
   end
 

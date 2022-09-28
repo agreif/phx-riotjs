@@ -40,11 +40,12 @@
 		.catch(err => console.error(err));
 	},
 
-	postRequest(postUrl, json) {
+	postRequest(postUrl, csrfToken, json) {
 	    fetch(postUrl,
 		  { method: "POST",
 		    headers: {'Accept': 'application/json',
-			      'Content-Type': 'application/json'},
+			      'Content-Type': 'application/json',
+			      'x-csrf-token': csrfToken},
 		    body: JSON.stringify(json)}
 		 ).then(async rawResponse => {
 		     var newData = await rawResponse.json()
@@ -54,10 +55,10 @@
 		 })
 	},
 
-	postForm(url, formSelector) {
+	postForm(url, csrfToken, formSelector) {
 	    const formData = new FormData(this.$(formSelector))
 	    const formJson = Object.fromEntries(formData.entries())
-	    this.postRequest(url, formJson)
+	    this.postRequest(url, csrfToken, formJson)
 	},
 
 	load_d1() { this.refreshData('/data/demo1') },

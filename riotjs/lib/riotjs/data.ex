@@ -45,7 +45,7 @@ end
 
 defmodule Riotjs.RegisterPage do
   @derive Jason.Encoder
-  @enforce_keys [:email]
-  defstruct [:email]
+  @enforce_keys [:csrf_token, :email]
+  defstruct [:csrf_token, :email]
 end
 

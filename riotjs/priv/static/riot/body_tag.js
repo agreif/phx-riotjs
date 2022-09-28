@@ -27,12 +27,13 @@ var body_tag = {
       }).catch(err => console.error(err));
     },
 
-    postRequest(postUrl, json) {
+    postRequest(postUrl, csrfToken, json) {
       fetch(postUrl, {
         method: "POST",
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'x-csrf-token': csrfToken
         },
         body: JSON.stringify(json)
       }).then(async rawResponse => {
@@ -43,10 +44,10 @@ var body_tag = {
       });
     },
 
-    postForm(url, formSelector) {
+    postForm(url, csrfToken, formSelector) {
       const formData = new FormData(this.$(formSelector));
       const formJson = Object.fromEntries(formData.entries());
-      this.postRequest(url, formJson);
+      this.postRequest(url, csrfToken, formJson);
     },
 
     load_d1() {
@@ -62,11 +63,11 @@ var body_tag = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-container .uk-margin-left"><nav-tag expr44="expr44"></nav-tag><error-page expr45="expr45"></error-page><demo1-page expr46="expr46"></demo1-page><demo2-page expr47="expr47"></demo2-page><register-page expr48="expr48"></register-page></div>', [{
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-container .uk-margin-left"><nav-tag expr776="expr776"></nav-tag><error-page expr777="expr777"></error-page><demo1-page expr778="expr778"></demo1-page><demo2-page expr779="expr779"></demo2-page><register-page expr780="expr780"></register-page></div>', [{
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.navbar,
-    redundantAttribute: 'expr44',
-    selector: '[expr44]',
+    redundantAttribute: 'expr776',
+    selector: '[expr776]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -81,8 +82,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.error,
-    redundantAttribute: 'expr45',
-    selector: '[expr45]',
+    redundantAttribute: 'expr777',
+    selector: '[expr777]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -97,8 +98,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.demo1,
-    redundantAttribute: 'expr46',
-    selector: '[expr46]',
+    redundantAttribute: 'expr778',
+    selector: '[expr778]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -113,8 +114,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.demo2,
-    redundantAttribute: 'expr47',
-    selector: '[expr47]',
+    redundantAttribute: 'expr779',
+    selector: '[expr779]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -129,8 +130,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.register,
-    redundantAttribute: 'expr48',
-    selector: '[expr48]',
+    redundantAttribute: 'expr780',
+    selector: '[expr780]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
