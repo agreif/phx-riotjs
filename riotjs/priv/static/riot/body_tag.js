@@ -7,10 +7,14 @@ var body_tag = {
       };
     },
 
+    updateData(newData) {
+      this.data = new_data;
+      this.update();
+    },
+
     refreshData(dataUrl) {
-      fetch(dataUrl).then(res => res.json()).then(new_data => {
-        this.data = new_data;
-        this.update();
+      fetch(dataUrl).then(res => res.json()).then(newData => {
+        this.updateData(newData);
 
         if (this.data.history_state && (!window.history.state || !window.history.state.data_url || window.history.state.data_url && window.history.state.data_url != dataUrl)) {
           window.history.pushState({
@@ -20,8 +24,8 @@ var body_tag = {
       }).catch(err => console.error(err));
     },
 
-    postRequest(url, json) {
-      fetch(url, {
+    postRequest(postUrl, json) {
+      fetch(postUrl, {
         method: "POST",
         headers: {
           'Accept': 'application/json',
@@ -29,8 +33,9 @@ var body_tag = {
         },
         body: JSON.stringify(json)
       }).then(async rawResponse => {
-        var content = await rawResponse.json();
-        console.log(content);
+        var newData = await rawResponse.json();
+        console.log(newData);
+        this.updataData(newData);
       });
     },
 
@@ -53,11 +58,11 @@ var body_tag = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-container .uk-margin-left"><nav-tag expr54="expr54"></nav-tag><error-page expr55="expr55"></error-page><demo1-page expr56="expr56"></demo1-page><demo2-page expr57="expr57"></demo2-page><register-page expr58="expr58"></register-page></div>', [{
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-container .uk-margin-left"><nav-tag expr84="expr84"></nav-tag><error-page expr85="expr85"></error-page><demo1-page expr86="expr86"></demo1-page><demo2-page expr87="expr87"></demo2-page><register-page expr88="expr88"></register-page></div>', [{
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.navbar,
-    redundantAttribute: 'expr54',
-    selector: '[expr54]',
+    redundantAttribute: 'expr84',
+    selector: '[expr84]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -72,8 +77,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.error,
-    redundantAttribute: 'expr55',
-    selector: '[expr55]',
+    redundantAttribute: 'expr85',
+    selector: '[expr85]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -88,8 +93,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.demo1,
-    redundantAttribute: 'expr56',
-    selector: '[expr56]',
+    redundantAttribute: 'expr86',
+    selector: '[expr86]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -104,8 +109,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.demo2,
-    redundantAttribute: 'expr57',
-    selector: '[expr57]',
+    redundantAttribute: 'expr87',
+    selector: '[expr87]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
@@ -120,8 +125,8 @@ var body_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.register,
-    redundantAttribute: 'expr58',
-    selector: '[expr58]',
+    redundantAttribute: 'expr88',
+    selector: '[expr88]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,

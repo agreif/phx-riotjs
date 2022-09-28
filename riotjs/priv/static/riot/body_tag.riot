@@ -13,12 +13,16 @@
             this.data = { pages: {} }
 	},
 
+	updateData(newData) {
+	    this.data = new_data
+	    this.update()
+	},
+
 	refreshData(dataUrl) {
             fetch(dataUrl)
 		.then(res => res.json())
-      		.then(new_data => {
-		    this.data = new_data
-		    this.update()
+      		.then(newData => {
+		    this.updateData(newData)
 		    if (this.data.history_state
 			&& (!window.history.state
 			    || !window.history.state.data_url
@@ -32,15 +36,16 @@
 		.catch(err => console.error(err));
 	},
 
-	postRequest(url, json) {
-	    fetch(url,
+	postRequest(postUrl, json) {
+	    fetch(postUrl,
 		  { method: "POST",
 		    headers: {'Accept': 'application/json',
 			      'Content-Type': 'application/json'},
 		    body: JSON.stringify(json)}
 		 ).then(async rawResponse => {
-		     var content = await rawResponse.json()
-		     console.log(content)
+		     var newData = await rawResponse.json()
+		     console.log(newData)
+		     this.updataData(newData)
 		 })
 	},
 
