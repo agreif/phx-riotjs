@@ -9,17 +9,16 @@ defmodule Riotjs.Page.Register do
   def process(conn, params) do
     changeset = User.changeset(%User{}, params)
     if changeset.valid? do
+      user = Changeset.apply_changes(changeset)
+      hashed_password = Bcrypt.hash_pwd_salt(user.password)
+      changeset = changeset |> Changeset.put_change(:password, hashed_password)
       case Repo.insert(changeset) do
 	{:ok, _} -> Page.Demo1.data(conn) # TODO go to login
 	{:error, changeset} ->
-	  data(conn,
-	    changeset.params,
-	    Common.human_errors(changeset))
+	  data(conn, changeset.params, Common.human_errors(changeset))
       end
     else
-	data(conn,
-	  changeset.params,
-	  Common.human_errors(changeset))
+      data(conn, changeset.params, Common.human_errors(changeset))
     end
   end
 

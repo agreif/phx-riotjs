@@ -18,6 +18,7 @@ defmodule Riotjs.User do
     |> validate_length(:login, min: 6)
     |> validate_format(:email, ~r/@/)
     |> validate_length(:email, min: 6)
+    |> validate_length(:password, min: 12, max: 72)
     |> unique_constraint([:login])
   end
 end
