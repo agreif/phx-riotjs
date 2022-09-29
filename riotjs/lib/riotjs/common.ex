@@ -18,6 +18,10 @@ defmodule Riotjs.Common do
 	       is_active: active_item == :register,
 	       url: get_page_url(conn, :register),
 	       data_url: Routes.user_url(conn, :get_register_data) },
+      %Navitem{label: "Login",
+	       is_active: active_item == :login,
+	       url: get_page_url(conn, :login),
+	       data_url: Routes.user_url(conn, :get_login_data) },
       ]
     %Navbar{navitems: navitems}
   end

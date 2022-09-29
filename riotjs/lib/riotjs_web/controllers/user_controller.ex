@@ -10,4 +10,12 @@ defmodule RiotjsWeb.UserController do
     json(conn, Page.Register.process(conn, params))
   end
 
+  def get_login_data(conn, _params) do
+    json(conn, Page.Login.data(conn))
+  end
+
+  def post_login_data(conn, params) do
+    json(conn, Page.Login.process(conn, params))
+  end
+
 end

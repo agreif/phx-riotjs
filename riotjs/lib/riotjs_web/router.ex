@@ -23,6 +23,8 @@ defmodule RiotjsWeb.Router do
     get "/demo2", PageController, :get_demo2_data
     get "/register", UserController, :get_register_data
     post "/register", UserController, :post_register_data
+    get "/login", UserController, :get_login_data
+    post "/login", UserController, :post_login_data
     get "/:page", PageController, :get_page_data
   end
 
