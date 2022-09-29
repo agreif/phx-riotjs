@@ -7,13 +7,14 @@ defmodule Riotjs.Page.Register do
 
   def process(conn, params) do
     data = %{}
-    types = %{email: :string, password: :string}
+    types = %{login: :string, email: :string, password: :string}
     changeset =
     {data, types}
     |> Changeset.cast(params, Map.keys(types))
+    |> Changeset.validate_required([:login, :email, :password])
+    |> Changeset.validate_length(:login, min: 6)
     |> Changeset.validate_format(:email, ~r/@/)
     |> Changeset.validate_length(:email, min: 6)
-    |> Changeset.validate_required([:email, :password])
 
     if changeset.valid? do
       result = Changeset.apply_changes(changeset)
