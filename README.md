@@ -3,11 +3,12 @@ Template project that uses
 - Elixir/Phoenix webserver
 - RiotJS component-based UI library
 - UIKit
-- pure frontend HTML rendering with DOM-manipulation
+- Pure frontend HTML rendering with DOM-manipulation
 - JSON data transfer
-- browser history handling
-- form submission happens with JSON data transfer and CSRF tags
-- form validation with Ecto Changesets (only the registration form)
+- Browser history handling
+- Form submission happens with JSON data transfer and CSRF tags
+- Form validation with Ecto Changesets (only the registration form)
+- User registration stored to PostgreSQL DB with validations
 
 # Technical Details
 - Direct URL browser requests to pages return the full HTML code with all linkes RiotJS tags as .js files. The JSON data for the page is requested immediately

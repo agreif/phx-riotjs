@@ -22,6 +22,21 @@ defmodule Riotjs.Common do
     %Navbar{navitems: navitems}
   end
 
+  def add_error(errors, {field, message}) do
+    case Enum.find(errors, &(elem(&1,0) == field)) do
+      {_, messages} ->
+	Enum.map(errors,
+	  fn tuple ->
+	    case tuple do
+	      {field, ms} -> {field, [message | ms]}
+	      t -> t
+	    end
+	  end
+	)
+      nil -> [{field, [message]} | errors]
+    end
+  end
+
   def get_page_url(conn, page_id) do
     Routes.page_url(conn, :get_page, page_id)
   end
@@ -33,9 +48,9 @@ defmodule Riotjs.Common do
   end
 
   def human_errors(changeset) do
-    Changeset.traverse_errors(changeset, fn {msg, opts} ->
-      Regex.replace(~r"%{(\w+)}", msg, fn _, key ->
-	opts |> Keyword.get(String.to_existing_atom(key), key) |> to_string()
+    traverse_errors(changeset, fn {msg, opts} ->
+      Enum.reduce(opts, msg, fn {key, value}, acc ->
+	String.replace(acc, "%{#{key}}", to_string(value))
       end)
     end)
   end

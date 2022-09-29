@@ -6,10 +6,11 @@ import Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :riotjs, Riotjs.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "riotjs_test",
+  password: "riotjs_test",
   hostname: "localhost",
   database: "riotjs_test#{System.get_env("MIX_TEST_PARTITION")}",
+  maintenance_database: "riotjs_test",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
 

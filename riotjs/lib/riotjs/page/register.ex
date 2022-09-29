@@ -1,24 +1,21 @@
 defmodule Riotjs.Page.Register do
-  alias Riotjs.{Common, Data, Form, Pages, RegisterPage}
+  alias Riotjs.{Common, Data, Form, Pages, RegisterPage, User}
   alias RiotjsWeb.Router.Helpers, as: Routes
   alias Riotjs.Page
+  alias Riotjs.Repo
   alias Phoenix.HTML.Tag
   alias Ecto.Changeset
 
   def process(conn, params) do
-    data = %{}
-    types = %{login: :string, email: :string, password: :string}
-    changeset =
-    {data, types}
-    |> Changeset.cast(params, Map.keys(types))
-    |> Changeset.validate_required([:login, :email, :password])
-    |> Changeset.validate_length(:login, min: 6)
-    |> Changeset.validate_format(:email, ~r/@/)
-    |> Changeset.validate_length(:email, min: 6)
-
+    changeset = User.changeset(%User{}, params)
     if changeset.valid? do
-      result = Changeset.apply_changes(changeset)
-      Page.Demo1.data(conn)
+      case Repo.insert(changeset) do
+	{:ok, _} -> Page.Demo1.data(conn) # TODO go to login
+	{:error, changeset} ->
+	  data(conn,
+	    changeset.params,
+	    Common.human_errors(changeset))
+      end
     else
 	data(conn,
 	  changeset.params,
