@@ -22,12 +22,8 @@ defmodule RiotjsWeb.Router do
     get "/demo1", PageController, :get_demo1_data
     get "/demo2", PageController, :get_demo2_data
     get "/register", UserController, :get_register_data
-    get "/:page", PageController, :get_page_data
-  end
-
-  scope "/user", RiotjsWeb do
-    pipe_through :browser
     post "/register", UserController, :post_register_data
+    get "/:page", PageController, :get_page_data
   end
 
   # Enables LiveDashboard only for development
