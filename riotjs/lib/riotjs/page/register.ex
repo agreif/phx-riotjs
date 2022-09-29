@@ -28,6 +28,8 @@ defmodule Riotjs.Page.Register do
   def data(conn, params \\ [], errors \\ []) do
     post_url = Routes.user_url(conn, :post_register_data)
     %Data{data_url: Routes.user_url(conn, :get_register_data),
+	  navbar: nil,
+	  history_state: Common.gen_history_state(conn, "Register", :register),
 	  pages: %Pages{
 	    register: %RegisterPage{
 	      form: %Form{post_url: post_url,
@@ -35,9 +37,7 @@ defmodule Riotjs.Page.Register do
 			  errors: errors},
 	      csrf_token: Tag.csrf_token_value(post_url)
 	    }
-	  },
-	  navbar: nil,
-	  history_state: Common.gen_history_state(conn, "Register", :register)}
+	  }}
   end
 
 end

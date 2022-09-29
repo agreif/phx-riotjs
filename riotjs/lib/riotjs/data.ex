@@ -1,7 +1,7 @@
 defmodule Riotjs.Data do
   @derive Jason.Encoder
-  @enforce_keys [:data_url, :pages, :navbar, :history_state]
-  defstruct [:data_url, :pages, :navbar, :history_state]
+  @enforce_keys [:data_url, :navbar, :history_state, :pages]
+  defstruct [:data_url, :navbar, :history_state, :pages]
 end
 
 
