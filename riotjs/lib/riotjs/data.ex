@@ -27,8 +27,8 @@ end
 
 defmodule Riotjs.Form do
   @derive Jason.Encoder
-  @enforce_keys [:post_url, :csrf_token, :params, :errors]
-  defstruct [:post_url, :csrf_token, :params, :errors]
+  @enforce_keys [:post_url, :params, :errors]
+  defstruct [:post_url, :params, :errors]
 end
 
 
@@ -51,7 +51,7 @@ end
 
 defmodule Riotjs.RegisterPage do
   @derive Jason.Encoder
-  @enforce_keys [:form]
-  defstruct [:form]
+  @enforce_keys [:form, :csrf_token]
+  defstruct [:form, :csrf_token]
 end
 

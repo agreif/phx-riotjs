@@ -31,9 +31,9 @@ defmodule Riotjs.Page.Register do
 	  pages: %Pages{
 	    register: %RegisterPage{
 	      form: %Form{post_url: post_url,
-			  csrf_token: Tag.csrf_token_value(post_url),
 			  params: params,
-			  errors: errors}
+			  errors: errors},
+	      csrf_token: Tag.csrf_token_value(post_url)
 	    }
 	  },
 	  navbar: nil,
