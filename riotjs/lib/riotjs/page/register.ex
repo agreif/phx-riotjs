@@ -1,5 +1,5 @@
 defmodule Riotjs.Page.Register do
-  alias Riotjs.{Common, Data, Form, Pages, RegisterPage, User}
+  alias Riotjs.{Common, Data, HistoryState, Form, Pages, RegisterPage, User}
   alias RiotjsWeb.Router.Helpers, as: Routes
   alias Riotjs.Page
   alias Riotjs.Repo
@@ -26,13 +26,18 @@ defmodule Riotjs.Page.Register do
     post_url = Routes.user_url(conn, :post_register_data)
     %Data{data_url: Routes.user_url(conn, :get_register_data),
 	  navbar: nil,
-	  history_state: Common.gen_history_state(conn, "Register", :register),
+	  history_state: %HistoryState{
+	    title: "Register",
+	    url: Routes.user_url(conn, :get_register_page)},
+	  logout: nil,
 	  pages: %Pages{
 	    register: %RegisterPage{
 	      form: %Form{post_url: post_url,
 			  params: params,
 			  errors: errors},
-	      csrf_token: Tag.csrf_token_value(post_url)
+	      csrf_token: Tag.csrf_token_value(post_url),
+	      login_url: Routes.user_url(conn, :get_login_page),
+	      login_data_url: Routes.user_url(conn, :get_login_data)
 	    }
 	  }}
   end

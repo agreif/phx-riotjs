@@ -1,7 +1,7 @@
 defmodule Riotjs.Data do
   @derive Jason.Encoder
-  @enforce_keys [:data_url, :navbar, :history_state, :pages]
-  defstruct [:data_url, :navbar, :history_state, :pages]
+  @enforce_keys [:data_url, :navbar, :history_state, :logout, :pages]
+  defstruct [:data_url, :navbar, :history_state, :logout, :pages]
 end
 
 
@@ -25,6 +25,13 @@ defmodule Riotjs.Navitem do
 end
 
 
+defmodule Riotjs.Logout do
+  @derive Jason.Encoder
+  @enforce_keys [:post_url, :csrf_token]
+  defstruct [:post_url, :csrf_token]
+end
+
+
 defmodule Riotjs.Form do
   @derive Jason.Encoder
   @enforce_keys [:post_url, :params, :errors]
@@ -43,7 +50,7 @@ defmodule Riotjs.ErrorPage do
   defstruct [:message]
 end
 
-defmodule Riotjs.SimplePage do
+defmodule Riotjs.DemoPage do
   @derive Jason.Encoder
   @enforce_keys [:title]
   defstruct [:title]
@@ -51,13 +58,13 @@ end
 
 defmodule Riotjs.RegisterPage do
   @derive Jason.Encoder
-  @enforce_keys [:form, :csrf_token]
-  defstruct [:form, :csrf_token]
+  @enforce_keys [:form, :csrf_token, :login_url, :login_data_url]
+  defstruct [:form, :csrf_token, :login_url, :login_data_url]
 end
 
 defmodule Riotjs.LoginPage do
   @derive Jason.Encoder
-  @enforce_keys [:form, :csrf_token]
-  defstruct [:form, :csrf_token]
+  @enforce_keys [:form, :csrf_token, :register_url, :register_data_url]
+  defstruct [:form, :csrf_token, :register_url, :register_data_url]
 end
 

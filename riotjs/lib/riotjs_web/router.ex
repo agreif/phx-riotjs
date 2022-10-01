@@ -1,5 +1,6 @@
 defmodule RiotjsWeb.Router do
   use RiotjsWeb, :router
+  alias RiotjsWeb.Router.Helpers, as: Routes
 
   pipeline :browser do
     plug :accepts, ["html", "json"]
@@ -12,21 +13,50 @@ defmodule RiotjsWeb.Router do
   end
 
   scope "/", RiotjsWeb do
-    pipe_through :browser
+    pipe_through [:browser, :require_authenticated_user]
     get "/", PageController, :get_index
-    get "/:page", PageController, :get_page
+    get "/demo1", PageController, :get_demo1_page
+    get "/data/demo1", PageController, :get_demo1_data
+    get "/demo2", PageController, :get_demo2_page
+    get "/data/demo2", PageController, :get_demo2_data
+    post "/data/logout", UserController, :post_logout_data
   end
 
-  scope "/data", RiotjsWeb do
-    pipe_through :browser
-    get "/demo1", PageController, :get_demo1_data
-    get "/demo2", PageController, :get_demo2_data
-    get "/register", UserController, :get_register_data
-    post "/register", UserController, :post_register_data
-    get "/login", UserController, :get_login_data
-    post "/login", UserController, :post_login_data
-    get "/:page", PageController, :get_page_data
+  scope "/user", RiotjsWeb do
+    pipe_through [:browser, :redirect_if_user_is_authenticated]
+    get "/register", UserController, :get_register_page
+    get "/data/register", UserController, :get_register_data
+    post "/data/register", UserController, :post_register_data
+    get "/login", UserController, :get_login_page
+    get "/data/login", UserController, :get_login_data
+    post "/data/login", UserController, :post_login_data
   end
+
+
+
+  defp require_authenticated_user(conn, _opts) do
+    if get_session(conn, :login) do
+      conn
+    else
+      conn
+      |> redirect(to: Routes.user_path(conn, :get_login_page))
+      |> halt()
+    end
+  end
+
+  defp redirect_if_user_is_authenticated(conn, _opts) do
+    if get_session(conn, :login) do
+      conn
+      |> redirect(to: Routes.page_path(conn, :get_index))
+      |> halt()
+    else
+      conn
+    end
+  end
+
+
+
+
 
   # Enables LiveDashboard only for development
   #

@@ -38,7 +38,7 @@
                   <button onclick="{register}" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Register</button>
 		</div>
 		<div class="uk-text-small uk-text-center uk-margin-top">
-		  <a href="#">Log in</a>
+		  <a href="{context.data.pages.register.login_url}" onclick="{loginPage}">Log in</a>
 		  |
 		  <a href="#">Forgot your password</a>
 		</div>
@@ -56,11 +56,16 @@
 
 	register(event) {
 	    event.preventDefault()
-	    this.context.postForm(this.context.data.pages.register.form.post_url,
-				  this.context.data.pages.register.csrf_token,
-				  '#register')
+	    this.context.postForm(
+		this.context.data.pages.register.form.post_url,
+		this.context.data.pages.register.csrf_token,
+		'#register')
 	},
 
+	loginPage() {
+	    event.preventDefault()
+	    this.context.refreshData(this.context.data.pages.register.login_data_url)
+	}
     }
   </script>
 </register-page>

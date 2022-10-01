@@ -37,7 +37,4 @@ defmodule Riotjs.User do
     Bcrypt.no_user_verify()
   end
 
-
-
-
 end
