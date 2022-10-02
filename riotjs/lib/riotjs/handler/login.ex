@@ -10,7 +10,8 @@ defmodule Riotjs.Handler.Login do
   @doc """
   Logs the user in.
 
-  On success it puts the :login into the session.
+  On success it puts the :login into the session and returns the new data.
+  In case of error the login-data with the errors is returned
 
   Returns {conn, data} tuple
   """
