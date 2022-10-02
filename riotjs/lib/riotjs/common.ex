@@ -1,25 +1,26 @@
 defmodule Riotjs.Common do
-  alias Riotjs.{Data, Navbar, Navitem, HistoryState}
+  alias Riotjs.{Data}
   alias RiotjsWeb.Router.Helpers, as: Routes
+  alias Plug.Conn
   alias Ecto.Changeset
 
   def gen_navbar(conn, active_item) do
     navitems = [
-      %Navitem{label: "Demo 1",
+      %Data.Navitem{label: "Demo 1",
 	       is_active: active_item == :demo1,
 	       url: Routes.page_url(conn, :get_demo1_page),
 	       data_url: Routes.page_url(conn, :get_demo1_data) },
-      %Navitem{label: "Demo 2",
+      %Data.Navitem{label: "Demo 2",
 	       is_active: active_item == :demo2,
 	       url: Routes.page_url(conn, :get_demo2_page),
 	       data_url: Routes.page_url(conn, :get_demo2_data) },
       ]
-    %Navbar{navitems: navitems}
+    %Data.Navbar{navitems: navitems}
   end
 
   def add_error(errors, {field, message}) do
     case Enum.find(errors, &(elem(&1,0) == field)) do
-      {_, messages} ->
+      {_, _} ->
 	Enum.map(errors,
 	  fn tuple ->
 	    case tuple do
@@ -30,6 +31,12 @@ defmodule Riotjs.Common do
 	)
       nil -> [{field, [message]} | errors]
     end
+  end
+
+  def renew_session(conn) do
+    conn
+    |> Conn.configure_session(renew: true)
+    |> Conn.clear_session()
   end
 
   def human_errors(changeset) do

@@ -27,7 +27,7 @@ var body_tag = {
       }).catch(err => console.error(err));
     },
 
-    postRequest(postUrl, csrfToken, json) {
+    postRequest(postUrl, csrfToken, json, callbackFun) {
       fetch(postUrl, {
         method: "POST",
         headers: {
@@ -38,27 +38,20 @@ var body_tag = {
         body: JSON.stringify(json)
       }).then(async rawResponse => {
         var newData = await rawResponse.json();
-        this.updateData(newData);
-        this.updateHistory(newData);
+
+        if (typeof callbackFun === 'function') {
+          callbackFun(newData);
+        } else {
+          this.updateData(newData);
+          this.updateHistory(newData);
+        }
       });
     },
 
-    postForm(url, csrfToken, formSelector) {
+    postForm(url, csrfToken, formSelector, callbackFun) {
       const formData = new FormData(this.$(formSelector));
       const formJson = Object.fromEntries(formData.entries());
-      this.postRequest(url, csrfToken, formJson);
-    },
-
-    load_d1() {
-      this.refreshData('/data/demo1');
-    },
-
-    load_d2() {
-      this.refreshData('/data/demo2');
-    },
-
-    load_error() {
-      this.refreshData('/data/error');
+      this.postRequest(url, csrfToken, formJson, callbackFun);
     }
 
   },

@@ -50,9 +50,21 @@
 
 	login(event) {
 	    event.preventDefault()
-	    this.context.postForm(this.context.data.pages.login.form.post_url,
-				  this.context.data.pages.login.csrf_token,
-				  '#login')
+
+	    this.context.postForm(
+		this.context.data.pages.login.form.post_url,
+		this.context.data.pages.login.csrf_token,
+		'#login',
+		this.showErrorOrRedirectCallback)
+	},
+
+	showErrorOrRedirectCallback(data) {
+	    if (data.pages.login) {
+		this.context.updateData(data)
+		this.context.updateHistory(data)
+	    } else {
+		window.location.href = '/'
+	    }
 	},
 
 	registerPage() {

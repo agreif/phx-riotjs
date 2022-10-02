@@ -9,12 +9,12 @@
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
     <script type="module">
-      <%= for tag <- [:body, :nav] do %>
+    <%= for tag <- assigns[:riot_tags] do %>
         <% tag_str = Atom.to_string tag %>
         import <%= tag_str %>Tag from "/riot/<%= tag %>_tag.js"
         riot.register("<%= tag %>-tag", <%= tag_str %>Tag)
       <% end %>
-      <%= for page <- [:error, :demo1, :demo2, :register, :login] do %>
+    <%= for page <- assigns[:riot_pages] do %>
         <% page_str = Atom.to_string page %>
         import <%= page_str %>Page from "/riot/<%= page %>_page.js"
         riot.register("<%= page %>-page", <%= page_str %>Page)

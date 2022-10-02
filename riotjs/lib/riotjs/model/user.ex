@@ -1,7 +1,8 @@
-defmodule Riotjs.User do
+defmodule Riotjs.Model.User do
   use Ecto.Schema
   import Ecto.Changeset
   alias Riotjs.Repo
+  alias Riotjs.Model
 
   schema "users" do
     field :email, :string
@@ -25,11 +26,11 @@ defmodule Riotjs.User do
 
 
   def get_by_login_and_password(login, password) do
-    user = Repo.get_by(Riotjs.User, login: login)
+    user = Repo.get_by(Model.User, login: login)
     if valid_password?(user, password), do: user
   end
 
-  def valid_password?(%Riotjs.User{password: hashed_password}, password)
+  def valid_password?(%Model.User{password: hashed_password}, password)
       when is_binary(hashed_password) and byte_size(password) > 0 do
     Bcrypt.verify_pass(password, hashed_password)
   end

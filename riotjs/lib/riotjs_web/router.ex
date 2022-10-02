@@ -13,33 +13,45 @@ defmodule RiotjsWeb.Router do
   end
 
   scope "/", RiotjsWeb do
-    pipe_through [:browser, :require_authenticated_user]
-    get "/", PageController, :get_index
-    get "/demo1", PageController, :get_demo1_page
-    get "/data/demo1", PageController, :get_demo1_data
-    get "/demo2", PageController, :get_demo2_page
-    get "/data/demo2", PageController, :get_demo2_data
-    post "/data/logout", UserController, :post_logout_data
+    pipe_through [:browser, :set_riot_tags, :require_authenticated_user]
+    get  "/", PageController, :get_index
+    get  "/demo1", PageController, :get_demo1_page
+    get  "/demo1_data", PageController, :get_demo1_data
+    get  "/demo2", PageController, :get_demo2_page
+    get  "/demo2_data", PageController, :get_demo2_data
+    post "/logout", PageController, :post_logout
   end
 
-  scope "/user", RiotjsWeb do
-    pipe_through [:browser, :redirect_if_user_is_authenticated]
-    get "/register", UserController, :get_register_page
-    get "/data/register", UserController, :get_register_data
-    post "/data/register", UserController, :post_register_data
-    get "/login", UserController, :get_login_page
-    get "/data/login", UserController, :get_login_data
-    post "/data/login", UserController, :post_login_data
+  scope "/", RiotjsWeb do
+    pipe_through [:browser, :set_riot_tags, :redirect_if_user_is_authenticated]
+    get  "/user/register", PageController, :get_register_page
+    get  "/user/register_data", PageController, :get_register_data
+    post "/user/register_data", PageController, :post_register_data
+    get  "/user/login", PageController, :get_login_page
+    get  "/user/login_data", PageController, :get_login_data
+    post "/user/login_data", PageController, :post_login_data
   end
 
+  # helpers
 
+  defp set_riot_tags(conn, _opts) do
+    if get_session(conn, :login) do
+      conn
+      |> assign(:riot_tags, [:body, :nav])
+      |> assign(:riot_pages, [:error, :demo1, :demo2])
+    else
+      conn
+      |> assign(:riot_tags, [:body])
+      |> assign(:riot_pages, [:register, :login])
+    end
+  end
 
   defp require_authenticated_user(conn, _opts) do
     if get_session(conn, :login) do
       conn
     else
       conn
-      |> redirect(to: Routes.user_path(conn, :get_login_page))
+      |> redirect(to: Routes.page_path(conn, :get_login_page))
       |> halt()
     end
   end
@@ -53,10 +65,6 @@ defmodule RiotjsWeb.Router do
       conn
     end
   end
-
-
-
-
 
   # Enables LiveDashboard only for development
   #

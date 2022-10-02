@@ -29,8 +29,14 @@
 	    this.context.postRequest(
 		this.context.data.logout.post_url,
 		this.context.data.logout.csrf_token,
-		{})
+		{},
+		this.redirectCallback)
 	},
+
+	redirectCallback(data) {
+	    window.location.href = '/'
+	},
+
     }
   </script>
 </nav-tag>
