@@ -7,6 +7,8 @@ defmodule Riotjs.Handler.Login do
   alias Plug.Conn
   import RiotjsWeb.Gettext
 
+  @gettext_domain "login"
+
   @doc """
   Logs the user in.
 
@@ -64,14 +66,14 @@ defmodule Riotjs.Handler.Login do
 	      register_data_url: Routes.page_url(conn, :get_register_data)
 	    }
 	  },
-	  translations: Common.translations(texts_en(), locale)
+	  translations: Common.translations(@gettext_domain, texts_en(), locale)
     }
   end
 
   defp texts_en() do
     Gettext.with_locale("en", fn ->
       [
-	gettext("Password"),
+	dgettext(@gettext_domain, "Password"),
       ]
     end)
   end

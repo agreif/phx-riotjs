@@ -6,6 +6,9 @@ defmodule Riotjs.Handler.Register do
   alias Riotjs.Repo
   alias Phoenix.HTML.Tag
   alias Ecto.Changeset
+  import RiotjsWeb.Gettext
+
+  @gettext_domain "register"
 
   @doc """
   Registers the user.
@@ -48,8 +51,17 @@ defmodule Riotjs.Handler.Register do
 	      login_data_url: Routes.page_url(conn, :get_login_data)
 	    }
 	  },
-	  translations: []
+	  translations: Common.translations(@gettext_domain, texts_en(), locale)
     }
   end
 
+
+  defp texts_en() do
+    Gettext.with_locale("en", fn ->
+      [
+	dgettext(@gettext_domain, "Register"),
+	dgettext(@gettext_domain, "Password"),
+      ]
+    end)
+  end
 end

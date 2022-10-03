@@ -10,3 +10,8 @@ msgid ""
 msgstr ""
 "Language: en\n"
 "Plural-Forms: nplurals=2\n"
+
+#: lib/riotjs/handler/demo1.ex:31
+#, elixir-autogen, elixir-format
+msgid "Demo 1 Page"
+msgstr ""

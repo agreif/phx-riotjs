@@ -9,3 +9,8 @@
 ## effect: edit them in PO (.po) files instead.
 msgid ""
 msgstr ""
+
+#: lib/riotjs/handler/login.ex:76
+#, elixir-autogen, elixir-format
+msgid "Password"
+msgstr ""

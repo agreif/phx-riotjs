@@ -10,3 +10,13 @@ msgid ""
 msgstr ""
 "Language: en\n"
 "Plural-Forms: nplurals=2\n"
+
+#: lib/riotjs/handler/register.ex:63
+#, elixir-autogen, elixir-format
+msgid "Password"
+msgstr ""
+
+#: lib/riotjs/handler/register.ex:62
+#, elixir-autogen, elixir-format
+msgid "Register"
+msgstr ""

@@ -42,7 +42,7 @@ defmodule RiotjsWeb.Router do
       |> assign(:riot_pages, [:error, :demo1, :demo2])
     else
       conn
-      |> assign(:riot_tags, [:body])
+      |> assign(:riot_tags, [:body, :unauth_nav])
       |> assign(:riot_pages, [:register, :login])
     end
   end

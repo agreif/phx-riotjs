@@ -22,11 +22,11 @@ defmodule Riotjs.Common do
     Conn.get_session(conn, "locale") || "en"
   end
 
-  def translations(texts_en, locale) do
+  def translations(domain, texts_en, locale) do
     texts_en
     |> Map.new(fn k -> {k,
 		       Gettext.with_locale(locale,
-			 fn -> Gettext.gettext(RiotjsWeb.Gettext, k) end)
+			 fn -> Gettext.dgettext(RiotjsWeb.Gettext, domain, k) end)
 		       } end)
   end
 

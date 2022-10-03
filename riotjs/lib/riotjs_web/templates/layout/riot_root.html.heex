@@ -9,15 +9,13 @@
     <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
     <script type="module">
-    <%= for tag <- assigns[:riot_tags] do %>
-        <% tag_str = Atom.to_string tag %>
-        import <%= tag_str %>Tag from "/riot/<%= tag %>_tag.js"
-        riot.register("<%= tag %>-tag", <%= tag_str %>Tag)
+      <%= for tag <- assigns[:riot_tags] |> Enum.map(&Atom.to_string/1) do %>
+        import <%= tag %>_tag from "/riot/<%= tag %>_tag.js"
+      riot.register("<%= String.replace(tag, "_", "-") %>-tag", <%= tag %>_tag)
       <% end %>
-    <%= for page <- assigns[:riot_pages] do %>
-        <% page_str = Atom.to_string page %>
-        import <%= page_str %>Page from "/riot/<%= page %>_page.js"
-        riot.register("<%= page %>-page", <%= page_str %>Page)
+      <%= for page <- assigns[:riot_pages] |> Enum.map(&Atom.to_string/1) do %>
+        import <%= page %>_page from "/riot/<%= page %>_page.js"
+        riot.register("<%= String.replace(page, "_", "-") %>-page", <%= page %>_page)
       <% end %>
       riot.mount('body-tag')[0].refreshData("<%= @data_path %>")
     </script>

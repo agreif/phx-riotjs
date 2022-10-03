@@ -4,6 +4,8 @@ defmodule Riotjs.Handler.Demo1 do
   alias Phoenix.HTML.Tag
   import RiotjsWeb.Gettext
 
+  @gettext_domain "demo1"
+
   def data(conn) do
     logout_post_url = Routes.page_url(conn, :post_logout)
     locale = Common.locale(conn)
@@ -19,14 +21,14 @@ defmodule Riotjs.Handler.Demo1 do
 	  pages: %Data.Pages{
 	    demo1: %Data.DemoPage{}
 	  },
-	  translations: Common.translations(texts_en(), locale)
+	  translations: Common.translations(@gettext_domain, texts_en(), locale)
     }
   end
 
   defp texts_en() do
     Gettext.with_locale("en", fn ->
       [
-	gettext("Demo 1 Page"),
+	dgettext(@gettext_domain, "Demo 1 Page"),
       ]
     end)
   end

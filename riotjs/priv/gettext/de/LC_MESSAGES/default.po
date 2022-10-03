@@ -10,18 +10,3 @@ msgid ""
 msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2\n"
-
-#: lib/riotjs/handler/login.ex:74
-#, elixir-autogen, elixir-format
-msgid "Password"
-msgstr "Passwort"
-
-#: lib/riotjs/handler/demo2.ex:29
-#, elixir-autogen, elixir-format
-msgid "Demo 2 Page"
-msgstr "Demo 2 Seite"
-
-#: lib/riotjs/handler/demo1.ex:29
-#, elixir-autogen, elixir-format, fuzzy
-msgid "Demo 1 Page"
-msgstr "Demo 1 Seite"
