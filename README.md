@@ -9,6 +9,7 @@ Template project that uses
 - Form submission happens with JSON data transfer and CSRF tags
 - Form validation with Ecto Changesets (only the registration form)
 - User registration stored to PostgreSQL DB with validations
+- i18n with gettext
 
 # Technical Details
 - Direct URL browser requests to pages return the full HTML code with all linkes RiotJS tags as .js files. The JSON data for the page is requested immediately
