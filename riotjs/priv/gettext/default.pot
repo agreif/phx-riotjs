@@ -1,0 +1,26 @@
+## This file is a PO Template file.
+##
+## "msgid"s here are often extracted from source code.
+## Add new translations manually only if they're dynamic
+## translations that can't be statically extracted.
+##
+## Run "mix gettext.extract" to bring this file up to
+## date. Leave "msgstr"s empty as changing them here has no
+## effect: edit them in PO (.po) files instead.
+msgid ""
+msgstr ""
+
+#: lib/riotjs/handler/login.ex:74
+#, elixir-autogen, elixir-format
+msgid "Password"
+msgstr ""
+
+#: lib/riotjs/handler/demo2.ex:29
+#, elixir-autogen, elixir-format
+msgid "Demo 2 Page"
+msgstr ""
+
+#: lib/riotjs/handler/demo1.ex:29
+#, elixir-autogen, elixir-format
+msgid "Demo 1 Page"
+msgstr ""

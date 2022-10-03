@@ -30,7 +30,9 @@ defmodule Riotjs.Handler.Register do
 
   def data(conn, params \\ [], errors \\ []) do
     post_url = Routes.page_url(conn, :post_register_data)
+    locale = Common.locale(conn)
     %Data{data_url: Routes.page_url(conn, :get_register_data),
+	  locale: locale,
 	  navbar: nil,
 	  history_state: %Data.HistoryState{
 	    title: "Register",
@@ -45,7 +47,9 @@ defmodule Riotjs.Handler.Register do
 	      login_url: Routes.page_url(conn, :get_login_page),
 	      login_data_url: Routes.page_url(conn, :get_login_data)
 	    }
-	  }}
+	  },
+	  translations: []
+    }
   end
 
 end

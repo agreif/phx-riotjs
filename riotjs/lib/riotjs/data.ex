@@ -1,7 +1,7 @@
 defmodule Riotjs.Data do
   @derive Jason.Encoder
-  @enforce_keys [:data_url, :navbar, :history_state, :logout, :pages]
-  defstruct [:data_url, :navbar, :history_state, :logout, :pages]
+  @enforce_keys [:data_url, :locale, :navbar, :history_state, :logout, :pages, :translations]
+  defstruct [:data_url, :locale, :navbar, :history_state, :logout, :pages, :translations]
 end
 
 
@@ -52,8 +52,8 @@ end
 
 defmodule Riotjs.Data.DemoPage do
   @derive Jason.Encoder
-  @enforce_keys [:title]
-  defstruct [:title]
+  @enforce_keys []
+  defstruct []
 end
 
 defmodule Riotjs.Data.RegisterPage do

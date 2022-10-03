@@ -1,11 +1,11 @@
 defmodule Riotjs.Handler.Login do
   alias Riotjs.{Common, Data}
   alias Riotjs.Model
-  alias Riotjs.Handler
   alias RiotjsWeb.Router.Helpers, as: Routes
   alias Phoenix.HTML.Tag
   alias Ecto.Changeset
   alias Plug.Conn
+  import RiotjsWeb.Gettext
 
   @doc """
   Logs the user in.
@@ -21,7 +21,7 @@ defmodule Riotjs.Handler.Login do
       %{login: login, password: password} = Changeset.apply_changes(changeset)
       if Model.User.get_by_login_and_password(login, password) do
 	conn = conn |> Common.renew_session |> Conn.put_session(:login, login)
-	data = Handler.Demo1.data(conn)
+	data = [] # does not matter what but not login-data
 	{conn, data}
       else
 	  data = data(conn, params,
@@ -45,8 +45,10 @@ defmodule Riotjs.Handler.Login do
   end
 
   def data(conn, params \\ [], errors \\ []) do
+    locale = Common.locale(conn)
     post_url = Routes.page_url(conn, :post_login_data)
     %Data{data_url: Routes.page_url(conn, :get_login_data),
+	  locale: locale,
 	  navbar: nil,
 	  history_state: %Data.HistoryState{
 	    title: "Login",
@@ -61,7 +63,21 @@ defmodule Riotjs.Handler.Login do
 	      register_url: Routes.page_url(conn, :get_register_page),
 	      register_data_url: Routes.page_url(conn, :get_register_data)
 	    }
-	  }}
+	  },
+	  translations: Common.translations(texts_en(), locale)
+    }
   end
+
+  defp texts_en() do
+    Gettext.with_locale("en", fn ->
+      [
+	gettext("Password"),
+      ]
+    end)
+  end
+
+
+
+
 
 end

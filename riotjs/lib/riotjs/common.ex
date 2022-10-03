@@ -18,6 +18,18 @@ defmodule Riotjs.Common do
     %Data.Navbar{navitems: navitems}
   end
 
+  def locale(conn) do
+    Conn.get_session(conn, "locale") || "en"
+  end
+
+  def translations(texts_en, locale) do
+    texts_en
+    |> Map.new(fn k -> {k,
+		       Gettext.with_locale(locale,
+			 fn -> Gettext.gettext(RiotjsWeb.Gettext, k) end)
+		       } end)
+  end
+
   def add_error(errors, {field, message}) do
     case Enum.find(errors, &(elem(&1,0) == field)) do
       {_, _} ->

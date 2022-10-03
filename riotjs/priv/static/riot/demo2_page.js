@@ -12,7 +12,7 @@ var demo2_page = {
     expressions: [{
       type: expressionTypes.TEXT,
       childNodeIndex: 0,
-      evaluate: _scope => _scope.context.data.pages.demo2.title
+      evaluate: _scope => _scope.context.data.translations['Demo 2 Page']
     }]
   }]),
   name: 'demo2-page'

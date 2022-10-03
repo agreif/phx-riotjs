@@ -19,7 +19,7 @@
 		<div class="uk-margin">
                   <div class="uk-inline uk-width-1-1">
                     <span class="uk-form-icon" uk-icon="icon: lock"></span>
-		    <input type="password" name="password" class="uk-input uk-form-large" placeholder="Password">
+		    <input type="password" name="password" class="uk-input uk-form-large" placeholder="{context.data.translations['Password']}">
                   </div>
 		  <ul class="uk-list uk-list-collapse uk-margin-remove-top">
 		    <li each="{msg in context.data.pages.login.form.errors.password}"><span class="uk-text-danger">{msg}</span></li>
@@ -59,7 +59,7 @@
 	},
 
 	showErrorOrRedirectCallback(data) {
-	    if (data.pages.login) {
+	    if (data.pages && data.pages.login) {
 		this.context.updateData(data)
 		this.context.updateHistory(data)
 	    } else {

@@ -10,6 +10,8 @@
     </div>
     <div class="uk-navbar-right">
       <ul class="uk-navbar-nav">
+	<li if="{context.data.locale == 'de'}"><a onclick="{(e) => changeLocale(e, 'en')}">EN</a></li>
+	<li if="{context.data.locale == 'en'}"><a onclick="{(e) => changeLocale(e, 'de')}">DE</a></li>
 	<li><a onclick="{logout}">Logout</a></li>
       </ul>
     </div>
@@ -22,6 +24,10 @@
 	changeNav(event, dataUrl) {
 	    event.preventDefault()
 	    this.context.refreshData(dataUrl)
+	},
+
+	changeLocale(event, locale) {
+	    this.context.refreshData(this.context.data.data_url + "?locale=" + locale)
 	},
 
 	logout() {
