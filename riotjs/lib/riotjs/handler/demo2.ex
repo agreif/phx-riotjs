@@ -19,7 +19,7 @@ defmodule Riotjs.Handler.Demo2 do
 	    post_url: logout_post_url,
 	    csrf_token: Tag.csrf_token_value(logout_post_url)},
 	  pages: %Data.Pages{
-	    demo2: %Data.DemoPage{}
+	    demo2: %Data.Demo2Page{}
 	  },
 	  translations: Common.translations(@gettext_domain, texts_en(), locale)
     }

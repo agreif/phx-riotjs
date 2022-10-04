@@ -19,7 +19,13 @@ defmodule Riotjs.Handler.Demo1 do
 	    post_url: logout_post_url,
 	    csrf_token: Tag.csrf_token_value(logout_post_url)},
 	  pages: %Data.Pages{
-	    demo1: %Data.DemoPage{}
+	    demo1: %Data.Demo1Page{
+	      rows: [
+		Enum.to_list(1..3) |> Enum.map(fn _ -> Enum.random(1..10000) end),
+		Enum.to_list(1..3) |> Enum.map(fn _ -> Enum.random(1..10000) end),
+		Enum.to_list(1..3) |> Enum.map(fn _ -> Enum.random(1..10000) end)
+	      ]
+            }
 	  },
 	  translations: Common.translations(@gettext_domain, texts_en(), locale)
     }
@@ -29,6 +35,10 @@ defmodule Riotjs.Handler.Demo1 do
     Gettext.with_locale("en", fn ->
       [
 	dgettext(@gettext_domain, "Demo 1 Page"),
+	dgettext(@gettext_domain, "Column 1"),
+	dgettext(@gettext_domain, "Column 2"),
+	dgettext(@gettext_domain, "Column 3"),
+	dgettext(@gettext_domain, "Refresh"),
       ]
     end)
   end

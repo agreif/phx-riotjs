@@ -50,7 +50,13 @@ defmodule Riotjs.Data.ErrorPage do
   defstruct [:message]
 end
 
-defmodule Riotjs.Data.DemoPage do
+defmodule Riotjs.Data.Demo1Page do
+  @derive Jason.Encoder
+  @enforce_keys [:rows]
+  defstruct [:rows]
+end
+
+defmodule Riotjs.Data.Demo2Page do
   @derive Jason.Encoder
   @enforce_keys []
   defstruct []
