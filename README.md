@@ -31,6 +31,17 @@ In the image three user requests are shown
 
 **3.** The same as 2. :) It is only a demonstration that except the very first call to the server all communication is JSON that leads to business logic execution on the server and DOM-manipulation in the browser
 
+
+# Pages
+
+![login](images/login.png)
+![login_errors](images/login_errors.png)
+![register](images/register.png)
+![register_errors](images/register_errors.png)
+![demo1](images/demo1.png)
+![demo2](images/demo2.png)
+
+
 # Run Phoenix Server and RiotJS auto-compile
 ```
 $ cd riotjs
