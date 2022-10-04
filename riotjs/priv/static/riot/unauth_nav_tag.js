@@ -10,14 +10,14 @@ var unauth_nav_tag = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<nav class="uk-navbar-container uk-margin" uk-navbar><div class="uk-navbar-left"><a class="uk-navbar-item uk-logo" href="#">Logo</a></div><div class="uk-navbar-right"><ul class="uk-navbar-nav"><li expr34="expr34"></li><li expr36="expr36"></li></ul></div></nav>', [{
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<nav class="uk-navbar-container uk-margin" uk-navbar><div class="uk-navbar-left"><a class="uk-navbar-item uk-logo" href="#">Logo</a></div><div class="uk-navbar-right"><ul class="uk-navbar-nav"><li expr44="expr44"></li><li expr46="expr46"></li></ul></div></nav>', [{
     type: bindingTypes.IF,
     evaluate: _scope => _scope.context.data.locale == 'de',
-    redundantAttribute: 'expr34',
-    selector: '[expr34]',
-    template: template('<a expr35="expr35">EN</a>', [{
-      redundantAttribute: 'expr35',
-      selector: '[expr35]',
+    redundantAttribute: 'expr44',
+    selector: '[expr44]',
+    template: template('<a expr45="expr45">EN</a>', [{
+      redundantAttribute: 'expr45',
+      selector: '[expr45]',
       expressions: [{
         type: expressionTypes.EVENT,
         name: 'onclick',
@@ -27,11 +27,11 @@ var unauth_nav_tag = {
   }, {
     type: bindingTypes.IF,
     evaluate: _scope => _scope.context.data.locale == 'en',
-    redundantAttribute: 'expr36',
-    selector: '[expr36]',
-    template: template('<a expr37="expr37">DE</a>', [{
-      redundantAttribute: 'expr37',
-      selector: '[expr37]',
+    redundantAttribute: 'expr46',
+    selector: '[expr46]',
+    template: template('<a expr47="expr47">DE</a>', [{
+      redundantAttribute: 'expr47',
+      selector: '[expr47]',
       expressions: [{
         type: expressionTypes.EVENT,
         name: 'onclick',
