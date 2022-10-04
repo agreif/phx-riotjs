@@ -1,5 +1,5 @@
 # phx-riotjs
-Template project that uses
+Template (proof-of-concept) project that uses
 - Elixir/Phoenix webserver
 - RiotJS component-based UI library
 - UIKit
@@ -10,6 +10,11 @@ Template project that uses
 - Form validation with Ecto Changesets (only the registration form)
 - User registration stored to PostgreSQL DB with validations
 - i18n with gettext domains
+
+# Data flow
+
+![riotjs concept](images/riot_sequence.png)
+
 
 # Technical Details
 - Direct URL browser requests to pages return the full HTML code with all linkes RiotJS tags as .js files. The JSON data for the page is requested immediately
