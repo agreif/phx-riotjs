@@ -16,8 +16,8 @@ Template (proof-of-concept) project that uses
 ![riotjs concept](images/riot_sequence.png)
 
 In the image three user requests are shown
-- the first is an initial URL page request
-- the second and third are in-application actions like clicking links or buttons
+- the first is an initial URL page request (HTML+JSON)
+- the second and third are in-application actions like clicking links or buttons (JSON)
 
 **1a.** if a HTTP page URL is requested the page skeleton and all RiotJS tags (javascript modules) are transfered to the browser.
 
