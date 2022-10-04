@@ -23,7 +23,11 @@ In the image three user requests are shown
 
 **1b.** Right after loading the riot tags the page-data is fetched as JSON that manipulates the DOM-tree with the help of the RiotJS framework.
 
-**2.** All subsequent user actions in the browser transfer JSON to the server and receive JSON page-data as a response. RiotJS uses the JSON responses to manipulate the DOM-tree. The page-data also contains information for manipulation the browser state.
+**2.** All subsequent user actions in the browser transfer JSON to the server and receive JSON page-data as a response.
+- The controller delegates to the model that executes the business logic that is then directly sent ot the browser without invoking the view layer.
+- On the client RiotJS uses the JSON responses to manipulate the DOM-tree.
+- The page-data also contains information for setting the browser state (history and buttons).
+- Form input fields are also sent as JSON to the backend
 
 **3.** The same as 2. :) It is only a demonstration that except the very first call to the server all communication is JSON that leads to business logic execution on the server and DOM-manipulation in the browser
 
