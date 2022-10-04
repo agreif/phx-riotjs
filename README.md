@@ -34,8 +34,7 @@ In the image three user requests are shown
 
 # Pages
 
-![login](images/login.png)
-![login_errors](images/login_errors.png)
+![login](images/login.png)  ![login_errors](images/login_errors.png)
 ![register](images/register.png)
 ![register_errors](images/register_errors.png)
 ![demo1](images/demo1.png)
