@@ -51,10 +51,17 @@ defmodule Riotjs.Common do
     |> Conn.clear_session()
   end
 
-  def human_errors(changeset) do
-    Changeset.traverse_errors(changeset, fn {msg, opts} ->
-      Enum.reduce(opts, msg, fn {key, value}, acc ->
-	String.replace(acc, "%{#{key}}", to_string(value))
+  def human_errors(changeset, locale) do
+      Gettext.with_locale(locale, fn ->
+	Changeset.traverse_errors(changeset, fn {msg, opts} ->
+          msg = if count = opts[:count] do
+	    Gettext.dngettext(RiotjsWeb.Gettext, "errors", msg, msg, count, opts)
+	  else
+	    Gettext.dgettext(RiotjsWeb.Gettext, "errors", msg, opts)
+	  end
+	  Enum.reduce(opts, msg, fn {key, value}, acc ->
+	    String.replace(acc, "%{#{key}}", to_string(value))
+	  end)
       end)
     end)
   end

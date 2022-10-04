@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 
-#: lib/riotjs/handler/login.ex:76
+#: lib/riotjs/handler/login.ex:78
 #, elixir-autogen, elixir-format
 msgid "Password"
 msgstr ""
