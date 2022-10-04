@@ -15,21 +15,28 @@ Template (proof-of-concept) project that uses
 
 ![riotjs concept](images/riot_sequence.png)
 
+In the image three user requests are shown
+- the first is an initial URL page request
+- the second and third are in-application actions like clicking links or buttons
 
-# Technical Details
-- Direct URL browser requests to pages return the full HTML code with all linkes RiotJS tags as .js files. The JSON data for the page is requested immediately
-- The returned JSON data always contains only the data for one specific page, leads to the automagic DOM manipulation. This is a simulation of a multi page app.
+1a. if a HTTP page URL is requested the page skeleton and all RiotJS tags (javascript modules) are transfered to the browser.
+
+1b. Right after loading the riot tags the page-data is fetched as JSON that manipulates the DOM-tree with the help of the RiotJS framework.
+
+2. All subsequent user actions in the browser transfer JSON to the server and receive JSON page-data as a response. RiotJS uses the JSON responses to manipulate the DOM-tree. The page-data also contains information for manipulation the browser state.
+
+3. The same as 2. :) It is only a demonstration that except the very first call to the server all communication is JSON that leads to business logic execution on the server and DOM-manipulation in the browser
 
 # Run Phoenix Server and RiotJS auto-compile
 ```
-cd riotjs
-
-# cat run_dev.sh
-# ./node_modules/.bin/riot -w . &
-# mix phx.server
-
-sh run_dev.sh
+$ cd riotjs
+$ sh run_dev.sh
 ```
+
+The 'run_dev.sh' script starts the development server mode with
+- RiotJS tag compilation in watch mode
+- gettext extraction
+- phoenix server start
 
 # Prerequisites
 Install RiotJS
@@ -38,7 +45,7 @@ cd riotjs
 npm install @riotjs/cli
 ```
 
-# RiotJS Tag definition
+# Sample RiotJS Tag definition
 riotjs/priv/static/riot/todo.riot
 ```
 <todo>
