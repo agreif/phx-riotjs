@@ -19,13 +19,13 @@ In the image three user requests are shown
 - the first is an initial URL page request
 - the second and third are in-application actions like clicking links or buttons
 
-1a. if a HTTP page URL is requested the page skeleton and all RiotJS tags (javascript modules) are transfered to the browser.
+**1a.** if a HTTP page URL is requested the page skeleton and all RiotJS tags (javascript modules) are transfered to the browser.
 
-1b. Right after loading the riot tags the page-data is fetched as JSON that manipulates the DOM-tree with the help of the RiotJS framework.
+**1b.** Right after loading the riot tags the page-data is fetched as JSON that manipulates the DOM-tree with the help of the RiotJS framework.
 
-2. All subsequent user actions in the browser transfer JSON to the server and receive JSON page-data as a response. RiotJS uses the JSON responses to manipulate the DOM-tree. The page-data also contains information for manipulation the browser state.
+**2.** All subsequent user actions in the browser transfer JSON to the server and receive JSON page-data as a response. RiotJS uses the JSON responses to manipulate the DOM-tree. The page-data also contains information for manipulation the browser state.
 
-3. The same as 2. :) It is only a demonstration that except the very first call to the server all communication is JSON that leads to business logic execution on the server and DOM-manipulation in the browser
+**3.** The same as 2. :) It is only a demonstration that except the very first call to the server all communication is JSON that leads to business logic execution on the server and DOM-manipulation in the browser
 
 # Run Phoenix Server and RiotJS auto-compile
 ```
