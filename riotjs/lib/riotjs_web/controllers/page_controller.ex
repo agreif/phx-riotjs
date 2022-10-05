@@ -15,13 +15,19 @@ defmodule RiotjsWeb.PageController do
 	  data_path: Routes.page_path(conn, :get_demo1_data))
 
   def get_demo1_data(conn, _params),
-    do: json(conn, Handler.Demo1.data(conn))
+    do: json(conn, Handler.Demo1.list_data(conn))
 
   def get_demo1_add_data(conn, _params),
-    do: json(conn, Handler.Demo1Add.data(conn))
+    do: json(conn, Handler.Demo1.add_data(conn))
 
   def post_demo1_add_data(conn, params),
-    do: json(conn, Handler.Demo1Add.process(conn, params))
+    do: json(conn, Handler.Demo1.add_process(conn, params))
+
+  def get_demo1_update_data(conn, params),
+    do: json(conn, Handler.Demo1.update_get_process(conn, params))
+
+  def post_demo1_update_data(conn, params),
+    do: json(conn, Handler.Demo1.update_post_process(conn, params))
 
   # demo 2
 

@@ -11,13 +11,27 @@ msgstr ""
 "Language: en\n"
 "Plural-Forms: nplurals=2\n"
 
-#: lib/riotjs/handler/demo1.ex:35
+#: lib/riotjs/handler/demo1.ex:13
 #, elixir-autogen, elixir-format
 msgid "Demo 1 Page"
 msgstr ""
 
-#: lib/riotjs/handler/demo1.ex:36
-#: lib/riotjs/handler/demo1_add.ex:54
+#: lib/riotjs/handler/demo1.ex:14
 #, elixir-autogen, elixir-format
 msgid "Add Demo1"
+msgstr ""
+
+#: lib/riotjs/handler/demo1.ex:15
+#, elixir-autogen, elixir-format
+msgid "Update Demo1"
+msgstr ""
+
+#: lib/riotjs/handler/demo1.ex:16
+#, elixir-autogen, elixir-format
+msgid "Attribute 1"
+msgstr ""
+
+#: lib/riotjs/handler/demo1.ex:17
+#, elixir-autogen, elixir-format
+msgid "Attribute 2"
 msgstr ""

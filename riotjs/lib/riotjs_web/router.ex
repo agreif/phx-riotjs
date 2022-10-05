@@ -20,6 +20,9 @@ defmodule RiotjsWeb.Router do
     get  "/demo1_data", PageController, :get_demo1_data
     get  "/demo1_add_data", PageController, :get_demo1_add_data
     post "/demo1_add_data", PageController, :post_demo1_add_data
+    get  "/demo1_update_data/:id", PageController, :get_demo1_update_data
+    post "/demo1_update_data/:id", PageController, :post_demo1_update_data
+
     get  "/demo2", PageController, :get_demo2_page
     get  "/demo2_data", PageController, :get_demo2_data
     post "/logout", PageController, :post_logout
@@ -42,7 +45,7 @@ defmodule RiotjsWeb.Router do
       conn
       |> assign(:riot_tags, [:body, :nav])
       |> assign(:riot_pages, [:error,
-			     :demo1, :demo1_add,
+			     :demo1, :demo1_add_update,
 			     :demo2])
     else
       conn

@@ -1,5 +1,5 @@
 defmodule Riotjs.Handler.Demo1 do
-  alias Riotjs.{Common, Data}
+  alias Riotjs.{Common, Data, Model, Handler, Repo}
   alias RiotjsWeb.Router.Helpers, as: Routes
   alias Phoenix.HTML.Tag
   alias Riotjs.Model
@@ -7,7 +7,27 @@ defmodule Riotjs.Handler.Demo1 do
 
   @gettext_domain "demo1"
 
-  def data(conn) do
+  defp texts_en() do
+    Gettext.with_locale("en", fn ->
+      [
+	dgettext(@gettext_domain, "Demo 1 Page"),
+	dgettext(@gettext_domain, "Add Demo1"),
+	dgettext(@gettext_domain, "Update Demo1"),
+	dgettext(@gettext_domain, "Attribute 1"),
+	dgettext(@gettext_domain, "Attribute 2"),
+      ]
+    end)
+  end
+
+  ###################
+  # list
+  ###################
+
+  def list_data(conn) do
+    demo1_datas = Model.Demo1.list_demo1s()
+    |> Enum.map(fn demo1 -> %Data.Demo1{entity: demo1,
+				       update_demo1_data_url: Routes.page_url(conn, :get_demo1_update_data, demo1)} end)
+
     logout_post_url = Routes.page_url(conn, :post_logout)
     locale = Common.locale(conn)
     %Data{data_url: Routes.page_url(conn, :get_demo1_data),
@@ -21,7 +41,7 @@ defmodule Riotjs.Handler.Demo1 do
 	    csrf_token: Tag.csrf_token_value(logout_post_url)},
 	  pages: %Data.Pages{
 	    demo1: %Data.Demo1Page{
-	      demo1s: Model.Demo1.list_demo1s(),
+	      demo1s: demo1_datas,
 	      add_demo1_data_url: Routes.page_url(conn, :get_demo1_add_data),
             }
 	  },
@@ -29,13 +49,114 @@ defmodule Riotjs.Handler.Demo1 do
     }
   end
 
-  defp texts_en() do
-    Gettext.with_locale("en", fn ->
-      [
-	dgettext(@gettext_domain, "Demo 1 Page"),
-	dgettext(@gettext_domain, "Add Demo1"),
-      ]
-    end)
+  ###################
+  # add
+  ###################
+
+  @doc """
+  Stores the new Demo1 entity.
+
+  Returns {conn, data} tuple
+  """
+  def add_process(conn, params) do
+    locale = Common.locale(conn)
+    changeset = Model.Demo1.changeset(%Model.Demo1{}, params)
+    if changeset.valid? do
+      case Repo.insert(changeset) do
+	{:ok, _} -> Handler.Demo1.list_data(conn)
+	{:error, changeset} ->
+	  add_data(conn, changeset.params, Common.human_errors(changeset, locale))
+      end
+    else
+      add_data(conn, changeset.params, Common.human_errors(changeset, locale))
+    end
   end
+
+  def add_data(conn, params \\ %{}, errors \\ %{}) do
+    post_data_url = Routes.page_url(conn, :post_demo1_add_data)
+    locale = Common.locale(conn)
+    %Data{data_url: Routes.page_url(conn, :get_demo1_add_data),
+	  locale: locale,
+	  navbar: Common.gen_navbar(conn, :demo1),
+	  history_state: nil,
+	  logout: %Data.Logout{
+	    post_url: post_data_url,
+	    csrf_token: Tag.csrf_token_value(post_data_url)},
+	  pages: %Data.Pages{
+	    demo1_add_update: %Data.Demo1AddUpdatePage{
+	      title_msgid: "Add Demo1",
+	      form: %Data.Form{post_url: post_data_url,
+			       params: params,
+			       errors: errors},
+	      csrf_token: Tag.csrf_token_value(post_data_url),
+	      demo1_data_url: Routes.page_url(conn, :get_demo1_data)
+            }
+	  },
+	  translations: Common.translations(@gettext_domain, texts_en(), locale)
+    }
+  end
+
+
+
+  ###################
+  # update
+  ###################
+
+  def update_get_process(conn, params) do
+    id = Map.get(params, "id")
+    demo1 = Repo.get!(Model.Demo1, id)
+    update_data(conn, demo1)
+  end
+
+  def update_post_process(conn, params) do
+    id = Map.get(params, "id")
+    demo1 = Repo.get!(Model.Demo1, id)
+    changeset = Ecto.Changeset.change(demo1,
+      attr1: params["attr1"],
+      attr2: params["attr2"])
+    case Repo.update(changeset) do
+      {:ok, _} -> Handler.Demo1.list_data(conn)
+      {:error, changeset} ->
+	locale = Common.locale(conn)
+	add_data(conn, changeset.params, Common.human_errors(changeset, locale))
+    end
+  end
+
+  defp update_data(conn, demo1, errors \\ %{}) do
+    post_data_url = Routes.page_url(conn, :post_demo1_update_data, demo1)
+    locale = Common.locale(conn)
+    %Data{data_url: Routes.page_url(conn, :get_demo1_update_data, demo1),
+	  locale: locale,
+	  navbar: Common.gen_navbar(conn, :demo1),
+	  history_state: nil,
+	  logout: %Data.Logout{
+	    post_url: post_data_url,
+	    csrf_token: Tag.csrf_token_value(post_data_url)},
+	  pages: %Data.Pages{
+	    demo1_add_update: %Data.Demo1AddUpdatePage{
+	      title_msgid: "Update Demo1",
+	      form: %Data.Form{post_url: post_data_url,
+			       params: demo1,
+			       errors: errors},
+	      csrf_token: Tag.csrf_token_value(post_data_url),
+	      demo1_data_url: Routes.page_url(conn, :get_demo1_data)
+            }
+	  },
+	  translations: Common.translations(@gettext_domain, texts_en(), locale)
+    }
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 end

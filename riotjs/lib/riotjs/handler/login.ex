@@ -47,7 +47,7 @@ defmodule Riotjs.Handler.Login do
     |> Changeset.validate_required([:login, :password])
   end
 
-  def data(conn, params \\ [], errors \\ %{}) do
+  def data(conn, params \\ %{}, errors \\ %{}) do
     locale = Common.locale(conn)
     post_url = Routes.page_url(conn, :post_login_data)
     %Data{data_url: Routes.page_url(conn, :get_login_data),

@@ -29,7 +29,7 @@ defmodule Riotjs.Handler.Register do
     end
   end
 
-  def data(conn, params \\ [], errors \\ %{}) do
+  def data(conn, params \\ %{}, errors \\ %{}) do
     post_url = Routes.page_url(conn, :post_register_data)
     locale = Common.locale(conn)
     %Data{data_url: Routes.page_url(conn, :get_register_data),
