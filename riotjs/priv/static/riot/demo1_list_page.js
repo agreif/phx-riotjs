@@ -15,7 +15,7 @@ var demo1_list_page = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<h1 expr19="expr19"> </h1><table class="uk-table uk-table-small uk-table-divider uk-table-hover uk-background-muted"><thead><tr><th expr20="expr20" class="uk-width-1-3"> </th><th expr21="expr21" class="uk-width-1-3"> </th><th class="uk-align-right"><button expr22="expr22" class="uk-background-primary uk-light uk-padding-small modal-form-link uk-button uk-button-link" uk-tooltip><span uk-icon="icon: plus"></span></button></th></tr><tbody><tr expr23="expr23"></tr></tbody></thead></table>', [{
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<h1 expr19="expr19"> </h1><table class="uk-table uk-table-small uk-table-divider uk-table-hover uk-background-muted"><thead><tr><th expr20="expr20" class="uk-width-2-5"> </th><th expr21="expr21" class="uk-width-2-5"> </th><th class="uk-align-right"><button expr22="expr22" class="uk-background-primary uk-light uk-padding-small modal-form-link uk-button uk-button-link" uk-tooltip><span uk-icon="icon: plus"></span></button></th></tr></thead><tbody><tr expr23="expr23"></tr></tbody></table>', [{
     redundantAttribute: 'expr19',
     selector: '[expr19]',
     expressions: [{
@@ -55,7 +55,7 @@ var demo1_list_page = {
     type: bindingTypes.EACH,
     getKey: null,
     condition: null,
-    template: template('<td class="uk-table-link"><a expr24="expr24" class="uk-link-reset"> </a></td><td class="uk-table-link"><a expr25="expr25" class="uk-link-reset"> </a></td>', [{
+    template: template('<td class="uk-table-link"><a expr24="expr24" class="uk-link-reset"> </a></td><td class="uk-table-link"><a expr25="expr25" class="uk-link-reset"> </a></td><td .uk-width-small><button expr26="expr26" class="uk-float-right uk-button uk-button-link" uk-tooltip><span uk-icon="icon: pencil"></span></button></td>', [{
       redundantAttribute: 'expr24',
       selector: '[expr24]',
       expressions: [{
@@ -78,6 +78,18 @@ var demo1_list_page = {
         type: expressionTypes.EVENT,
         name: 'onclick',
         evaluate: _scope => e => _scope.editDemo1(e, _scope.item)
+      }]
+    }, {
+      redundantAttribute: 'expr26',
+      selector: '[expr26]',
+      expressions: [{
+        type: expressionTypes.EVENT,
+        name: 'onclick',
+        evaluate: _scope => e => _scope.editDemo1(e, _scope.item)
+      }, {
+        type: expressionTypes.ATTRIBUTE,
+        name: 'title',
+        evaluate: _scope => _scope.context.data.translations['Edit Demo1']
       }]
     }]),
     redundantAttribute: 'expr23',

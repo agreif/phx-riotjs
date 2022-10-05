@@ -22,7 +22,7 @@ defmodule Riotjs.Handler.Demo1 do
   end
 
   ###################
-  # list
+  # list page
   ###################
 
   def list_data(conn) do
@@ -52,7 +52,7 @@ defmodule Riotjs.Handler.Demo1 do
   end
 
   ###################
-  # add
+  # add page
   ###################
 
   @doc """
@@ -60,7 +60,7 @@ defmodule Riotjs.Handler.Demo1 do
 
   Returns {conn, data} tuple
   """
-  def add_process(conn, params) do
+  def process_post_add(conn, params) do
     locale = Common.locale(conn)
     changeset = Model.Demo1.changeset(%Model.Demo1{}, params)
     if changeset.valid? do
@@ -98,19 +98,16 @@ defmodule Riotjs.Handler.Demo1 do
     }
   end
 
-
-
   ###################
-  # update
+  # update page
   ###################
 
-  def update_get_process(conn, params) do
-    id = Map.get(params, "id")
-    demo1 = Repo.get!(Model.Demo1, id)
+  def process_get_update(conn, params) do
+    demo1 = Repo.get!(Model.Demo1, Map.get(params, "id"))
     update_data(conn, demo1)
   end
 
-  def update_post_process(conn, params) do
+  def process_post_update(conn, params) do
     id = Map.get(params, "id")
     demo1 = Repo.get!(Model.Demo1, id)
     changeset = Ecto.Changeset.change(demo1,

@@ -21,13 +21,13 @@ defmodule RiotjsWeb.PageController do
     do: json(conn, Handler.Demo1.add_data(conn))
 
   def post_demo1_add_data(conn, params),
-    do: json(conn, Handler.Demo1.add_process(conn, params))
+    do: json(conn, Handler.Demo1.process_post_add(conn, params))
 
   def get_demo1_update_data(conn, params),
-    do: json(conn, Handler.Demo1.update_get_process(conn, params))
+    do: json(conn, Handler.Demo1.process_get_update(conn, params))
 
   def post_demo1_update_data(conn, params),
-    do: json(conn, Handler.Demo1.update_post_process(conn, params))
+    do: json(conn, Handler.Demo1.process_post_update(conn, params))
 
   # demo 2
 
