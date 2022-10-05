@@ -9,6 +9,14 @@ defmodule Riotjs.Handler.Login do
 
   @gettext_domain "login"
 
+  defp texts_en() do
+    Gettext.with_locale("en", fn ->
+      [
+	dgettext(@gettext_domain, "Password"),
+      ]
+    end)
+  end
+
   @doc """
   Logs the user in.
 
@@ -49,7 +57,7 @@ defmodule Riotjs.Handler.Login do
 
   def data(conn, params \\ %{}, errors \\ %{}) do
     locale = Common.locale(conn)
-    post_url = Routes.page_url(conn, :post_login_data)
+    form_post_data_url = Routes.page_url(conn, :post_login_data)
     %Data{data_url: Routes.page_url(conn, :get_login_data),
 	  locale: locale,
 	  navbar: nil,
@@ -59,10 +67,10 @@ defmodule Riotjs.Handler.Login do
 	  logout: nil,
 	  pages: %Data.Pages{
 	    login: %Data.LoginPage{
-	      form: %Data.Form{post_url: post_url,
+	      form: %Data.Form{post_url: form_post_data_url,
 			       params: params,
 			       errors: errors},
-	      csrf_token: Tag.csrf_token_value(post_url),
+	      csrf_token: Tag.csrf_token_value(form_post_data_url),
 	      register_url: Routes.page_url(conn, :get_register_page),
 	      register_data_url: Routes.page_url(conn, :get_register_data)
 	    }
@@ -70,17 +78,5 @@ defmodule Riotjs.Handler.Login do
 	  translations: Common.translations(@gettext_domain, texts_en(), locale)
     }
   end
-
-  defp texts_en() do
-    Gettext.with_locale("en", fn ->
-      [
-	dgettext(@gettext_domain, "Password"),
-      ]
-    end)
-  end
-
-
-
-
 
 end

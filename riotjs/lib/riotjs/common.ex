@@ -3,6 +3,7 @@ defmodule Riotjs.Common do
   alias RiotjsWeb.Router.Helpers, as: Routes
   alias Plug.Conn
   alias Ecto.Changeset
+  alias Phoenix.HTML.Tag
 
   def gen_navbar(conn, active_item) do
     navitems = [
@@ -16,6 +17,13 @@ defmodule Riotjs.Common do
 	       data_url: Routes.page_url(conn, :get_demo2_data) },
       ]
     %Data.Navbar{navitems: navitems}
+  end
+
+  def logout_data(conn) do
+    logout_post_url = Routes.page_url(conn, :post_logout)
+    %Data.Logout{
+      post_url: logout_post_url,
+      csrf_token: Tag.csrf_token_value(logout_post_url)}
   end
 
   def locale(conn) do

@@ -29,8 +29,6 @@ defmodule Riotjs.Handler.Demo1 do
     demo1_datas = Model.Demo1.list_demo1s()
     |> Enum.map(fn demo1 -> %Data.Demo1{entity: demo1,
 				       demo1_update_data_url: Routes.page_url(conn, :get_demo1_update_data, demo1)} end)
-
-    logout_post_url = Routes.page_url(conn, :post_logout)
     locale = Common.locale(conn)
     %Data{data_url: Routes.page_url(conn, :get_demo1_list_data),
 	  locale: locale,
@@ -38,9 +36,7 @@ defmodule Riotjs.Handler.Demo1 do
 	  history_state: %Data.HistoryState{
 	    title: "Demo 1",
 	    url: Routes.page_url(conn, :get_demo1_list_page)},
-	  logout: %Data.Logout{
-	    post_url: logout_post_url,
-	    csrf_token: Tag.csrf_token_value(logout_post_url)},
+	  logout: Common.logout_data(conn),
 	  pages: %Data.Pages{
 	    demo1_list: %Data.Demo1ListPage{
 	      demo1s: demo1_datas,
@@ -75,22 +71,20 @@ defmodule Riotjs.Handler.Demo1 do
   end
 
   def add_data(conn, params \\ %{}, errors \\ %{}) do
-    post_data_url = Routes.page_url(conn, :post_demo1_add_data)
+    form_post_data_url = Routes.page_url(conn, :post_demo1_add_data)
     locale = Common.locale(conn)
     %Data{data_url: Routes.page_url(conn, :get_demo1_add_data),
 	  locale: locale,
 	  navbar: Common.gen_navbar(conn, :demo1),
 	  history_state: nil,
-	  logout: %Data.Logout{
-	    post_url: post_data_url,
-	    csrf_token: Tag.csrf_token_value(post_data_url)},
+	  logout: Common.logout_data(conn),
 	  pages: %Data.Pages{
 	    demo1_add_update: %Data.Demo1AddUpdatePage{
 	      title_msgid: "Add Demo1",
-	      form: %Data.Form{post_url: post_data_url,
+	      form: %Data.Form{post_url: form_post_data_url,
 			       params: params,
 			       errors: errors},
-	      csrf_token: Tag.csrf_token_value(post_data_url),
+	      csrf_token: Tag.csrf_token_value(form_post_data_url),
 	      demo1_list_data_url: Routes.page_url(conn, :get_demo1_list_data)
             }
 	  },
@@ -122,22 +116,20 @@ defmodule Riotjs.Handler.Demo1 do
   end
 
   defp update_data(conn, demo1, errors \\ %{}) do
-    post_data_url = Routes.page_url(conn, :post_demo1_update_data, demo1)
+    form_post_data_url = Routes.page_url(conn, :post_demo1_update_data, demo1)
     locale = Common.locale(conn)
     %Data{data_url: Routes.page_url(conn, :get_demo1_update_data, demo1),
 	  locale: locale,
 	  navbar: Common.gen_navbar(conn, :demo1),
 	  history_state: nil,
-	  logout: %Data.Logout{
-	    post_url: post_data_url,
-	    csrf_token: Tag.csrf_token_value(post_data_url)},
+	  logout: Common.logout_data(conn),
 	  pages: %Data.Pages{
 	    demo1_add_update: %Data.Demo1AddUpdatePage{
 	      title_msgid: "Update Demo1",
-	      form: %Data.Form{post_url: post_data_url,
+	      form: %Data.Form{post_url: form_post_data_url,
 			       params: demo1,
 			       errors: errors},
-	      csrf_token: Tag.csrf_token_value(post_data_url),
+	      csrf_token: Tag.csrf_token_value(form_post_data_url),
 	      demo1_list_data_url: Routes.page_url(conn, :get_demo1_list_data)
             }
 	  },

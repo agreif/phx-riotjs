@@ -7,6 +7,15 @@ defmodule Riotjs.Handler.Register do
 
   @gettext_domain "register"
 
+  defp texts_en() do
+    Gettext.with_locale("en", fn ->
+      [
+	dgettext(@gettext_domain, "Register"),
+	dgettext(@gettext_domain, "Password"),
+      ]
+    end)
+  end
+
   @doc """
   Registers the user.
 
@@ -30,7 +39,7 @@ defmodule Riotjs.Handler.Register do
   end
 
   def data(conn, params \\ %{}, errors \\ %{}) do
-    post_url = Routes.page_url(conn, :post_register_data)
+    form_post_data_url = Routes.page_url(conn, :post_register_data)
     locale = Common.locale(conn)
     %Data{data_url: Routes.page_url(conn, :get_register_data),
 	  locale: locale,
@@ -41,10 +50,10 @@ defmodule Riotjs.Handler.Register do
 	  logout: nil,
 	  pages: %Data.Pages{
 	    register: %Data.RegisterPage{
-	      form: %Data.Form{post_url: post_url,
+	      form: %Data.Form{post_url: form_post_data_url,
 			       params: params,
 			       errors: errors},
-	      csrf_token: Tag.csrf_token_value(post_url),
+	      csrf_token: Tag.csrf_token_value(form_post_data_url),
 	      login_url: Routes.page_url(conn, :get_login_page),
 	      login_data_url: Routes.page_url(conn, :get_login_data)
 	    }
@@ -53,13 +62,4 @@ defmodule Riotjs.Handler.Register do
     }
   end
 
-
-  defp texts_en() do
-    Gettext.with_locale("en", fn ->
-      [
-	dgettext(@gettext_domain, "Register"),
-	dgettext(@gettext_domain, "Password"),
-      ]
-    end)
-  end
 end

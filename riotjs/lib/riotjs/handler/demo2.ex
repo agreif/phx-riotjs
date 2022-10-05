@@ -6,6 +6,14 @@ defmodule Riotjs.Handler.Demo2 do
 
   @gettext_domain "demo2"
 
+  defp texts_en() do
+    Gettext.with_locale("en", fn ->
+      [
+	dgettext(@gettext_domain, "Demo 2 Page"),
+      ]
+    end)
+  end
+
   def data(conn) do
     logout_post_url = Routes.page_url(conn, :post_logout)
     locale = Common.locale(conn)
@@ -25,11 +33,4 @@ defmodule Riotjs.Handler.Demo2 do
     }
   end
 
-  defp texts_en() do
-    Gettext.with_locale("en", fn ->
-      [
-	dgettext(@gettext_domain, "Demo 2 Page"),
-      ]
-    end)
-  end
 end
