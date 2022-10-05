@@ -17,6 +17,12 @@ defmodule RiotjsWeb.PageController do
   def get_demo1_data(conn, _params),
     do: json(conn, Handler.Demo1.data(conn))
 
+  def get_demo1_add_data(conn, _params),
+    do: json(conn, Handler.Demo1Add.data(conn))
+
+  def post_demo1_add_data(conn, params),
+    do: json(conn, Handler.Demo1Add.process(conn, params))
+
   # demo 2
 
   def get_demo2_page(conn, _params),

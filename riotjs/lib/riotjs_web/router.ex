@@ -18,6 +18,8 @@ defmodule RiotjsWeb.Router do
     get  "/", PageController, :get_index
     get  "/demo1", PageController, :get_demo1_page
     get  "/demo1_data", PageController, :get_demo1_data
+    get  "/demo1_add_data", PageController, :get_demo1_add_data
+    post "/demo1_add_data", PageController, :post_demo1_add_data
     get  "/demo2", PageController, :get_demo2_page
     get  "/demo2_data", PageController, :get_demo2_data
     post "/logout", PageController, :post_logout
@@ -39,7 +41,9 @@ defmodule RiotjsWeb.Router do
     if get_session(conn, :login) do
       conn
       |> assign(:riot_tags, [:body, :nav])
-      |> assign(:riot_pages, [:error, :demo1, :demo2])
+      |> assign(:riot_pages, [:error,
+			     :demo1, :demo1_add,
+			     :demo2])
     else
       conn
       |> assign(:riot_tags, [:body, :unauth_nav])

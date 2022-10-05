@@ -2,6 +2,7 @@ defmodule Riotjs.Handler.Demo1 do
   alias Riotjs.{Common, Data}
   alias RiotjsWeb.Router.Helpers, as: Routes
   alias Phoenix.HTML.Tag
+  alias Riotjs.Model
   import RiotjsWeb.Gettext
 
   @gettext_domain "demo1"
@@ -20,11 +21,8 @@ defmodule Riotjs.Handler.Demo1 do
 	    csrf_token: Tag.csrf_token_value(logout_post_url)},
 	  pages: %Data.Pages{
 	    demo1: %Data.Demo1Page{
-	      rows: [
-		Enum.to_list(1..3) |> Enum.map(fn _ -> Enum.random(1..10000) end),
-		Enum.to_list(1..3) |> Enum.map(fn _ -> Enum.random(1..10000) end),
-		Enum.to_list(1..3) |> Enum.map(fn _ -> Enum.random(1..10000) end)
-	      ]
+	      demo1s: Model.Demo1.list_demo1s(),
+	      add_demo1_data_url: Routes.page_url(conn, :get_demo1_add_data),
             }
 	  },
 	  translations: Common.translations(@gettext_domain, texts_en(), locale)
@@ -35,10 +33,7 @@ defmodule Riotjs.Handler.Demo1 do
     Gettext.with_locale("en", fn ->
       [
 	dgettext(@gettext_domain, "Demo 1 Page"),
-	dgettext(@gettext_domain, "Column 1"),
-	dgettext(@gettext_domain, "Column 2"),
-	dgettext(@gettext_domain, "Column 3"),
-	dgettext(@gettext_domain, "Refresh"),
+	dgettext(@gettext_domain, "Add Demo1"),
       ]
     end)
   end

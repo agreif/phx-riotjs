@@ -41,7 +41,8 @@ end
 
 defmodule Riotjs.Data.Pages do
   @derive Jason.Encoder
-  defstruct [:error, :demo1, :demo2, :register, :login]
+  defstruct [:error, :demo1, :demo1_add,
+	     :demo2, :register, :login]
 end
 
 defmodule Riotjs.Data.ErrorPage do
@@ -52,9 +53,17 @@ end
 
 defmodule Riotjs.Data.Demo1Page do
   @derive Jason.Encoder
-  @enforce_keys [:rows]
-  defstruct [:rows]
+  @enforce_keys [:demo1s, :add_demo1_data_url]
+  defstruct [:demo1s, :add_demo1_data_url]
 end
+
+defmodule Riotjs.Data.Demo1AddPage do
+  @derive Jason.Encoder
+  @enforce_keys [:form, :csrf_token, :demo1_data_url]
+  defstruct [:form, :csrf_token, :demo1_data_url]
+end
+
+
 
 defmodule Riotjs.Data.Demo2Page do
   @derive Jason.Encoder

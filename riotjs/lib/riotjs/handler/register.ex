@@ -1,11 +1,8 @@
 defmodule Riotjs.Handler.Register do
-  alias Riotjs.{Common, Data}
-  alias Riotjs.Model
-  alias Riotjs.Handler
-  alias RiotjsWeb.Router.Helpers, as: Routes
-  alias Riotjs.Repo
+  alias Riotjs.{Common, Data, Model, Handler, Repo}
   alias Phoenix.HTML.Tag
   alias Ecto.Changeset
+  alias RiotjsWeb.Router.Helpers, as: Routes
   import RiotjsWeb.Gettext
 
   @gettext_domain "register"

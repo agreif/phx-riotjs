@@ -32,14 +32,31 @@ In the image three user requests are shown
 **3.** The same as 2. :) It is only a demonstration that except the very first call to the server all communication is JSON that leads to business logic execution on the server and DOM-manipulation in the browser
 
 
-# Pages
+# Pages in this template app
 
-![login](images/login.png)  ![login_errors](images/login_errors.png)
+![login](images/login.png)
+![login_errors](images/login_errors.png)
 ![register](images/register.png)
 ![register_errors](images/register_errors.png)
 ![demo1](images/demo1.png)
 ![demo2](images/demo2.png)
 
+# Steps for adding a new page
+
+- create new .riot file e.g. 'riotjs/priv/static/riot/demo1_add_page.riot'
+- add routes for page and/or data and the riot-tag pipeline 'riotjs/lib/riotjs_web/router.ex'
+- add the controller actions 'riotjs/lib/riotjs_web/controllers/page_controller.ex'
+- mount the new tag in 'riotjs/priv/static/riot/body_tag.riot'
+
+# Helpful links/snippets
+
+[Ecto.Migration](https://hexdocs.pm/ecto_sql/Ecto.Migration.html#functions)
+[Plug.Conn](https://hexdocs.pm/plug/Plug.Conn.html#functions)
+
+```
+mix phx.gen.schema Model.Demo1 demo1s attr1:string attr2:string
+mix ecto.migrate
+```
 
 # Run Phoenix Server and RiotJS auto-compile
 ```
