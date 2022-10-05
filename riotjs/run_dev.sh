@@ -1,5 +1,4 @@
-# ./node_modules/.bin/riot -w priv/static/riot &
-./node_modules/.bin/riot priv/static/riot/*.riot
+# rm priv/static/riot/*.js; ./node_modules/.bin/riot .; ./node_modules/.bin/riot -w .
 
 mix gettext.extract
 mix gettext.merge priv/gettext

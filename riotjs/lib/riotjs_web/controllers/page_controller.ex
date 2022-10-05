@@ -5,16 +5,16 @@ defmodule RiotjsWeb.PageController do
   # index
 
   def get_index(conn, params) do
-    get_demo1_page(conn, params)
+    get_demo1_list_page(conn, params)
   end
 
   # demo 1
 
-  def get_demo1_page(conn, _params),
+  def get_demo1_list_page(conn, _params),
     do: render(conn, :page,
-	  data_path: Routes.page_path(conn, :get_demo1_data))
+	  data_path: Routes.page_path(conn, :get_demo1_list_data))
 
-  def get_demo1_data(conn, _params),
+  def get_demo1_list_data(conn, _params),
     do: json(conn, Handler.Demo1.list_data(conn))
 
   def get_demo1_add_data(conn, _params),

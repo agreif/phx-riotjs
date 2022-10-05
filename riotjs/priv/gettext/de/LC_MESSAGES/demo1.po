@@ -35,3 +35,13 @@ msgstr "Attribut 1"
 #, elixir-autogen, elixir-format
 msgid "Attribute 2"
 msgstr "Attribut 2"
+
+#: lib/riotjs/handler/demo1.ex:18
+#, elixir-autogen, elixir-format
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: lib/riotjs/handler/demo1.ex:19
+#, elixir-autogen, elixir-format
+msgid "Save"
+msgstr "Speichern"

@@ -15,6 +15,8 @@ defmodule Riotjs.Handler.Demo1 do
 	dgettext(@gettext_domain, "Update Demo1"),
 	dgettext(@gettext_domain, "Attribute 1"),
 	dgettext(@gettext_domain, "Attribute 2"),
+	dgettext(@gettext_domain, "Cancel"),
+	dgettext(@gettext_domain, "Save"),
       ]
     end)
   end
@@ -26,23 +28,23 @@ defmodule Riotjs.Handler.Demo1 do
   def list_data(conn) do
     demo1_datas = Model.Demo1.list_demo1s()
     |> Enum.map(fn demo1 -> %Data.Demo1{entity: demo1,
-				       update_demo1_data_url: Routes.page_url(conn, :get_demo1_update_data, demo1)} end)
+				       demo1_update_data_url: Routes.page_url(conn, :get_demo1_update_data, demo1)} end)
 
     logout_post_url = Routes.page_url(conn, :post_logout)
     locale = Common.locale(conn)
-    %Data{data_url: Routes.page_url(conn, :get_demo1_data),
+    %Data{data_url: Routes.page_url(conn, :get_demo1_list_data),
 	  locale: locale,
 	  navbar: Common.gen_navbar(conn, :demo1),
 	  history_state: %Data.HistoryState{
 	    title: "Demo 1",
-	    url: Routes.page_url(conn, :get_demo1_page)},
+	    url: Routes.page_url(conn, :get_demo1_list_page)},
 	  logout: %Data.Logout{
 	    post_url: logout_post_url,
 	    csrf_token: Tag.csrf_token_value(logout_post_url)},
 	  pages: %Data.Pages{
-	    demo1: %Data.Demo1Page{
+	    demo1_list: %Data.Demo1ListPage{
 	      demo1s: demo1_datas,
-	      add_demo1_data_url: Routes.page_url(conn, :get_demo1_add_data),
+	      demo1_add_data_url: Routes.page_url(conn, :get_demo1_add_data),
             }
 	  },
 	  translations: Common.translations(@gettext_domain, texts_en(), locale)
@@ -89,7 +91,7 @@ defmodule Riotjs.Handler.Demo1 do
 			       params: params,
 			       errors: errors},
 	      csrf_token: Tag.csrf_token_value(post_data_url),
-	      demo1_data_url: Routes.page_url(conn, :get_demo1_data)
+	      demo1_list_data_url: Routes.page_url(conn, :get_demo1_list_data)
             }
 	  },
 	  translations: Common.translations(@gettext_domain, texts_en(), locale)
@@ -139,7 +141,7 @@ defmodule Riotjs.Handler.Demo1 do
 			       params: demo1,
 			       errors: errors},
 	      csrf_token: Tag.csrf_token_value(post_data_url),
-	      demo1_data_url: Routes.page_url(conn, :get_demo1_data)
+	      demo1_list_data_url: Routes.page_url(conn, :get_demo1_list_data)
             }
 	  },
 	  translations: Common.translations(@gettext_domain, texts_en(), locale)

@@ -1,4 +1,4 @@
-<demo1-page>
+<demo1-list-page>
   <h1>{context.data.translations['Demo 1 Page']}</h1>
   <table class="uk-table uk-table-small uk-table-divider uk-table-hover uk-background-muted">
     <thead>
@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr each="{item in context.data.pages.demo1.demo1s}">
+      <tr each="{item in context.data.pages.demo1_list.demo1s}">
         <td class="uk-table-link">
 	  <a onclick="{(e) => editDemo1(e, item)}" class="uk-link-reset">{item.entity.attr1}</a>
 	</td>
@@ -28,13 +28,13 @@
 	onBeforeMount(props) { this.context = props.context },
 
 	addDemo1() {
-	    this.context.refreshData(this.context.data.pages.demo1.add_demo1_data_url)
+	    this.context.refreshData(this.context.data.pages.demo1_list.demo1_add_data_url)
 	},
 
 	editDemo1(event, item) {
 	    event.preventDefault()
-	    this.context.refreshData(item.update_demo1_data_url)
+	    this.context.refreshData(item.demo1_update_data_url)
 	},
     }
   </script>
-</demo1-page>
+</demo1-list-page>

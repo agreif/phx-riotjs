@@ -1,4 +1,4 @@
-var demo1_page = {
+var demo1_list_page = {
   css: null,
   exports: {
     onBeforeMount(props) {
@@ -6,12 +6,12 @@ var demo1_page = {
     },
 
     addDemo1() {
-      this.context.refreshData(this.context.data.pages.demo1.add_demo1_data_url);
+      this.context.refreshData(this.context.data.pages.demo1_list.demo1_add_data_url);
     },
 
     editDemo1(event, item) {
       event.preventDefault();
-      this.context.refreshData(item.update_demo1_data_url);
+      this.context.refreshData(item.demo1_update_data_url);
     }
 
   },
@@ -84,9 +84,9 @@ var demo1_page = {
     selector: '[expr23]',
     itemName: 'item',
     indexName: null,
-    evaluate: _scope => _scope.context.data.pages.demo1.demo1s
+    evaluate: _scope => _scope.context.data.pages.demo1_list.demo1s
   }]),
-  name: 'demo1-page'
+  name: 'demo1-list-page'
 };
 
-export { demo1_page as default };
+export { demo1_list_page as default };

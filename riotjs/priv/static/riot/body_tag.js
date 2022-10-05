@@ -55,7 +55,7 @@ var body_tag = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-container .uk-margin-left"><unauth-nav-tag expr0="expr0"></unauth-nav-tag><nav-tag expr1="expr1"></nav-tag><error-page expr2="expr2"></error-page><demo1-page expr3="expr3"></demo1-page><demo1-add-update-page expr4="expr4"></demo1-add-update-page><demo2-page expr5="expr5"></demo2-page><register-page expr6="expr6"></register-page><login-page expr7="expr7"></login-page></div>', [{
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-container .uk-margin-left"><unauth-nav-tag expr0="expr0"></unauth-nav-tag><nav-tag expr1="expr1"></nav-tag><error-page expr2="expr2"></error-page><demo1-list-page expr3="expr3"></demo1-list-page><demo1-add-update-page expr4="expr4"></demo1-add-update-page><demo2-page expr5="expr5"></demo2-page><register-page expr6="expr6"></register-page><login-page expr7="expr7"></login-page></div>', [{
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.register || _scope.data.pages.login,
     redundantAttribute: 'expr0',
@@ -105,13 +105,13 @@ var body_tag = {
     }])
   }, {
     type: bindingTypes.IF,
-    evaluate: _scope => _scope.data.pages.demo1,
+    evaluate: _scope => _scope.data.pages.demo1_list,
     redundantAttribute: 'expr3',
     selector: '[expr3]',
     template: template(null, [{
       type: bindingTypes.TAG,
       getComponent: getComponent,
-      evaluate: _scope => 'demo1-page',
+      evaluate: _scope => 'demo1-list-page',
       slots: [],
       attributes: [{
         type: expressionTypes.ATTRIBUTE,

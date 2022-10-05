@@ -8,8 +8,8 @@ defmodule Riotjs.Common do
     navitems = [
       %Data.Navitem{label: "Demo 1",
 	       is_active: active_item == :demo1,
-	       url: Routes.page_url(conn, :get_demo1_page),
-	       data_url: Routes.page_url(conn, :get_demo1_data) },
+	       url: Routes.page_url(conn, :get_demo1_list_page),
+	       data_url: Routes.page_url(conn, :get_demo1_list_data) },
       %Data.Navitem{label: "Demo 2",
 	       is_active: active_item == :demo2,
 	       url: Routes.page_url(conn, :get_demo2_page),

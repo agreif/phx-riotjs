@@ -21,8 +21,8 @@
 	</div>
       </div>
       <div class="uk-text-center">
-        <button onclick="{cancel}" class="uk-button uk-button-default" type="button">Cancel</button>
-        <button onclick="{add}" class="uk-button uk-button-primary" type="button">Save</button>
+        <button onclick="{cancel}" class="uk-button uk-button-default" type="button">{context.data.translations['Cancel']}</button>
+        <button onclick="{add}" class="uk-button uk-button-primary" type="button">{context.data.translations['Save']}</button>
       </div>
     </form>
   </div>
@@ -41,7 +41,7 @@
 
 	cancel(event) {
 	    event.preventDefault()
-	    this.context.refreshData(this.context.data.pages.demo1_add_update.demo1_data_url)
+	    this.context.refreshData(this.context.data.pages.demo1_add_update.demo1_list_data_url)
 	},
     }
   </script>

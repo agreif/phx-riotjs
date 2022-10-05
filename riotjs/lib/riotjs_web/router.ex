@@ -16,8 +16,8 @@ defmodule RiotjsWeb.Router do
   scope "/", RiotjsWeb do
     pipe_through [:browser, :set_riot_tags, :require_authenticated_user]
     get  "/", PageController, :get_index
-    get  "/demo1", PageController, :get_demo1_page
-    get  "/demo1_data", PageController, :get_demo1_data
+    get  "/demo1", PageController, :get_demo1_list_page
+    get  "/demo1_data", PageController, :get_demo1_list_data
     get  "/demo1_add_data", PageController, :get_demo1_add_data
     post "/demo1_add_data", PageController, :post_demo1_add_data
     get  "/demo1_update_data/:id", PageController, :get_demo1_update_data
@@ -45,7 +45,7 @@ defmodule RiotjsWeb.Router do
       conn
       |> assign(:riot_tags, [:body, :nav])
       |> assign(:riot_pages, [:error,
-			     :demo1, :demo1_add_update,
+			     :demo1_list, :demo1_add_update,
 			     :demo2])
     else
       conn

@@ -65,7 +65,6 @@ $ sh run_dev.sh
 ```
 
 The 'run_dev.sh' script starts the development server mode with
-- RiotJS tag compilation in watch mode
 - gettext extraction
 - phoenix server start
 
