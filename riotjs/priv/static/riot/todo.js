@@ -37,9 +37,9 @@ var todo = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<h3 expr35="expr35"> </h3><ul><li expr36="expr36"></li></ul><form expr39="expr39"><input expr40="expr40"/><button expr41="expr41"> </button></form>', [{
-    redundantAttribute: 'expr35',
-    selector: '[expr35]',
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<h3 expr55="expr55"> </h3><ul><li expr56="expr56"></li></ul><form expr59="expr59"><input expr60="expr60"/><button expr61="expr61"> </button></form>', [{
+    redundantAttribute: 'expr55',
+    selector: '[expr55]',
     expressions: [{
       type: expressionTypes.TEXT,
       childNodeIndex: 0,
@@ -49,9 +49,9 @@ var todo = {
     type: bindingTypes.EACH,
     getKey: null,
     condition: null,
-    template: template('<label expr37="expr37"><input expr38="expr38" type="checkbox"/> </label>', [{
-      redundantAttribute: 'expr37',
-      selector: '[expr37]',
+    template: template('<label expr57="expr57"><input expr58="expr58" type="checkbox"/> </label>', [{
+      redundantAttribute: 'expr57',
+      selector: '[expr57]',
       expressions: [{
         type: expressionTypes.TEXT,
         childNodeIndex: 1,
@@ -62,8 +62,8 @@ var todo = {
         evaluate: _scope => _scope.item.done ? 'completed' : null
       }]
     }, {
-      redundantAttribute: 'expr38',
-      selector: '[expr38]',
+      redundantAttribute: 'expr58',
+      selector: '[expr58]',
       expressions: [{
         type: expressionTypes.ATTRIBUTE,
         name: 'checked',
@@ -74,22 +74,22 @@ var todo = {
         evaluate: _scope => () => _scope.toggle(_scope.item)
       }]
     }]),
-    redundantAttribute: 'expr36',
-    selector: '[expr36]',
+    redundantAttribute: 'expr56',
+    selector: '[expr56]',
     itemName: 'item',
     indexName: null,
     evaluate: _scope => _scope.state.items
   }, {
-    redundantAttribute: 'expr39',
-    selector: '[expr39]',
+    redundantAttribute: 'expr59',
+    selector: '[expr59]',
     expressions: [{
       type: expressionTypes.EVENT,
       name: 'onsubmit',
       evaluate: _scope => _scope.add
     }]
   }, {
-    redundantAttribute: 'expr40',
-    selector: '[expr40]',
+    redundantAttribute: 'expr60',
+    selector: '[expr60]',
     expressions: [{
       type: expressionTypes.EVENT,
       name: 'onkeyup',
@@ -99,8 +99,8 @@ var todo = {
       evaluate: _scope => _scope.state.text
     }]
   }, {
-    redundantAttribute: 'expr41',
-    selector: '[expr41]',
+    redundantAttribute: 'expr61',
+    selector: '[expr61]',
     expressions: [{
       type: expressionTypes.TEXT,
       childNodeIndex: 0,
