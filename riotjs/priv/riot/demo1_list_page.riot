@@ -21,6 +21,9 @@
 	  <a onclick="{(e) => editDemo1(e, item)}" class="uk-link-reset">{item.entity.attr2}</a>
 	</td>
 	<td .uk-width-small>
+	  <button uk-toggle="target: #modal-demo1-really-delete-{item.entity.id}" class="uk-float-right uk-button uk-button-link" title="{context.data.translations['Delete Demo1']}" uk-tooltip >
+            <span uk-icon="icon: trash"/>
+	  </button>
           <button onclick="{(e) => editDemo1(e, item)}" class="uk-float-right uk-button uk-button-link" title="{context.data.translations['Edit Demo1']}" uk-tooltip >
             <span uk-icon="icon: pencil"/>
 	  </button>
@@ -29,17 +32,36 @@
     </tbody>
   </table>
 
+  <div id="modal-demo1-really-delete-{item.entity.id}" uk-modal each="{item in context.data.pages.demo1_list.demo1_items}">
+    <div class="uk-modal-dialog uk-modal-body">
+      <h2 class="uk-modal-title">{context.data.translations['Delete Demo1']}</h2>
+      <p>{context.data.translations['Do you really want to delete this Demo1?']}</p>
+      <p class="uk-text-center">
+	<button class="uk-button uk-button-default uk-modal-close">
+	  {context.data.translations['Cancel']}
+	</button>
+        <button onclick="{(e) => deleteDemo1(e, item)}" class="uk-button uk-button-primary uk-modal-close">
+	  {context.data.translations['Delete']}
+	</button>
+      </p>
+    </div>
+  </div>
+
   <script>
     export default {
 	onBeforeMount(props) { this.context = props.context },
 
 	addDemo1() {
-	    this.context.refreshData(this.context.data.pages.demo1_list.demo1_add_data_url)
+	    this.context.refreshData(this.context.data.pages.demo1_list.get_demo1_add_data_url)
 	},
 
 	editDemo1(event, item) {
 	    event.preventDefault()
-	    this.context.refreshData(item.demo1_update_data_url)
+	    this.context.refreshData(item.get_demo1_update_data_url)
+	},
+
+	deleteDemo1(event, item) {
+	    this.context.postRequest(item.post_demo1_delete_data_url, item.csrf_token, {})
 	},
     }
   </script>

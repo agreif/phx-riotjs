@@ -17,25 +17,26 @@ defmodule RiotjsWeb.Router do
     pipe_through [:browser, :set_riot_tags, :require_authenticated_user]
     get  "/", PageController, :get_index
     get  "/demo1", PageController, :get_demo1_list_page
-    get  "/demo1_data", PageController, :get_demo1_list_data
-    get  "/demo1_add_data", PageController, :get_demo1_add_data
-    post "/demo1_add_data", PageController, :post_demo1_add_data
-    get  "/demo1_update_data/:id", PageController, :get_demo1_update_data
-    post "/demo1_update_data/:id", PageController, :post_demo1_update_data
+    get  "/demo1/data", PageController, :get_demo1_list_data
+    get  "/demo1_add/data", PageController, :get_demo1_add_data
+    post "/demo1_add/data", PageController, :post_demo1_add_data
+    get  "/demo1_update/:id/data", PageController, :get_demo1_update_data
+    post "/demo1_update/:id/data", PageController, :post_demo1_update_data
+    post "/demo1_delete/:id/data", PageController, :post_demo1_delete_data
 
     get  "/demo2", PageController, :get_demo2_page
-    get  "/demo2_data", PageController, :get_demo2_data
+    get  "/demo2/data", PageController, :get_demo2_data
     post "/logout", PageController, :post_logout
   end
 
   scope "/", RiotjsWeb do
     pipe_through [:browser, :set_riot_tags, :redirect_if_user_is_authenticated]
     get  "/user/register", PageController, :get_register_page
-    get  "/user/register_data", PageController, :get_register_data
-    post "/user/register_data", PageController, :post_register_data
+    get  "/user/register/data", PageController, :get_register_data
+    post "/user/register/data", PageController, :post_register_data
     get  "/user/login", PageController, :get_login_page
-    get  "/user/login_data", PageController, :get_login_data
-    post "/user/login_data", PageController, :post_login_data
+    get  "/user/login/data", PageController, :get_login_data
+    post "/user/login/data", PageController, :post_login_data
   end
 
   # helpers

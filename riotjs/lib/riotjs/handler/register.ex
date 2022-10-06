@@ -54,8 +54,8 @@ defmodule Riotjs.Handler.Register do
 			       params: params,
 			       errors: errors},
 	      csrf_token: Tag.csrf_token_value(form_post_data_url),
-	      login_url: Routes.page_url(conn, :get_login_page),
-	      login_data_url: Routes.page_url(conn, :get_login_data)
+	      get_login_url: Routes.page_url(conn, :get_login_page),
+	      get_login_data_url: Routes.page_url(conn, :get_login_data)
 	    }
 	  },
 	  translations: Common.translations(@gettext_domain, texts_en(), locale)

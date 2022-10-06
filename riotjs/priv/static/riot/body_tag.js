@@ -7,6 +7,10 @@ var body_tag = {
       };
     },
 
+    uikit() {
+      return UIkit;
+    },
+
     updateData(newData) {
       this.data = newData;
       this.update();

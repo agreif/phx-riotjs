@@ -12,24 +12,31 @@ defmodule Riotjs.Handler.Demo1 do
       [
 	dgettext(@gettext_domain, "Demo 1 Page"),
 	dgettext(@gettext_domain, "Add Demo1"),
-	dgettext(@gettext_domain, "Update Demo1"),
+	dgettext(@gettext_domain, "Edit Demo1"),
+	dgettext(@gettext_domain, "Delete Demo1"),
+	dgettext(@gettext_domain, "Do you really want to delete this Demo1?"),
 	dgettext(@gettext_domain, "Attribute 1"),
 	dgettext(@gettext_domain, "Attribute 2"),
 	dgettext(@gettext_domain, "Cancel"),
 	dgettext(@gettext_domain, "Save"),
+	dgettext(@gettext_domain, "Delete"),
       ]
     end)
   end
 
   ###################
-  # list page
+  # list
   ###################
 
   def gen_list_data(conn) do
     demo1_items = Model.Demo1.list_demo1s()
     |> Enum.map(fn demo1 ->
+      post_data_url = Routes.page_url(conn, :post_demo1_delete_data, demo1)
       %Data.Demo1Item{entity: demo1,
-		      demo1_update_data_url: Routes.page_url(conn, :get_demo1_update_data, demo1)} end)
+		      get_demo1_update_data_url: Routes.page_url(conn, :get_demo1_update_data, demo1),
+		      post_demo1_delete_data_url: post_data_url,
+		      csrf_token: Tag.csrf_token_value(post_data_url),
+		     } end)
     locale = Common.locale(conn)
     %Data{data_url: Routes.page_url(conn, :get_demo1_list_data),
 	  locale: locale,
@@ -41,7 +48,7 @@ defmodule Riotjs.Handler.Demo1 do
 	  pages: %Data.Pages{
 	    demo1_list: %Data.Demo1ListPage{
 	      demo1_items: demo1_items,
-	      demo1_add_data_url: Routes.page_url(conn, :get_demo1_add_data),
+	      get_demo1_add_data_url: Routes.page_url(conn, :get_demo1_add_data),
             }
 	  },
 	  translations: Common.translations(@gettext_domain, texts_en(), locale)
@@ -49,7 +56,7 @@ defmodule Riotjs.Handler.Demo1 do
   end
 
   ###################
-  # add page
+  # add
   ###################
 
   @doc """
@@ -86,7 +93,7 @@ defmodule Riotjs.Handler.Demo1 do
 			       params: params,
 			       errors: errors},
 	      csrf_token: Tag.csrf_token_value(form_post_data_url),
-	      demo1_list_data_url: Routes.page_url(conn, :get_demo1_list_data)
+	      get_demo1_list_data_url: Routes.page_url(conn, :get_demo1_list_data)
             }
 	  },
 	  translations: Common.translations(@gettext_domain, texts_en(), locale)
@@ -94,16 +101,16 @@ defmodule Riotjs.Handler.Demo1 do
   end
 
   ###################
-  # update page
+  # update
   ###################
 
   def process_get_update(conn, params) do
-    demo1 = Repo.get!(Model.Demo1, Map.get(params, "id"))
+    demo1 = Repo.get!(Model.Demo1, params["id"])
     gen_update_data(conn, demo1)
   end
 
   def process_post_update(conn, params) do
-    demo1 = Repo.get!(Model.Demo1, Map.get(params, "id"))
+    demo1 = Repo.get!(Model.Demo1, params["id"])
     changeset = Model.Demo1.changeset(demo1, params)
     case Repo.update(changeset) do
       {:ok, _} -> Handler.Demo1.gen_list_data(conn)
@@ -129,11 +136,25 @@ defmodule Riotjs.Handler.Demo1 do
 			       params: demo1,
 			       errors: errors},
 	      csrf_token: Tag.csrf_token_value(form_post_data_url),
-	      demo1_list_data_url: Routes.page_url(conn, :get_demo1_list_data)
+	      get_demo1_list_data_url: Routes.page_url(conn, :get_demo1_list_data)
             }
 	  },
 	  translations: Common.translations(@gettext_domain, texts_en(), locale)
     }
   end
+
+
+  ###################
+  # delete
+  ###################
+
+  def process_post_delete(conn, params) do
+    demo1 = Repo.get!(Model.Demo1, params["id"])
+    case Repo.delete(demo1) do
+      {:ok, _} -> Handler.Demo1.gen_list_data(conn)
+      {:error, _changeset} -> Handler.Demo1.gen_list_data(conn)
+    end
+  end
+
 
 end

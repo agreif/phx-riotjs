@@ -21,27 +21,42 @@ msgstr "Demo 1 Seite"
 msgid "Add Demo1"
 msgstr "Demo1 hinzufügen"
 
-#: lib/riotjs/handler/demo1.ex:15
-#, elixir-autogen, elixir-format
-msgid "Update Demo1"
-msgstr "Demo1 bearbeiten"
-
-#: lib/riotjs/handler/demo1.ex:16
+#: lib/riotjs/handler/demo1.ex:18
 #, elixir-autogen, elixir-format
 msgid "Attribute 1"
 msgstr "Attribut 1"
 
-#: lib/riotjs/handler/demo1.ex:17
+#: lib/riotjs/handler/demo1.ex:19
 #, elixir-autogen, elixir-format
 msgid "Attribute 2"
 msgstr "Attribut 2"
 
-#: lib/riotjs/handler/demo1.ex:18
+#: lib/riotjs/handler/demo1.ex:20
 #, elixir-autogen, elixir-format
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: lib/riotjs/handler/demo1.ex:19
+#: lib/riotjs/handler/demo1.ex:21
 #, elixir-autogen, elixir-format
 msgid "Save"
 msgstr "Speichern"
+
+#: lib/riotjs/handler/demo1.ex:16
+#, elixir-autogen, elixir-format
+msgid "Delete Demo1"
+msgstr "Demo1 löschen"
+
+#: lib/riotjs/handler/demo1.ex:15
+#, elixir-autogen, elixir-format, fuzzy
+msgid "Edit Demo1"
+msgstr "Demo1 bearbeiten"
+
+#: lib/riotjs/handler/demo1.ex:17
+#, elixir-autogen, elixir-format
+msgid "Do you really want to delete this Demo1?"
+msgstr "Möchten Sie dieses Demo1 wirklich löschen?"
+
+#: lib/riotjs/handler/demo1.ex:22
+#, elixir-autogen, elixir-format, fuzzy
+msgid "Delete"
+msgstr "Löschen"

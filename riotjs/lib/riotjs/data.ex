@@ -53,22 +53,22 @@ end
 
 defmodule Riotjs.Data.Demo1ListPage do
   @derive Jason.Encoder
-  @enforce_keys [:demo1_items, :demo1_add_data_url]
-  defstruct [:demo1_items, :demo1_add_data_url]
+  @enforce_keys [:demo1_items, :get_demo1_add_data_url]
+  defstruct [:demo1_items, :get_demo1_add_data_url]
 end
 
 defmodule Riotjs.Data.Demo1Item do
   @derive Jason.Encoder
-  @enforce_keys [:entity, :demo1_update_data_url]
-  defstruct [:entity, :demo1_update_data_url]
+  @enforce_keys [:entity, :get_demo1_update_data_url, :post_demo1_delete_data_url, :csrf_token]
+  defstruct [:entity, :get_demo1_update_data_url, :post_demo1_delete_data_url, :csrf_token]
 end
 
 
 
 defmodule Riotjs.Data.Demo1AddUpdatePage do
   @derive Jason.Encoder
-  @enforce_keys [:title_msgid, :form, :csrf_token, :demo1_list_data_url]
-  defstruct [:title_msgid, :form, :csrf_token, :demo1_list_data_url]
+  @enforce_keys [:title_msgid, :form, :csrf_token, :get_demo1_list_data_url]
+  defstruct [:title_msgid, :form, :csrf_token, :get_demo1_list_data_url]
 end
 
 
@@ -84,13 +84,13 @@ end
 
 defmodule Riotjs.Data.RegisterPage do
   @derive Jason.Encoder
-  @enforce_keys [:form, :csrf_token, :login_url, :login_data_url]
-  defstruct [:form, :csrf_token, :login_url, :login_data_url]
+  @enforce_keys [:form, :csrf_token, :get_login_url, :get_login_data_url]
+  defstruct [:form, :csrf_token, :get_login_url, :get_login_data_url]
 end
 
 defmodule Riotjs.Data.LoginPage do
   @derive Jason.Encoder
-  @enforce_keys [:form, :csrf_token, :register_url, :register_data_url]
-  defstruct [:form, :csrf_token, :register_url, :register_data_url]
+  @enforce_keys [:form, :csrf_token, :get_register_url, :get_register_data_url]
+  defstruct [:form, :csrf_token, :get_register_url, :get_register_data_url]
 end
 

@@ -4,7 +4,7 @@ defmodule Riotjs.Model.Demo1 do
   alias Riotjs.Repo
   alias Riotjs.Model
 
-  @derive {Jason.Encoder, only: [:attr1, :attr2]}
+  @derive {Jason.Encoder, only: [:id, :attr1, :attr2]}
   schema "demo1s" do
     field :attr1, :string
     field :attr2, :string

@@ -6,9 +6,9 @@ var demo2_page = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<h1 expr27="expr27"> </h1>', [{
-    redundantAttribute: 'expr27',
-    selector: '[expr27]',
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<h1 expr33="expr33"> </h1>', [{
+    redundantAttribute: 'expr33',
+    selector: '[expr33]',
     expressions: [{
       type: expressionTypes.TEXT,
       childNodeIndex: 0,

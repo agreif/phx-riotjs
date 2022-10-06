@@ -29,6 +29,9 @@ defmodule RiotjsWeb.PageController do
   def post_demo1_update_data(conn, params),
     do: json(conn, Handler.Demo1.process_post_update(conn, params))
 
+  def post_demo1_delete_data(conn, params),
+    do: json(conn, Handler.Demo1.process_post_delete(conn, params))
+
   # demo 2
 
   def get_demo2_page(conn, _params),
