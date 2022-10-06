@@ -12,7 +12,7 @@ var register_page = {
 
     loginPage() {
       event.preventDefault();
-      this.context.refreshData(this.context.data.pages.register.get_login_data_url);
+      this.context.refreshDataGet(this.context.data.pages.register.get_login_data_url);
     }
 
   },

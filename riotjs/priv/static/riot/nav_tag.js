@@ -7,11 +7,11 @@ var nav_tag = {
 
     changeNav(event, dataUrl) {
       event.preventDefault();
-      this.context.refreshData(dataUrl);
+      this.context.refreshDataGet(dataUrl);
     },
 
     changeLocale(event, locale) {
-      this.context.refreshData(this.context.data.data_url + "?locale=" + locale);
+      this.context.refreshDataGet(this.context.data.data_url + "?locale=" + locale);
     },
 
     logout() {

@@ -24,11 +24,15 @@ var body_tag = {
       }
     },
 
-    refreshData(dataUrl) {
+    refreshDataGet(dataUrl) {
       fetch(dataUrl).then(res => res.json()).then(newData => {
         this.updateData(newData);
         this.updateHistory(newData);
       }).catch(err => console.error(err));
+    },
+
+    refreshDataPost(postUrl, csrfToken) {
+      postRequest(postUrl, csrfToken, {});
     },
 
     postRequest(postUrl, csrfToken, json, callbackFun) {

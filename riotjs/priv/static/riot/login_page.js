@@ -21,7 +21,7 @@ var login_page = {
 
     registerPage() {
       event.preventDefault();
-      this.context.refreshData(this.context.data.pages.login.get_register_data_url);
+      this.context.refreshDataGet(this.context.data.pages.login.get_register_data_url);
     }
 
   },

@@ -17,7 +17,7 @@
         import <%= page %>_page from "/riot/<%= page %>_page.js"
         riot.register("<%= String.replace(page, "_", "-") %>-page", <%= page %>_page)
       <% end %>
-      riot.mount('body-tag')[0].refreshData("<%= @data_path %>")
+      riot.mount('body-tag')[0].refreshDataGet("<%= @data_url %>")
     </script>
   </head>
   <body>

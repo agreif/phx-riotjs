@@ -52,16 +52,16 @@
 	onBeforeMount(props) { this.context = props.context },
 
 	addDemo1() {
-	    this.context.refreshData(this.context.data.pages.demo1_list.get_demo1_add_data_url)
+	    this.context.refreshDataGet(this.context.data.pages.demo1_list.get_demo1_add_data_url)
 	},
 
 	editDemo1(event, item) {
 	    event.preventDefault()
-	    this.context.refreshData(item.get_demo1_update_data_url)
+	    this.context.refreshDataGet(item.get_demo1_update_data_url)
 	},
 
 	deleteDemo1(event, item) {
-	    this.context.postRequest(item.post_demo1_delete_data_url, item.csrf_token, {})
+	    this.context.refreshDataPost(item.post_demo1_delete_data_url, item.csrf_token)
 	},
     }
   </script>

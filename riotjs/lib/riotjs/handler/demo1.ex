@@ -131,7 +131,7 @@ defmodule Riotjs.Handler.Demo1 do
 	  logout: Common.gen_logout_data(conn),
 	  pages: %Data.Pages{
 	    demo1_add_update: %Data.Demo1AddUpdatePage{
-	      title_msgid: "Update Demo1",
+	      title_msgid: "Edit Demo1",
 	      form: %Data.Form{post_url: form_post_data_url,
 			       params: demo1,
 			       errors: errors},

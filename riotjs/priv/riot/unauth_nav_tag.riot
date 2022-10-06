@@ -16,7 +16,7 @@
 	onBeforeMount(props) { this.context = props.context },
 
 	changeLocale(event, locale) {
-	    this.context.refreshData(this.context.data.data_url + "?locale=" + locale)
+	    this.context.refreshDataGet(this.context.data.data_url + "?locale=" + locale)
 	},
     }
   </script>
