@@ -15,10 +15,10 @@ defmodule RiotjsWeb.PageController do
 	  data_path: Routes.page_path(conn, :get_demo1_list_data))
 
   def get_demo1_list_data(conn, _params),
-    do: json(conn, Handler.Demo1.list_data(conn))
+    do: json(conn, Handler.Demo1.gen_list_data(conn))
 
   def get_demo1_add_data(conn, _params),
-    do: json(conn, Handler.Demo1.add_data(conn))
+    do: json(conn, Handler.Demo1.gen_add_data(conn))
 
   def post_demo1_add_data(conn, params),
     do: json(conn, Handler.Demo1.process_post_add(conn, params))
@@ -36,7 +36,7 @@ defmodule RiotjsWeb.PageController do
 	  data_path: Routes.page_path(conn, :get_demo2_data))
 
   def get_demo2_data(conn, _params),
-    do: json(conn, Handler.Demo2.data(conn))
+    do: json(conn, Handler.Demo2.gen_data(conn))
 
   # register
 
@@ -45,7 +45,7 @@ defmodule RiotjsWeb.PageController do
 	  data_path: Routes.page_path(conn, :get_register_data))
 
   def get_register_data(conn, _params),
-    do: json(conn, Handler.Register.data(conn))
+    do: json(conn, Handler.Register.gen_data(conn))
 
   def post_register_data(conn, params),
     do: json(conn, Handler.Register.process_post_register(conn, params))
@@ -57,7 +57,7 @@ defmodule RiotjsWeb.PageController do
 	  data_path: Routes.page_path(conn, :get_login_data))
 
   def get_login_data(conn, _params),
-    do: json(conn, Handler.Login.data(conn))
+    do: json(conn, Handler.Login.gen_data(conn))
 
 
   def post_login_data(conn, params) do
@@ -69,9 +69,8 @@ defmodule RiotjsWeb.PageController do
 
   def post_logout(conn, _params) do
     conn
-    |> Handler.Logout.process
+    |> Handler.Logout.process_logout
     |> json(nil)
   end
-
 
 end

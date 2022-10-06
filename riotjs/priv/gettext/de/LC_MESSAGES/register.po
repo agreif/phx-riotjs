@@ -11,12 +11,12 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2\n"
 
-#: lib/riotjs/handler/register.ex:61
+#: lib/riotjs/handler/register.ex:14
 #, elixir-autogen, elixir-format
 msgid "Password"
 msgstr "Passwort"
 
-#: lib/riotjs/handler/register.ex:60
+#: lib/riotjs/handler/register.ex:13
 #, elixir-autogen, elixir-format
 msgid "Register"
 msgstr "Registrierung"

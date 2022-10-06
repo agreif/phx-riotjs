@@ -29,16 +29,16 @@ defmodule Riotjs.Handler.Register do
       hashed_password = Bcrypt.hash_pwd_salt(user.password)
       changeset = changeset |> Changeset.put_change(:password, hashed_password)
       case Repo.insert(changeset) do
-	{:ok, _} -> Handler.Login.data(conn)
+	{:ok, _} -> Handler.Login.gen_data(conn)
 	{:error, changeset} ->
-	  data(conn, changeset.params, Common.human_errors(changeset, locale))
+	  gen_data(conn, changeset.params, Common.human_errors(changeset, locale))
       end
     else
-      data(conn, changeset.params, Common.human_errors(changeset, locale))
+      gen_data(conn, changeset.params, Common.human_errors(changeset, locale))
     end
   end
 
-  def data(conn, params \\ %{}, errors \\ %{}) do
+  def gen_data(conn, params \\ %{}, errors \\ %{}) do
     form_post_data_url = Routes.page_url(conn, :post_register_data)
     locale = Common.locale(conn)
     %Data{data_url: Routes.page_url(conn, :get_register_data),

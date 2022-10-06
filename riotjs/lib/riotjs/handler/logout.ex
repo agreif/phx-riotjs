@@ -8,7 +8,7 @@ defmodule Riotjs.Handler.Logout do
 
   Returns conn
   """
-  def process(conn) do
+  def process_logout(conn) do
     Common.renew_session(conn)
   end
 

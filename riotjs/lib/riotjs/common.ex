@@ -19,7 +19,7 @@ defmodule Riotjs.Common do
     %Data.Navbar{navitems: navitems}
   end
 
-  def logout_data(conn) do
+  def gen_logout_data(conn) do
     logout_post_url = Routes.page_url(conn, :post_logout)
     %Data.Logout{
       post_url: logout_post_url,

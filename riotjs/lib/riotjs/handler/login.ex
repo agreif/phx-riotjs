@@ -27,7 +27,7 @@ defmodule Riotjs.Handler.Login do
   """
   def process_post_login(conn, params) do
     locale = Common.locale(conn)
-    changeset = gen_changeset(params)
+    changeset = login_changeset(params)
     if changeset.valid? do
       %{login: login, password: password} = Changeset.apply_changes(changeset)
       if Model.User.get_by_login_and_password(login, password) do
@@ -35,19 +35,19 @@ defmodule Riotjs.Handler.Login do
 	data = [] # does not matter what but not login-data
 	{conn, data}
       else
-	  data = data(conn, params,
+	  data = gen_data(conn, params,
 	    changeset
 	    |> Changeset.add_error(:misc, "unknown user or wrong password")
 	    |> Common.human_errors(locale))
 	  {conn, data}
       end
     else
-      data = data(conn, params, Common.human_errors(changeset, locale))
+      data = gen_data(conn, params, Common.human_errors(changeset, locale))
       {conn, data}
     end
   end
 
-  defp gen_changeset(params) do
+  defp login_changeset(params) do
     data = %{}
     types = %{login: :string, password: :string}
     {data, types}
@@ -55,7 +55,7 @@ defmodule Riotjs.Handler.Login do
     |> Changeset.validate_required([:login, :password])
   end
 
-  def data(conn, params \\ %{}, errors \\ %{}) do
+  def gen_data(conn, params \\ %{}, errors \\ %{}) do
     locale = Common.locale(conn)
     form_post_data_url = Routes.page_url(conn, :post_login_data)
     %Data{data_url: Routes.page_url(conn, :get_login_data),

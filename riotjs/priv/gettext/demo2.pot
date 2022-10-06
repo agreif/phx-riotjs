@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 
-#: lib/riotjs/handler/demo2.ex:31
+#: lib/riotjs/handler/demo2.ex:11
 #, elixir-autogen, elixir-format
 msgid "Demo 2 Page"
 msgstr ""
