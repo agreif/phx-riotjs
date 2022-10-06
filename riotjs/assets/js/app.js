@@ -47,6 +47,7 @@ import "../css/uikit.css"
 import uikit from "../vendor/uikit"
 import uikit_icons from "../vendor/uikit-icons"
 uikit.use(uikit_icons)
+window.UIkit = uikit
 
 import * as riot from "../vendor/riot"
 window.riot = riot
