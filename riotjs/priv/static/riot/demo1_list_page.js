@@ -96,7 +96,7 @@ var demo1_list_page = {
     selector: '[expr23]',
     itemName: 'item',
     indexName: null,
-    evaluate: _scope => _scope.context.data.pages.demo1_list.demo1s
+    evaluate: _scope => _scope.context.data.pages.demo1_list.demo1_items
   }]),
   name: 'demo1-list-page'
 };

@@ -26,9 +26,10 @@ defmodule Riotjs.Handler.Demo1 do
   ###################
 
   def gen_list_data(conn) do
-    demo1_datas = Model.Demo1.list_demo1s()
-    |> Enum.map(fn demo1 -> %Data.Demo1{entity: demo1,
-				       demo1_update_data_url: Routes.page_url(conn, :get_demo1_update_data, demo1)} end)
+    demo1_items = Model.Demo1.list_demo1s()
+    |> Enum.map(fn demo1 ->
+      %Data.Demo1Item{entity: demo1,
+		      demo1_update_data_url: Routes.page_url(conn, :get_demo1_update_data, demo1)} end)
     locale = Common.locale(conn)
     %Data{data_url: Routes.page_url(conn, :get_demo1_list_data),
 	  locale: locale,
@@ -39,7 +40,7 @@ defmodule Riotjs.Handler.Demo1 do
 	  logout: Common.gen_logout_data(conn),
 	  pages: %Data.Pages{
 	    demo1_list: %Data.Demo1ListPage{
-	      demo1s: demo1_datas,
+	      demo1_items: demo1_items,
 	      demo1_add_data_url: Routes.page_url(conn, :get_demo1_add_data),
             }
 	  },

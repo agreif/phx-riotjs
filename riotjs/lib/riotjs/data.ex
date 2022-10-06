@@ -53,11 +53,11 @@ end
 
 defmodule Riotjs.Data.Demo1ListPage do
   @derive Jason.Encoder
-  @enforce_keys [:demo1s, :demo1_add_data_url]
-  defstruct [:demo1s, :demo1_add_data_url]
+  @enforce_keys [:demo1_items, :demo1_add_data_url]
+  defstruct [:demo1_items, :demo1_add_data_url]
 end
 
-defmodule Riotjs.Data.Demo1 do
+defmodule Riotjs.Data.Demo1Item do
   @derive Jason.Encoder
   @enforce_keys [:entity, :demo1_update_data_url]
   defstruct [:entity, :demo1_update_data_url]
