@@ -48,7 +48,7 @@ defmodule RiotjsWeb.PageController do
     do: json(conn, Handler.Register.data(conn))
 
   def post_register_data(conn, params),
-    do: json(conn, Handler.Register.process(conn, params))
+    do: json(conn, Handler.Register.process_post_register(conn, params))
 
   # login
 
@@ -61,7 +61,7 @@ defmodule RiotjsWeb.PageController do
 
 
   def post_login_data(conn, params) do
-    {conn, data} = Handler.Login.process(conn, params)
+    {conn, data} = Handler.Login.process_post_login(conn, params)
     json(conn, data)
   end
 

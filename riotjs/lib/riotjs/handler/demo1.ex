@@ -2,7 +2,7 @@ defmodule Riotjs.Handler.Demo1 do
   alias Riotjs.{Common, Data, Model, Handler, Repo}
   alias RiotjsWeb.Router.Helpers, as: Routes
   alias Phoenix.HTML.Tag
-  alias Riotjs.Model
+  alias Ecto.Changeset
   import RiotjsWeb.Gettext
 
   @gettext_domain "demo1"
@@ -102,16 +102,14 @@ defmodule Riotjs.Handler.Demo1 do
   end
 
   def process_post_update(conn, params) do
-    id = Map.get(params, "id")
-    demo1 = Repo.get!(Model.Demo1, id)
-    changeset = Ecto.Changeset.change(demo1,
-      attr1: params["attr1"],
-      attr2: params["attr2"])
+    demo1 = Repo.get!(Model.Demo1, Map.get(params, "id"))
+    changeset = Model.Demo1.changeset(demo1, params)
     case Repo.update(changeset) do
       {:ok, _} -> Handler.Demo1.list_data(conn)
       {:error, changeset} ->
-	locale = Common.locale(conn)
-	add_data(conn, changeset.params, Common.human_errors(changeset, locale))
+	update_data(conn,
+	  Changeset.apply_changes(changeset),
+	  Common.human_errors(changeset, Common.locale(conn)))
     end
   end
 

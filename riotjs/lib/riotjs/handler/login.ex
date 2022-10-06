@@ -25,7 +25,7 @@ defmodule Riotjs.Handler.Login do
 
   Returns {conn, data} tuple
   """
-  def process(conn, params) do
+  def process_post_login(conn, params) do
     locale = Common.locale(conn)
     changeset = gen_changeset(params)
     if changeset.valid? do

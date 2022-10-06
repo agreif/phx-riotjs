@@ -21,7 +21,7 @@ defmodule Riotjs.Handler.Register do
 
   Returns {conn, data} tuple
   """
-  def process(conn, params) do
+  def process_post_register(conn, params) do
     locale = Common.locale(conn)
     changeset = Model.User.changeset(%Model.User{}, params)
     if changeset.valid? do
