@@ -8,7 +8,7 @@ defmodule Riotjs.Common do
   def gen_navbar(conn, active_item) do
     navitems = [
       %Data.Navitem{label: "Demo 1",
-	       is_active: active_item == :demo1,
+	       is_active: active_item == :demo1_list,
 	       url: Routes.page_url(conn, :get_demo1_list_page),
 	       data_url: Routes.page_url(conn, :get_demo1_list_data) },
       %Data.Navitem{label: "Demo 2",

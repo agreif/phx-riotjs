@@ -32,7 +32,7 @@ defmodule Riotjs.Handler.Demo1 do
     locale = Common.locale(conn)
     %Data{data_url: Routes.page_url(conn, :get_demo1_list_data),
 	  locale: locale,
-	  navbar: Common.gen_navbar(conn, :demo1),
+	  navbar: Common.gen_navbar(conn, :demo1_list),
 	  history_state: %Data.HistoryState{
 	    title: "Demo 1",
 	    url: Routes.page_url(conn, :get_demo1_list_page)},
@@ -134,18 +134,5 @@ defmodule Riotjs.Handler.Demo1 do
 	  translations: Common.translations(@gettext_domain, texts_en(), locale)
     }
   end
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 end
