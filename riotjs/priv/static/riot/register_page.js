@@ -10,7 +10,7 @@ var register_page = {
       this.context.postForm(this.context.data.pages.register.form.post_url, this.context.data.pages.register.csrf_token, '#register');
     },
 
-    loginPage() {
+    showLoginPage() {
       event.preventDefault();
       this.context.refreshDataGet(this.context.data.pages.register.get_login_data_url);
     }
@@ -115,7 +115,7 @@ var register_page = {
     }, {
       type: expressionTypes.EVENT,
       name: 'onclick',
-      evaluate: _scope => _scope.loginPage
+      evaluate: _scope => _scope.showLoginPage
     }]
   }]),
   name: 'register-page'

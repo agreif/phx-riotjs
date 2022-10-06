@@ -32,7 +32,7 @@ var body_tag = {
     },
 
     refreshDataPost(postUrl, csrfToken) {
-      postRequest(postUrl, csrfToken, {});
+      this.postRequest(postUrl, csrfToken, {});
     },
 
     postRequest(postUrl, csrfToken, json, callbackFun) {

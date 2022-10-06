@@ -32,7 +32,7 @@
                   <button onclick="{login}" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Login</button>
 		</div>
 		<div class="uk-text-small uk-text-center uk-margin-top">
-		  <a href="{context.data.pages.login.register_url}" onclick="{registerPage}">Register</a>
+		  <a href="{context.data.pages.login.register_url}" onclick="{showRegisterPage}">Register</a>
 		  |
 		  <a href="#">Forgot your password</a>
 		</div>
@@ -67,7 +67,7 @@
 	    }
 	},
 
-	registerPage() {
+	showRegisterPage() {
 	    event.preventDefault()
 	    this.context.refreshDataGet(this.context.data.pages.login.get_register_data_url)
 	}

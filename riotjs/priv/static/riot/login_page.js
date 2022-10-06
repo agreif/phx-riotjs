@@ -19,7 +19,7 @@ var login_page = {
       }
     },
 
-    registerPage() {
+    showRegisterPage() {
       event.preventDefault();
       this.context.refreshDataGet(this.context.data.pages.login.get_register_data_url);
     }
@@ -105,7 +105,7 @@ var login_page = {
     }, {
       type: expressionTypes.EVENT,
       name: 'onclick',
-      evaluate: _scope => _scope.registerPage
+      evaluate: _scope => _scope.showRegisterPage
     }]
   }]),
   name: 'login-page'
