@@ -1,6 +1,6 @@
 defmodule Riotjs.Model.Demo1 do
   use Ecto.Schema
-  import Ecto.Changeset
+  import Ecto.{Changeset, Query}
   alias Riotjs.Repo
   alias Riotjs.Model
 
@@ -19,7 +19,8 @@ defmodule Riotjs.Model.Demo1 do
     |> validate_required([:attr1])
   end
 
-  def list_demo1s do
-    Repo.all(Model.Demo1)
+  def all_demo1s do
+    query = from d in Model.Demo1, order_by: d.attr1
+    Repo.all(query)
   end
 end

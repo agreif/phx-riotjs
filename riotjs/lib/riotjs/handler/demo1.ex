@@ -29,7 +29,7 @@ defmodule Riotjs.Handler.Demo1 do
   ###################
 
   def gen_list_data(conn) do
-    demo1_items = Model.Demo1.list_demo1s()
+    demo1_items = Model.Demo1.all_demo1s()
     |> Enum.map(fn demo1 ->
       post_data_url = Routes.page_url(conn, :post_demo1_delete_data, demo1)
       %Data.Demo1Item{entity: demo1,
