@@ -78,8 +78,8 @@ end
 
 defmodule Riotjs.Data.Demo2Page do
   @derive Jason.Encoder
-  @enforce_keys []
-  defstruct []
+  @enforce_keys [:rows]
+  defstruct [:rows]
 end
 
 defmodule Riotjs.Data.RegisterPage do

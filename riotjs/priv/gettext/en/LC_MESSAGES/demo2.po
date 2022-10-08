@@ -15,3 +15,23 @@ msgstr ""
 #, elixir-autogen, elixir-format
 msgid "Demo 2 Page"
 msgstr ""
+
+#: lib/riotjs/handler/demo2.ex:12
+#, elixir-autogen, elixir-format
+msgid "Column 1"
+msgstr ""
+
+#: lib/riotjs/handler/demo2.ex:13
+#, elixir-autogen, elixir-format
+msgid "Column 2"
+msgstr ""
+
+#: lib/riotjs/handler/demo2.ex:14
+#, elixir-autogen, elixir-format
+msgid "Column 3"
+msgstr ""
+
+#: lib/riotjs/handler/demo2.ex:15
+#, elixir-autogen, elixir-format
+msgid "Refresh"
+msgstr ""

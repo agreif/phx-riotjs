@@ -1,9 +1,30 @@
 <demo2-page>
   <h1>{context.data.translations['Demo 2 Page']}</h1>
+  <table class="uk-table uk-table-small uk-table-divider">
+    <thead>
+      <tr>
+        <th>{context.data.translations['Column 1']}</th>
+        <th>{context.data.translations['Column 2']}</th>
+        <th>{context.data.translations['Column 3']}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr each="{row in context.data.pages.demo2.rows}">
+        <td>{row[0]}</td>
+        <td>{row[1]}</td>
+        <td>{row[2]}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="uk-button uk-button-primary" onclick="{(e) => refreshNumbers()}">{context.data.translations['Refresh']}</button>
 
   <script>
     export default {
 	onBeforeMount(props) { this.context = props.context },
+
+	refreshNumbers() {
+	    this.context.refreshDataGet(this.context.data.data_url)
+	},
     }
   </script>
 </demo2-page>
