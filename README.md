@@ -1,8 +1,8 @@
 # Live-Demo
-you can test the app here **but please use only dummy data**
+you can test the app here (but please use only dummy data).
 It uses a selfsigned certificate, so you will have to acknowledge the warning.
 
-[https://phx-riotjs.greif-it.de/](https://phx-riotjs.greif-it.de/)
+[See Live-Demo Here](https://phx-riotjs.greif-it.de/)
 
 
 either you use an existing account:
