@@ -69,10 +69,8 @@
 
   <script>
     export default {
-	onBeforeMount(props) {
-	    this.context = props.context
-	    this.sp = " "
-	},
+	onBeforeMount(props) {this.context = props.context},
+	sp: " ",
 
 	login(event) {
 	    event.preventDefault()

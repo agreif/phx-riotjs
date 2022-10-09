@@ -3,8 +3,9 @@ var login_page = {
   exports: {
     onBeforeMount(props) {
       this.context = props.context;
-      this.sp = " ";
     },
+
+    sp: " ",
 
     login(event) {
       event.preventDefault();
