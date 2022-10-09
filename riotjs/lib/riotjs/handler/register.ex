@@ -12,6 +12,7 @@ defmodule Riotjs.Handler.Register do
       [
 	dgettext(@gettext_domain, "Register"),
 	dgettext(@gettext_domain, "Password"),
+	dgettext(@gettext_domain, "Forgot your password"),
       ]
     end)
   end

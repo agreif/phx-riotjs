@@ -20,3 +20,8 @@ msgstr ""
 #, elixir-autogen, elixir-format
 msgid "Register"
 msgstr ""
+
+#: lib/riotjs/handler/register.ex:15
+#, elixir-autogen, elixir-format
+msgid "Forgot your password"
+msgstr ""

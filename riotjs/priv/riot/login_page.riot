@@ -3,6 +3,29 @@
     <div class="uk-width-1-1">
       <div class="uk-container">
 	<div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
+          <div class="uk-width-1-1@">
+	    <p class="uk-text-center">{context.data.translations['This is a proof-of-concept application with the']}</p>
+	    <p class="uk-text-center">
+	      <a href="https://www.phoenixframework.org/">Phoenix</a>{sp}{context.data.translations['web framework']},{sp}
+	      <a href="https://riot.js.org/">RiotJS</a>{sp}{context.data.translations['component framework and']}{sp}
+	      <a href="https://getuikit.com/">UIkit</a>{sp}{context.data.translations['front-end framework']}{sp}
+	    </p>
+	    <p class="uk-text-center">
+	      {context.data.translations['Use login']}:{sp}<span class="uk-text-success">testuser</span>{sp}
+	      {context.data.translations['and password']}:{sp}<span class="uk-text-success">test12345678</span>{sp}
+	      {context.data.translations['or create another']}{sp}
+	      <span class="uk-text-bold">{context.data.translations['dummy user']}</span>{sp}
+	      {context.data.translations['on the register page']}
+	    </p>
+	  </div>
+	</div>
+      </div>
+    </div>
+  </div>
+  <div class="uk-flex uk-flex-middle">
+    <div class="uk-width-1-1">
+      <div class="uk-container">
+	<div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
           <div class="uk-width-1-1@m">
             <div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
               <h3 class="uk-card-title uk-text-center">Login</h3>
@@ -32,9 +55,9 @@
                   <button onclick="{login}" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Login</button>
 		</div>
 		<div class="uk-text-small uk-text-center uk-margin-top">
-		  <a href="{context.data.pages.login.register_url}" onclick="{showRegisterPage}">Register</a>
+		  <a href="{context.data.pages.login.register_url}" onclick="{showRegisterPage}">{context.data.translations['Register']}</a>
 		  |
-		  <a href="#">Forgot your password</a>
+		  <a href="#">{context.data.translations['Forgot your password']}</a>
 		</div>
 	      </form>
             </div>
@@ -46,7 +69,10 @@
 
   <script>
     export default {
-	onBeforeMount(props) { this.context = props.context },
+	onBeforeMount(props) {
+	    this.context = props.context
+	    this.sp = " "
+	},
 
 	login(event) {
 	    event.preventDefault()
