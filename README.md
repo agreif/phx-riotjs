@@ -5,7 +5,7 @@ you can test the app here (but please use only dummy data).
 
 either you use an existing account:
 ```
-login: testuser
+login:    testuser
 password: test12345678
 ```
 or you create a new dummy account on the register page.
