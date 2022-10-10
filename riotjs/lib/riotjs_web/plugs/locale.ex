@@ -1,4 +1,7 @@
 defmodule RiotjsWeb.Plugs.Locale do
+  @moduledoc """
+  Plug to put the locale in the session.
+  """
   alias Plug.Conn
 
   @locales ["en", "de"]

@@ -1,4 +1,8 @@
 defmodule Riotjs.Handler.Logout do
+  @moduledoc """
+  Logout business logic.
+  """
+
   alias Riotjs.{Common}
 
   @doc """

@@ -1,4 +1,8 @@
 defmodule Riotjs.Model.Demo1 do
+  @moduledoc """
+  Demo1 Model.
+  """
+
   use Ecto.Schema
   import Ecto.{Changeset, Query}
   alias Riotjs.Repo

@@ -1,4 +1,8 @@
 defmodule RiotjsWeb.PageController do
+  @moduledoc """
+  Page Controller.
+  """
+
   use RiotjsWeb, :controller
   alias Riotjs.Handler
 
@@ -12,7 +16,7 @@ defmodule RiotjsWeb.PageController do
 
   def get_demo1_list_page(conn, _params),
     do: render(conn, :page,
-	  data_url: Routes.page_url(conn, :get_demo1_list_data))
+          data_url: Routes.page_url(conn, :get_demo1_list_data))
 
   def get_demo1_list_data(conn, _params),
     do: json(conn, Handler.Demo1.gen_list_data(conn))
@@ -36,7 +40,7 @@ defmodule RiotjsWeb.PageController do
 
   def get_demo2_page(conn, _params),
     do: render(conn, :page,
-	  data_url: Routes.page_url(conn, :get_demo2_data))
+          data_url: Routes.page_url(conn, :get_demo2_data))
 
   def get_demo2_data(conn, _params),
     do: json(conn, Handler.Demo2.gen_data(conn))
@@ -45,7 +49,7 @@ defmodule RiotjsWeb.PageController do
 
   def get_register_page(conn, _params),
     do: render(conn, :page,
-	  data_url: Routes.page_url(conn, :get_register_data))
+          data_url: Routes.page_url(conn, :get_register_data))
 
   def get_register_data(conn, _params),
     do: json(conn, Handler.Register.gen_data(conn))
@@ -57,7 +61,7 @@ defmodule RiotjsWeb.PageController do
 
   def get_login_page(conn, _params),
     do: render(conn, :page,
-	  data_url: Routes.page_url(conn, :get_login_data))
+          data_url: Routes.page_url(conn, :get_login_data))
 
   def get_login_data(conn, _params),
     do: json(conn, Handler.Login.gen_data(conn))

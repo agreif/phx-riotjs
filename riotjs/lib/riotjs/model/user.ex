@@ -1,4 +1,8 @@
 defmodule Riotjs.Model.User do
+  @moduledoc """
+  User Model.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
   alias Riotjs.Repo

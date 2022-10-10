@@ -1,4 +1,8 @@
 defmodule RiotjsWeb.Router do
+  @moduledoc """
+  Router.
+  """
+
   use RiotjsWeb, :router
   alias RiotjsWeb.Router.Helpers, as: Routes
 
@@ -46,8 +50,8 @@ defmodule RiotjsWeb.Router do
       conn
       |> assign(:riot_tags, [:body, :nav])
       |> assign(:riot_pages, [:error,
-			     :demo1_list, :demo1_add_update,
-			     :demo2])
+                             :demo1_list, :demo1_add_update,
+                             :demo2])
     else
       conn
       |> assign(:riot_tags, [:body, :unauth_nav])
