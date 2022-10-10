@@ -24,7 +24,7 @@ var nav_tag = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<nav class="uk-navbar-container uk-margin" uk-navbar><div class="uk-navbar-left"><a class="uk-navbar-item uk-logo" href="#">phx-riotjs</a><ul class="uk-navbar-nav"><li expr57="expr57"></li></ul></div><div class="uk-navbar-right"><ul class="uk-navbar-nav"><li expr59="expr59"></li><li expr61="expr61"></li><li><a expr63="expr63">Logout</a></li></ul></div></nav>', [{
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<nav class="uk-navbar-container uk-margin" uk-navbar><div class="uk-navbar-left uk-margin-left"><a class="uk-navbar-item uk-logo" href="#">phx-riotjs</a><ul class="uk-navbar-nav"><li expr57="expr57"></li></ul></div><div class="uk-navbar-right uk-margin-right"><ul class="uk-navbar-nav"><li expr59="expr59"></li><li expr61="expr61"></li><li><a expr63="expr63">Logout</a></li></ul></div></nav>', [{
     type: bindingTypes.EACH,
     getKey: null,
     condition: null,

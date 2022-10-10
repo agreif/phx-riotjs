@@ -1,6 +1,6 @@
 <nav-tag>
   <nav class="uk-navbar-container uk-margin" uk-navbar>
-    <div class="uk-navbar-left">
+    <div class="uk-navbar-left uk-margin-left">
       <a class="uk-navbar-item uk-logo" href="#">phx-riotjs</a>
       <ul class="uk-navbar-nav">
 	<li class="{navitem.is_active ? 'uk-active' : null}" each="{navitem in context.data.navbar.navitems}">
@@ -8,7 +8,7 @@
 	</li>
       </ul>
     </div>
-    <div class="uk-navbar-right">
+    <div class="uk-navbar-right uk-margin-right">
       <ul class="uk-navbar-nav">
 	<li if="{context.data.locale == 'de'}"><a onclick="{(e) => changeLocale(e, 'en')}">EN</a></li>
 	<li if="{context.data.locale == 'en'}"><a onclick="{(e) => changeLocale(e, 'de')}">DE</a></li>

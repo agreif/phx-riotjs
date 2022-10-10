@@ -10,7 +10,7 @@ var unauth_nav_tag = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<nav class="uk-navbar-container uk-margin" uk-navbar><div class="uk-navbar-left"><a class="uk-navbar-item uk-logo" href="#">phx-riot</a></div><div class="uk-navbar-right"><ul class="uk-navbar-nav"><li expr82="expr82"></li><li expr84="expr84"></li></ul></div></nav>', [{
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<nav class="uk-navbar-container uk-margin" uk-navbar><div class="uk-navbar-left uk-margin-left"><a class="uk-navbar-item uk-logo" href="#">phx-riot</a></div><div class="uk-navbar-right uk-margin-right"><ul class="uk-navbar-nav"><li expr82="expr82"></li><li expr84="expr84"></li></ul></div></nav>', [{
     type: bindingTypes.IF,
     evaluate: _scope => _scope.context.data.locale == 'de',
     redundantAttribute: 'expr82',

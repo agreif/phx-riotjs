@@ -63,7 +63,7 @@ var body_tag = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-container .uk-margin-left"><unauth-nav-tag expr0="expr0"></unauth-nav-tag><nav-tag expr1="expr1"></nav-tag><error-page expr2="expr2"></error-page><demo1-list-page expr3="expr3"></demo1-list-page><demo1-add-update-page expr4="expr4"></demo1-add-update-page><demo2-page expr5="expr5"></demo2-page><register-page expr6="expr6"></register-page><login-page expr7="expr7"></login-page></div>', [{
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div><unauth-nav-tag expr0="expr0"></unauth-nav-tag><nav-tag expr1="expr1"></nav-tag><div class="uk-container"><error-page expr2="expr2"></error-page><demo1-list-page expr3="expr3"></demo1-list-page><demo1-add-update-page expr4="expr4"></demo1-add-update-page><demo2-page expr5="expr5"></demo2-page><register-page expr6="expr6"></register-page><login-page expr7="expr7"></login-page></div></div>', [{
     type: bindingTypes.IF,
     evaluate: _scope => _scope.data.pages.register || _scope.data.pages.login,
     redundantAttribute: 'expr0',

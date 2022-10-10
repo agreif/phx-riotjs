@@ -1,13 +1,15 @@
 <body-tag>
-  <div class="uk-container .uk-margin-left">
+  <div>
     <unauth-nav-tag context="{this}" if="{data.pages.register || data.pages.login}"></unauth-nav-tag>
     <nav-tag context="{this}" if="{data.navbar}"></nav-tag>
-    <error-page context="{this}" if="{data.pages.error}"></error-page>
-    <demo1-list-page context="{this}" if="{data.pages.demo1_list}"></demo1-list-page>
-    <demo1-add-update-page context="{this}" if="{data.pages.demo1_add_update}"></demo1-add-update-page>
-    <demo2-page context="{this}" if="{data.pages.demo2}"></demo2-page>
-    <register-page context="{this}" if="{data.pages.register}"></register-page>
-    <login-page context="{this}" if="{data.pages.login}"></login-page>
+    <div class="uk-container">
+      <error-page context="{this}" if="{data.pages.error}"></error-page>
+      <demo1-list-page context="{this}" if="{data.pages.demo1_list}"></demo1-list-page>
+      <demo1-add-update-page context="{this}" if="{data.pages.demo1_add_update}"></demo1-add-update-page>
+      <demo2-page context="{this}" if="{data.pages.demo2}"></demo2-page>
+      <register-page context="{this}" if="{data.pages.register}"></register-page>
+      <login-page context="{this}" if="{data.pages.login}"></login-page>
+    </div>
   </div>
 
   <script>

@@ -59,7 +59,7 @@ var demo1_list_page = {
     type: bindingTypes.EACH,
     getKey: null,
     condition: null,
-    template: template('<td class="uk-table-link"><a expr24="expr24" class="uk-link-reset"> </a></td><td class="uk-table-link"><a expr25="expr25" class="uk-link-reset"> </a></td><td .uk-width-small><button expr26="expr26" class="uk-float-right uk-button uk-button-link" uk-tooltip><span uk-icon="icon: trash"></span></button><button expr27="expr27" class="uk-float-right uk-button uk-button-link" uk-tooltip><span uk-icon="icon: pencil"></span></button></td>', [{
+    template: template('<td class="uk-table-link"><a expr24="expr24" class="uk-link-reset"> </a></td><td class="uk-table-link"><a expr25="expr25" class="uk-link-reset"> </a></td><td class="uk-width-small"><button expr26="expr26" class="uk-float-right uk-button uk-button-link" uk-tooltip><span uk-icon="icon: trash"></span></button><button expr27="expr27" class="uk-float-right uk-button uk-button-link" uk-tooltip><span uk-icon="icon: pencil"></span></button></td>', [{
       redundantAttribute: 'expr24',
       selector: '[expr24]',
       expressions: [{
