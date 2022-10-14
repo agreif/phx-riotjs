@@ -8,6 +8,7 @@ defmodule RiotWatcher do
   """
 
   use GenServer
+  import Say
 
   def start_link(args) do
     GenServer.start_link(__MODULE__, args)
@@ -21,15 +22,15 @@ defmodule RiotWatcher do
 
   def handle_info({:file_event, watcher_pid, {path, events}}, %{watcher_pid: watcher_pid} = state) do
     if :closed in events do
-      IO.inspect(path)
+      IO.puts(path)
       {_, result} = System.cmd(System.cwd <> "/node_modules/.bin/riot",
         [Path.basename(path), "-o", System.cwd <> "/priv/static/riot/"],
         cd: System.cwd <> "/priv/riot")
       case result do
-        0 -> System.cmd("ssh", ["-p", "2209", "localhost", "say ok"])
-        _ -> System.cmd("ssh", ["-p", "2209", "localhost", "say riot error"])
+        0 -> say("ok")
+        _ -> say("riot error")
       end
-      IO.inspect("-----------------------------------------------------------")
+      IO.puts("-----------------------------------------------------------")
     end
     {:noreply, state}
   end
@@ -46,4 +47,5 @@ end
 
 
 RiotWatcher.start_link(dirs: ["priv/riot/"])
+IO.puts("riot watcher running...")
 RiotWatcher.loop()

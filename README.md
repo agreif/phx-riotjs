@@ -10,6 +10,7 @@ password: test12345678
 ```
 or you create a new dummy account on the register page.
 
+
 # phx-riotjs
 Template (proof-of-concept) project that uses
 - Elixir/Phoenix webserver
@@ -22,6 +23,7 @@ Template (proof-of-concept) project that uses
 - Form validation with Ecto Changesets (only the registration form)
 - User registration stored to PostgreSQL DB with validations
 - i18n with gettext domains
+
 
 # Data flow
 
@@ -54,6 +56,7 @@ In the image three user requests are shown
 ![](images/6.png)
 ![](images/7.png)
 
+
 # Steps for adding a new page
 
 - create new .riot file e.g. 'riotjs/priv/static/riot/demo1_add_page.riot'
@@ -61,15 +64,19 @@ In the image three user requests are shown
 - add the controller actions 'riotjs/lib/riotjs_web/controllers/page_controller.ex'
 - mount the new tag in 'riotjs/priv/static/riot/body_tag.riot'
 
-# Helpful links/snippets
 
-[Ecto.Migration](https://hexdocs.pm/ecto_sql/Ecto.Migration.html#functions)
-[Plug.Conn](https://hexdocs.pm/plug/Plug.Conn.html#functions)
+# Riot file Watcher and auto recompile
+```
+$ mix run riot_watcher.exs
+```
+Uses the config in 'config/config.exs' for example like this, that tunnels  from my VM into my Mac and excutes there `say -v Karen some-text-to-speech`
+```
+config :say,
+  exec: "say",
+  exec_args: ~w(-v Karen),
+  ssh_args: ~w(-p 2209 localhost)
+```
 
-```
-mix phx.gen.schema Model.Demo1 demo1s attr1:string attr2:string
-mix ecto.migrate
-```
 
 # Run Phoenix Server and RiotJS auto-compile
 ```
@@ -81,12 +88,14 @@ The 'run_dev.sh' script starts the development server mode with
 - gettext extraction
 - phoenix server start
 
+
 # Prerequisites
 Install RiotJS
 ```
 cd riotjs
 npm install @riotjs/cli
 ```
+
 
 # Sample RiotJS Tag definition
 riotjs/priv/static/riot/todo.riot
@@ -111,11 +120,13 @@ riotjs/priv/static/riot/todo.riot
 </todo>
 ```
 
+
 # Tag Usage
 riotjs/lib/riotjs_web/templates/page/index.html.heex
 ```
   <todo message="kkk"></todo>
 ```
+
 
 # General configs
 riotjs/lib/riotjs_web/endpoint.ex
@@ -123,6 +134,7 @@ riotjs/lib/riotjs_web/endpoint.ex
 -    only: ~w(assets fonts images favicon.ico robots.txt)
 +    only: ~w(assets fonts images favicon.ico robots.txt riot)
 ```
+
 
 # Config for RiotJS in-browser compile
 
@@ -153,6 +165,7 @@ riotjs/lib/riotjs_web/templates/layout/root.html.heex
     </script>
 ```
 
+
 # Config for RiotJS external CLI compile
 
 Add RiotJS .js file:
@@ -176,4 +189,15 @@ riotjs/lib/riotjs_web/templates/layout/root.html.heex
       riot.register('todo', TodoTag)
       riot.mount('todo')
     </script>
+```
+
+
+# Helpful links/snippets
+
+[Ecto.Migration](https://hexdocs.pm/ecto_sql/Ecto.Migration.html#functions)
+[Plug.Conn](https://hexdocs.pm/plug/Plug.Conn.html#functions)
+
+```
+mix phx.gen.schema Model.Demo1 demo1s attr1:string attr2:string
+mix ecto.migrate
 ```
