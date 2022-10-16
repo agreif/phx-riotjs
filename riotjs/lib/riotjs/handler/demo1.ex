@@ -90,11 +90,11 @@ defmodule Riotjs.Handler.Demo1 do
           pages: %Data.Pages{
             demo1_add_update: %Data.Demo1AddUpdatePage{
               title_msgid: "Add Demo1",
-              form: %Data.Form{post_url: form_post_data_url,
+              form: %Data.Form{post_data_url: form_post_data_url,
+                               cancel_data_url: Routes.page_url(conn, :get_demo1_list_data),
                                params: params,
                                errors: errors},
-              csrf_token: Tag.csrf_token_value(form_post_data_url),
-              get_demo1_list_data_url: Routes.page_url(conn, :get_demo1_list_data)
+              csrf_token: Tag.csrf_token_value(form_post_data_url)
             }
           },
           translations: Common.translations(@gettext_domain, texts_en(), locale)
@@ -133,11 +133,11 @@ defmodule Riotjs.Handler.Demo1 do
           pages: %Data.Pages{
             demo1_add_update: %Data.Demo1AddUpdatePage{
               title_msgid: "Edit Demo1",
-              form: %Data.Form{post_url: form_post_data_url,
+              form: %Data.Form{post_data_url: form_post_data_url,
+                               cancel_data_url: Routes.page_url(conn, :get_demo1_list_data),
                                params: demo1,
                                errors: errors},
-              csrf_token: Tag.csrf_token_value(form_post_data_url),
-              get_demo1_list_data_url: Routes.page_url(conn, :get_demo1_list_data)
+              csrf_token: Tag.csrf_token_value(form_post_data_url)
             }
           },
           translations: Common.translations(@gettext_domain, texts_en(), locale)

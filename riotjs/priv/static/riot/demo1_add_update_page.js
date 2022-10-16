@@ -12,7 +12,7 @@ var demo1_add_update_page = {
 
     cancel(event) {
       event.preventDefault();
-      this.context.refreshDataGet(this.context.data.pages.demo1_add_update.get_demo1_list_data_url);
+      this.context.refreshDataGet(this.context.data.pages.demo1_add_update.form.cancel_data_url);
     }
 
   },

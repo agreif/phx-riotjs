@@ -52,8 +52,8 @@ defmodule Riotjs.Data.Form do
   Generic HTML Form data.
   """
   @derive Jason.Encoder
-  @enforce_keys [:post_url, :params, :errors]
-  defstruct [:post_url, :params, :errors]
+  @enforce_keys [:post_data_url, :cancel_data_url, :params, :errors]
+  defstruct [:post_data_url, :cancel_data_url, :params, :errors]
 end
 
 
@@ -100,8 +100,8 @@ defmodule Riotjs.Data.Demo1AddUpdatePage do
   Page to add Demo1 item.
   """
   @derive Jason.Encoder
-  @enforce_keys [:title_msgid, :form, :csrf_token, :get_demo1_list_data_url]
-  defstruct [:title_msgid, :form, :csrf_token, :get_demo1_list_data_url]
+  @enforce_keys [:title_msgid, :form, :csrf_token]
+  defstruct [:title_msgid, :form, :csrf_token]
 end
 
 

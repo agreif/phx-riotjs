@@ -31,12 +31,12 @@ var body_tag = {
       }).catch(err => console.error(err));
     },
 
-    refreshDataPost(postUrl, csrfToken) {
-      this.postRequest(postUrl, csrfToken, {});
+    refreshDataPost(dataUrl, csrfToken) {
+      this.postRequest(dataUrl, csrfToken, {});
     },
 
-    postRequest(postUrl, csrfToken, json, callbackFun) {
-      fetch(postUrl, {
+    postRequest(dataUrl, csrfToken, json, callbackFun) {
+      fetch(dataUrl, {
         method: "POST",
         headers: {
           'Accept': 'application/json',
@@ -56,10 +56,10 @@ var body_tag = {
       });
     },
 
-    postForm(url, csrfToken, formSelector, callbackFun) {
+    postForm(dataUrl, csrfToken, formSelector, callbackFun) {
       const formData = new FormData(this.$(formSelector));
       const formJson = Object.fromEntries(formData.entries());
-      this.postRequest(url, csrfToken, formJson, callbackFun);
+      this.postRequest(dataUrl, csrfToken, formJson, callbackFun);
     }
 
   },
