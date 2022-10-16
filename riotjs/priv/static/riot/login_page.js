@@ -9,7 +9,7 @@ var login_page = {
 
     login(event) {
       event.preventDefault();
-      this.context.postForm(this.context.data.pages.login.form.post_url, this.context.data.pages.login.csrf_token, '#login', this.showErrorOrRedirectCallback);
+      this.context.postForm(this.context.data.pages.login.form.post_data_url, this.context.data.pages.login.csrf_token, '#login', this.showErrorOrRedirectCallback);
     },
 
     showErrorOrRedirectCallback(data) {
@@ -27,17 +27,17 @@ var login_page = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-flex uk-flex-middle"><div class="uk-width-1-1"><div class="uk-container"><div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid><div class="uk-width-1-1@"><p expr43="expr43" class="uk-text-center"> </p><p expr44="expr44" class="uk-text-center"><a href="https://www.phoenixframework.org/">Phoenix</a> <a href="https://riot.js.org/">RiotJS</a> <a href="https://getuikit.com/">UIkit</a> </p><p expr45="expr45" class="uk-text-center"> <span class="uk-text-success"> testuser </span> <span class="uk-text-success"> test12345678 </span> <span expr46="expr46" class="uk-text-bold"> </span> </p></div></div></div></div></div><div class="uk-flex uk-flex-middle"><div class="uk-width-1-1"><div class="uk-container"><div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid><div class="uk-width-1-1@m"><div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large"><h3 class="uk-card-title uk-text-center">Login</h3><form id="login"><div class="uk-margin"><div class="uk-inline uk-width-1-1"><span class="uk-form-icon" uk-icon="icon: user"></span><input type="text" name="login" class="uk-input uk-form-large" placeholder="Login"/></div><ul class="uk-list uk-list-collapse uk-margin-remove-top"><li expr47="expr47"></li></ul></div><div class="uk-margin"><div class="uk-inline uk-width-1-1"><span class="uk-form-icon" uk-icon="icon: lock"></span><input expr49="expr49" type="password" name="password" class="uk-input uk-form-large"/></div><ul class="uk-list uk-list-collapse uk-margin-remove-top"><li expr50="expr50"></li></ul></div><ul class="uk-list uk-list-collapse"><li expr52="expr52"></li></ul><div class="uk-margin"><button expr54="expr54" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Login</button></div><div class="uk-text-small uk-text-center uk-margin-top"><a expr55="expr55"> </a>\n\t\t  |\n\t\t  <a expr56="expr56" href="#"> </a></div></form></div></div></div></div></div></div>', [{
-    redundantAttribute: 'expr43',
-    selector: '[expr43]',
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-flex uk-flex-middle"><div class="uk-width-1-1"><div class="uk-container"><div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid><div class="uk-width-1-1@"><p expr0="expr0" class="uk-text-center"> </p><p expr1="expr1" class="uk-text-center"><a href="https://www.phoenixframework.org/">Phoenix</a> <a href="https://riot.js.org/">RiotJS</a> <a href="https://getuikit.com/">UIkit</a> </p><p expr2="expr2" class="uk-text-center"> <span class="uk-text-success"> testuser </span> <span class="uk-text-success"> test12345678 </span> <span expr3="expr3" class="uk-text-bold"> </span> </p></div></div></div></div></div><div class="uk-flex uk-flex-middle"><div class="uk-width-1-1"><div class="uk-container"><div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid><div class="uk-width-1-1@m"><div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large"><h3 class="uk-card-title uk-text-center">Login</h3><form id="login"><div class="uk-margin"><div class="uk-inline uk-width-1-1"><span class="uk-form-icon" uk-icon="icon: user"></span><input type="text" name="login" class="uk-input uk-form-large" placeholder="Login"/></div><ul class="uk-list uk-list-collapse uk-margin-remove-top"><li expr4="expr4"></li></ul></div><div class="uk-margin"><div class="uk-inline uk-width-1-1"><span class="uk-form-icon" uk-icon="icon: lock"></span><input expr6="expr6" type="password" name="password" class="uk-input uk-form-large"/></div><ul class="uk-list uk-list-collapse uk-margin-remove-top"><li expr7="expr7"></li></ul></div><ul class="uk-list uk-list-collapse"><li expr9="expr9"></li></ul><div class="uk-margin"><button expr11="expr11" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Login</button></div><div class="uk-text-small uk-text-center uk-margin-top"><a expr12="expr12"> </a>\n\t\t  |\n\t\t  <a expr13="expr13" href="#"> </a></div></form></div></div></div></div></div></div>', [{
+    redundantAttribute: 'expr0',
+    selector: '[expr0]',
     expressions: [{
       type: expressionTypes.TEXT,
       childNodeIndex: 0,
       evaluate: _scope => _scope.context.data.translations['This is a proof-of-concept application with the']
     }]
   }, {
-    redundantAttribute: 'expr44',
-    selector: '[expr44]',
+    redundantAttribute: 'expr1',
+    selector: '[expr1]',
     expressions: [{
       type: expressionTypes.TEXT,
       childNodeIndex: 1,
@@ -52,8 +52,8 @@ var login_page = {
       evaluate: _scope => [_scope.sp, _scope.context.data.translations['front-end framework'], _scope.sp].join('')
     }]
   }, {
-    redundantAttribute: 'expr45',
-    selector: '[expr45]',
+    redundantAttribute: 'expr2',
+    selector: '[expr2]',
     expressions: [{
       type: expressionTypes.TEXT,
       childNodeIndex: 0,
@@ -72,8 +72,8 @@ var login_page = {
       evaluate: _scope => [_scope.sp, '\n\t      ', _scope.context.data.translations['on the register page']].join('')
     }]
   }, {
-    redundantAttribute: 'expr46',
-    selector: '[expr46]',
+    redundantAttribute: 'expr3',
+    selector: '[expr3]',
     expressions: [{
       type: expressionTypes.TEXT,
       childNodeIndex: 0,
@@ -83,23 +83,23 @@ var login_page = {
     type: bindingTypes.EACH,
     getKey: null,
     condition: null,
-    template: template('<span expr48="expr48" class="uk-text-danger"> </span>', [{
-      redundantAttribute: 'expr48',
-      selector: '[expr48]',
+    template: template('<span expr5="expr5" class="uk-text-danger"> </span>', [{
+      redundantAttribute: 'expr5',
+      selector: '[expr5]',
       expressions: [{
         type: expressionTypes.TEXT,
         childNodeIndex: 0,
         evaluate: _scope => _scope.msg
       }]
     }]),
-    redundantAttribute: 'expr47',
-    selector: '[expr47]',
+    redundantAttribute: 'expr4',
+    selector: '[expr4]',
     itemName: 'msg',
     indexName: null,
     evaluate: _scope => _scope.context.data.pages.login.form.errors.login
   }, {
-    redundantAttribute: 'expr49',
-    selector: '[expr49]',
+    redundantAttribute: 'expr6',
+    selector: '[expr6]',
     expressions: [{
       type: expressionTypes.ATTRIBUTE,
       name: 'placeholder',
@@ -109,17 +109,17 @@ var login_page = {
     type: bindingTypes.EACH,
     getKey: null,
     condition: null,
-    template: template('<span expr51="expr51" class="uk-text-danger"> </span>', [{
-      redundantAttribute: 'expr51',
-      selector: '[expr51]',
+    template: template('<span expr8="expr8" class="uk-text-danger"> </span>', [{
+      redundantAttribute: 'expr8',
+      selector: '[expr8]',
       expressions: [{
         type: expressionTypes.TEXT,
         childNodeIndex: 0,
         evaluate: _scope => _scope.msg
       }]
     }]),
-    redundantAttribute: 'expr50',
-    selector: '[expr50]',
+    redundantAttribute: 'expr7',
+    selector: '[expr7]',
     itemName: 'msg',
     indexName: null,
     evaluate: _scope => _scope.context.data.pages.login.form.errors.password
@@ -127,31 +127,31 @@ var login_page = {
     type: bindingTypes.EACH,
     getKey: null,
     condition: null,
-    template: template('<span expr53="expr53" class="uk-text-danger"> </span>', [{
-      redundantAttribute: 'expr53',
-      selector: '[expr53]',
+    template: template('<span expr10="expr10" class="uk-text-danger"> </span>', [{
+      redundantAttribute: 'expr10',
+      selector: '[expr10]',
       expressions: [{
         type: expressionTypes.TEXT,
         childNodeIndex: 0,
         evaluate: _scope => _scope.msg
       }]
     }]),
-    redundantAttribute: 'expr52',
-    selector: '[expr52]',
+    redundantAttribute: 'expr9',
+    selector: '[expr9]',
     itemName: 'msg',
     indexName: null,
     evaluate: _scope => _scope.context.data.pages.login.form.errors.misc
   }, {
-    redundantAttribute: 'expr54',
-    selector: '[expr54]',
+    redundantAttribute: 'expr11',
+    selector: '[expr11]',
     expressions: [{
       type: expressionTypes.EVENT,
       name: 'onclick',
       evaluate: _scope => _scope.login
     }]
   }, {
-    redundantAttribute: 'expr55',
-    selector: '[expr55]',
+    redundantAttribute: 'expr12',
+    selector: '[expr12]',
     expressions: [{
       type: expressionTypes.TEXT,
       childNodeIndex: 0,
@@ -166,8 +166,8 @@ var login_page = {
       evaluate: _scope => _scope.showRegisterPage
     }]
   }, {
-    redundantAttribute: 'expr56',
-    selector: '[expr56]',
+    redundantAttribute: 'expr13',
+    selector: '[expr13]',
     expressions: [{
       type: expressionTypes.TEXT,
       childNodeIndex: 0,

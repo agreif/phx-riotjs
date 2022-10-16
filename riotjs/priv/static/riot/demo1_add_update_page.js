@@ -7,7 +7,7 @@ var demo1_add_update_page = {
 
     add(event) {
       event.preventDefault();
-      this.context.postForm(this.context.data.pages.demo1_add_update.form.post_url, this.context.data.pages.demo1_add_update.csrf_token, '#demo1-add-update');
+      this.context.postForm(this.context.data.pages.demo1_add_update.form.post_data_url, this.context.data.pages.demo1_add_update.csrf_token, '#demo1-add-update');
     },
 
     cancel(event) {
