@@ -11,27 +11,27 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2\n"
 
-#: lib/riotjs/handler/demo2.ex:11
+#: lib/riotjs/handler/demo2.ex:16
 #, elixir-autogen, elixir-format
 msgid "Demo 2 Page"
 msgstr "Demo 2 Seite"
 
-#: lib/riotjs/handler/demo2.ex:12
+#: lib/riotjs/handler/demo2.ex:17
 #, elixir-autogen, elixir-format
 msgid "Column 1"
 msgstr "Spalte 1"
 
-#: lib/riotjs/handler/demo2.ex:13
+#: lib/riotjs/handler/demo2.ex:18
 #, elixir-autogen, elixir-format
 msgid "Column 2"
 msgstr "Spalte 2"
 
-#: lib/riotjs/handler/demo2.ex:14
+#: lib/riotjs/handler/demo2.ex:19
 #, elixir-autogen, elixir-format
 msgid "Column 3"
 msgstr "Spalte 3"
 
-#: lib/riotjs/handler/demo2.ex:15
+#: lib/riotjs/handler/demo2.ex:20
 #, elixir-autogen, elixir-format
 msgid "Refresh"
 msgstr "Aktualisieren"

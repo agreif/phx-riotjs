@@ -10,17 +10,17 @@
 msgid ""
 msgstr ""
 
-#: lib/riotjs/handler/register.ex:14
+#: lib/riotjs/handler/register.ex:19
 #, elixir-autogen, elixir-format
 msgid "Password"
 msgstr ""
 
-#: lib/riotjs/handler/register.ex:13
+#: lib/riotjs/handler/register.ex:18
 #, elixir-autogen, elixir-format
 msgid "Register"
 msgstr ""
 
-#: lib/riotjs/handler/register.ex:15
+#: lib/riotjs/handler/register.ex:20
 #, elixir-autogen, elixir-format
 msgid "Forgot your password"
 msgstr ""

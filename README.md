@@ -78,7 +78,7 @@ config :say,
 ```
 
 
-# Run Phoenix Server and RiotJS auto-compile
+# Run Phoenix Server
 ```
 $ cd riotjs
 $ sh run_dev.sh
@@ -90,7 +90,7 @@ The 'run_dev.sh' script starts the development server mode with
 
 
 # Prerequisites
-Install RiotJS
+Install RiotJS:
 ```
 cd riotjs
 npm install @riotjs/cli
@@ -121,7 +121,7 @@ riotjs/priv/static/riot/todo.riot
 ```
 
 
-# Tag Usage
+## Tag Usage
 riotjs/lib/riotjs_web/templates/page/index.html.heex
 ```
   <todo message="kkk"></todo>

@@ -16,25 +16,25 @@ var demo1_add_update_page = {
     }
 
   },
-  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-card uk-card-default uk-card-body uk-card-hover"><h2 expr8="expr8" class="uk-card-title"> </h2><form id="demo1-add-update" class="uk-form-horizontal uk-margin-large"><div class="uk-margin"><label expr9="expr9" class="uk-form-label" for="form-horizontal-text"> </label><div class="uk-form-controls"><input expr10="expr10" type="text" name="attr1" class="uk-input"/><ul class="uk-list uk-list-collapse uk-margin-remove-top"><li expr11="expr11"></li></ul></div></div><div class="uk-margin"><label expr13="expr13" class="uk-form-label" for="form-horizontal-text"> </label><div class="uk-form-controls"><input expr14="expr14" type="text" name="attr2" class="uk-input"/><ul class="uk-list uk-list-collapse uk-margin-remove-top"><li expr15="expr15"></li></ul></div></div><div class="uk-text-center"><button expr17="expr17" class="uk-button uk-button-default" type="button"> </button><button expr18="expr18" class="uk-button uk-button-primary" type="button"> </button></div></form></div>', [{
-    redundantAttribute: 'expr8',
-    selector: '[expr8]',
+  template: (template, expressionTypes, bindingTypes, getComponent) => template('<div class="uk-card uk-card-default uk-card-body uk-card-hover"><h2 expr0="expr0" class="uk-card-title"> </h2><form id="demo1-add-update" class="uk-form-horizontal uk-margin-large"><div class="uk-margin"><label expr1="expr1" class="uk-form-label" for="form-horizontal-text"> </label><div class="uk-form-controls"><input expr2="expr2" type="text" name="attr1" class="uk-input"/><ul class="uk-list uk-list-collapse uk-margin-remove-top"><li expr3="expr3"></li></ul></div></div><div class="uk-margin"><label expr5="expr5" class="uk-form-label" for="form-horizontal-text"> </label><div class="uk-form-controls"><input expr6="expr6" type="text" name="attr2" class="uk-input"/><ul class="uk-list uk-list-collapse uk-margin-remove-top"><li expr7="expr7"></li></ul></div></div><div class="uk-text-center"><button expr9="expr9" class="uk-button uk-button-default" type="button"> </button><button expr10="expr10" class="uk-button uk-button-primary" type="button"> </button></div></form></div>', [{
+    redundantAttribute: 'expr0',
+    selector: '[expr0]',
     expressions: [{
       type: expressionTypes.TEXT,
       childNodeIndex: 0,
       evaluate: _scope => _scope.context.data.translations[_scope.context.data.pages.demo1_add_update.title_msgid]
     }]
   }, {
-    redundantAttribute: 'expr9',
-    selector: '[expr9]',
+    redundantAttribute: 'expr1',
+    selector: '[expr1]',
     expressions: [{
       type: expressionTypes.TEXT,
       childNodeIndex: 0,
       evaluate: _scope => _scope.context.data.translations['Attribute 1']
     }]
   }, {
-    redundantAttribute: 'expr10',
-    selector: '[expr10]',
+    redundantAttribute: 'expr2',
+    selector: '[expr2]',
     expressions: [{
       type: expressionTypes.VALUE,
       evaluate: _scope => _scope.context.data.pages.demo1_add_update.form.params.attr1
@@ -43,31 +43,31 @@ var demo1_add_update_page = {
     type: bindingTypes.EACH,
     getKey: null,
     condition: null,
-    template: template('<span expr12="expr12" class="uk-text-danger"> </span>', [{
-      redundantAttribute: 'expr12',
-      selector: '[expr12]',
+    template: template('<span expr4="expr4" class="uk-text-danger"> </span>', [{
+      redundantAttribute: 'expr4',
+      selector: '[expr4]',
       expressions: [{
         type: expressionTypes.TEXT,
         childNodeIndex: 0,
         evaluate: _scope => _scope.msg
       }]
     }]),
-    redundantAttribute: 'expr11',
-    selector: '[expr11]',
+    redundantAttribute: 'expr3',
+    selector: '[expr3]',
     itemName: 'msg',
     indexName: null,
     evaluate: _scope => _scope.context.data.pages.demo1_add_update.form.errors.attr1
   }, {
-    redundantAttribute: 'expr13',
-    selector: '[expr13]',
+    redundantAttribute: 'expr5',
+    selector: '[expr5]',
     expressions: [{
       type: expressionTypes.TEXT,
       childNodeIndex: 0,
       evaluate: _scope => _scope.context.data.translations['Attribute 2']
     }]
   }, {
-    redundantAttribute: 'expr14',
-    selector: '[expr14]',
+    redundantAttribute: 'expr6',
+    selector: '[expr6]',
     expressions: [{
       type: expressionTypes.VALUE,
       evaluate: _scope => _scope.context.data.pages.demo1_add_update.form.params.attr2
@@ -76,23 +76,23 @@ var demo1_add_update_page = {
     type: bindingTypes.EACH,
     getKey: null,
     condition: null,
-    template: template('<span expr16="expr16" class="uk-text-danger"> </span>', [{
-      redundantAttribute: 'expr16',
-      selector: '[expr16]',
+    template: template('<span expr8="expr8" class="uk-text-danger"> </span>', [{
+      redundantAttribute: 'expr8',
+      selector: '[expr8]',
       expressions: [{
         type: expressionTypes.TEXT,
         childNodeIndex: 0,
         evaluate: _scope => _scope.msg
       }]
     }]),
-    redundantAttribute: 'expr15',
-    selector: '[expr15]',
+    redundantAttribute: 'expr7',
+    selector: '[expr7]',
     itemName: 'msg',
     indexName: null,
     evaluate: _scope => _scope.context.data.pages.demo1_add_update.form.errors.attr2
   }, {
-    redundantAttribute: 'expr17',
-    selector: '[expr17]',
+    redundantAttribute: 'expr9',
+    selector: '[expr9]',
     expressions: [{
       type: expressionTypes.TEXT,
       childNodeIndex: 0,
@@ -103,8 +103,8 @@ var demo1_add_update_page = {
       evaluate: _scope => _scope.cancel
     }]
   }, {
-    redundantAttribute: 'expr18',
-    selector: '[expr18]',
+    redundantAttribute: 'expr10',
+    selector: '[expr10]',
     expressions: [{
       type: expressionTypes.TEXT,
       childNodeIndex: 0,

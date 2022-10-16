@@ -3,7 +3,8 @@ defmodule Riotjs.Handler.Demo2 do
   Demo2 business logic.
   """
 
-  alias Riotjs.{Common, Data}
+  alias Riotjs.{Data}
+  alias Riotjs.Handler.Common
   alias RiotjsWeb.Router.Helpers, as: Routes
   import RiotjsWeb.Gettext
 

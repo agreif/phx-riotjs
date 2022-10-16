@@ -3,7 +3,8 @@ defmodule Riotjs.Handler.Demo1 do
   Demo1 business logic.
   """
 
-  alias Riotjs.{Common, Data, Model, Handler, Repo}
+  alias Riotjs.{Data, Model, Handler}
+  alias Riotjs.Handler.Common
   alias RiotjsWeb.Router.Helpers, as: Routes
   alias Phoenix.HTML.Tag
   alias Ecto.Changeset
@@ -33,7 +34,8 @@ defmodule Riotjs.Handler.Demo1 do
   ###################
 
   def gen_list_data(conn) do
-    demo1_items = Model.Demo1.all_demo1s()
+    locale = Common.locale(conn)
+    demo1_items = Model.Demo1.get_demo1s()
     |> Enum.map(fn demo1 ->
       post_data_url = Routes.page_url(conn, :post_demo1_delete_data, demo1)
       %Data.Demo1Item{entity: demo1,
@@ -41,7 +43,6 @@ defmodule Riotjs.Handler.Demo1 do
                       post_demo1_delete_data_url: post_data_url,
                       csrf_token: Tag.csrf_token_value(post_data_url),
                      } end)
-    locale = Common.locale(conn)
     %Data{data_url: Routes.page_url(conn, :get_demo1_list_data),
           locale: locale,
           navbar: Common.gen_navbar(conn, :demo1_list),
@@ -70,15 +71,11 @@ defmodule Riotjs.Handler.Demo1 do
   """
   def process_post_add(conn, params) do
     locale = Common.locale(conn)
-    changeset = Model.Demo1.changeset(%Model.Demo1{}, params)
-    if changeset.valid? do
-      case Repo.insert(changeset) do
-        {:ok, _} -> Handler.Demo1.gen_list_data(conn)
-        {:error, changeset} ->
-          gen_add_data(conn, changeset.params, Common.human_errors(changeset, locale))
-      end
-    else
-      gen_add_data(conn, changeset.params, Common.human_errors(changeset, locale))
+    result = Model.Demo1.create_demo1(params)
+    case result do
+      {:ok, _} -> Handler.Demo1.gen_list_data(conn)
+      {:error, changeset} ->
+        gen_add_data(conn, params, Common.human_errors(changeset, locale))
     end
   end
 
@@ -109,19 +106,19 @@ defmodule Riotjs.Handler.Demo1 do
   ###################
 
   def process_get_update(conn, params) do
-    demo1 = Repo.get!(Model.Demo1, params["id"])
+    demo1 = Model.Demo1.get_demo1(params)
     gen_update_data(conn, demo1)
   end
 
   def process_post_update(conn, params) do
-    demo1 = Repo.get!(Model.Demo1, params["id"])
-    changeset = Model.Demo1.changeset(demo1, params)
-    case Repo.update(changeset) do
+    locale = Common.locale(conn)
+    result = Model.Demo1.update_demo1(params)
+    case result do
       {:ok, _} -> Handler.Demo1.gen_list_data(conn)
       {:error, changeset} ->
         gen_update_data(conn,
           Changeset.apply_changes(changeset),
-          Common.human_errors(changeset, Common.locale(conn)))
+          Common.human_errors(changeset, locale))
     end
   end
 
@@ -153,8 +150,8 @@ defmodule Riotjs.Handler.Demo1 do
   ###################
 
   def process_post_delete(conn, params) do
-    demo1 = Repo.get!(Model.Demo1, params["id"])
-    case Repo.delete(demo1) do
+    result = Model.Demo1.delete_demo1(params)
+    case result do
       {:ok, _} -> Handler.Demo1.gen_list_data(conn)
       {:error, _changeset} -> Handler.Demo1.gen_list_data(conn)
     end

@@ -3,7 +3,8 @@ defmodule Riotjs.Handler.Login do
   Login business logic.
   """
 
-  alias Riotjs.{Common, Data}
+  alias Riotjs.{Data}
+  alias Riotjs.Handler.Common
   alias Riotjs.Model
   alias RiotjsWeb.Router.Helpers, as: Routes
   alias Phoenix.HTML.Tag

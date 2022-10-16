@@ -1,4 +1,4 @@
-defmodule Riotjs.Common do
+defmodule Riotjs.Handler.Common do
   @moduledoc """
   Common business logic.
   """

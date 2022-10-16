@@ -3,7 +3,7 @@ defmodule Riotjs.Handler.Logout do
   Logout business logic.
   """
 
-  alias Riotjs.{Common}
+  alias Riotjs.Handler.Common
 
   @doc """
   Logs the user out.

@@ -3,7 +3,8 @@ defmodule Riotjs.Handler.Register do
   Register business logic.
   """
 
-  alias Riotjs.{Common, Data, Model, Handler, Repo}
+  alias Riotjs.{Data, Model, Handler, Repo}
+  alias Riotjs.Handler.Common
   alias Phoenix.HTML.Tag
   alias Ecto.Changeset
   alias RiotjsWeb.Router.Helpers, as: Routes
