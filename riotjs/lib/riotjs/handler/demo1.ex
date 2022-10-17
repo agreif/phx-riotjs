@@ -105,14 +105,14 @@ defmodule Riotjs.Handler.Demo1 do
   # update
   ###################
 
-  def process_get_update(conn, params) do
-    demo1 = Model.Demo1.get_demo1(params)
+  def process_get_update(conn, %{"id" => demo1_id}) do
+    demo1 = Model.Demo1.get_demo1(demo1_id)
     gen_update_data(conn, demo1)
   end
 
-  def process_post_update(conn, params) do
+  def process_post_update(conn, %{"id" => demo1_id} = params) do
     locale = Common.locale(conn)
-    result = Model.Demo1.update_demo1(params)
+    result = Model.Demo1.update_demo1(demo1_id, params)
     case result do
       {:ok, _} -> Handler.Demo1.gen_list_data(conn)
       {:error, changeset} ->
@@ -144,18 +144,16 @@ defmodule Riotjs.Handler.Demo1 do
     }
   end
 
-
   ###################
   # delete
   ###################
 
-  def process_post_delete(conn, params) do
-    result = Model.Demo1.delete_demo1(params)
+  def process_post_delete(conn, %{"id" => demo1_id}) do
+    result = Model.Demo1.delete_demo1(demo1_id)
     case result do
       {:ok, _} -> Handler.Demo1.gen_list_data(conn)
       {:error, _changeset} -> Handler.Demo1.gen_list_data(conn)
     end
   end
-
 
 end

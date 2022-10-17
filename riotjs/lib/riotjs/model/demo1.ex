@@ -30,9 +30,9 @@ defmodule Riotjs.Model.Demo1 do
     )
   end
 
-  def get_demo1(attrs) do
+  def get_demo1(demo1_id) do
     Model.Demo1
-    |> Repo.get_by!([id: attrs["id"]])
+    |> Repo.get_by!([id: demo1_id])
   end
 
   def create_demo1(attrs) do
@@ -40,8 +40,8 @@ defmodule Riotjs.Model.Demo1 do
     |> Repo.insert
   end
 
-  def update_demo1(attrs) do
-    demo1 = get_demo1(attrs)
+  def update_demo1(demo1_id, attrs) do
+    demo1 = get_demo1(demo1_id)
     changeset = Model.Demo1.changeset(demo1, attrs)
     if changeset.valid? do
       Repo.update(changeset)
@@ -50,8 +50,8 @@ defmodule Riotjs.Model.Demo1 do
     end
   end
 
-  def delete_demo1(attrs) do
-    get_demo1(attrs)
+  def delete_demo1(demo1_id) do
+    get_demo1(demo1_id)
     |> Repo.delete
   end
 
